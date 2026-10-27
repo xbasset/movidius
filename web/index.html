@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Crivo-17M sur Movidius : décisions locales, latence et énergie du Mac.">
+  <meta name="description" content="Crivo-17M sur Movidius : décisions locales, probabilités et comparaison des latences.">
   <title>Crivo — laboratoire local</title>
   <link rel="stylesheet" href="/style.css">
   <script src="/app.js" defer></script>
@@ -32,7 +32,6 @@
         <button class="example" data-example="How can I change my PIN?">Changer le PIN</button>
       </div>
       <div class="actions"><button id="compare" class="primary" disabled>Comparer les décisions <span aria-hidden="true">↗</span></button>
-        <button id="energy" class="secondary" disabled>Mesurer l’énergie <span class="mono">~15 s</span></button>
         <span class="key-hint">⌘ / Ctrl + Entrée</span>
       </div>
       <div id="error" class="error" role="alert" hidden></div>
@@ -52,18 +51,6 @@
       <div class="table-scroll"><table><thead><tr><th>Intention</th><th class="stick-text">Movidius</th><th class="cpu-text">CPU</th><th class="mps-text">GPU Metal</th></tr></thead><tbody id="probabilities"><tr><td colspan="4" class="empty">Les dix intentions les plus probables apparaîtront ici.</td></tr></tbody></table></div>
     </section>
 
-    <section class="energy-panel" aria-labelledby="energy-title">
-      <div class="section-line"><div><p class="eyebrow">MESURE PAR LOTS</p><h2 id="energy-title">L’énergie côté Mac</h2></div><span id="energy-source" class="badge">IOReport · vérification…</span></div>
-      <p class="energy-explanation">Estimation des composants CPU + GPU + ANE sur des lots d’au moins 3 secondes. Le repos est mesuré juste avant. Le total électrique du Mac et la consommation USB du stick ne sont pas inclus.</p>
-      <div class="energy-cards" id="energy-cards">
-        <div><span>Mode CPU</span><strong id="energy-cpu">— <small>mJ / décision</small></strong><p id="energy-detail-cpu">Lancer une mesure d’énergie.</p></div>
-        <div><span>Mode GPU Metal</span><strong id="energy-mps">— <small>mJ / décision</small></strong><p id="energy-detail-mps">Lancer une mesure d’énergie.</p></div>
-        <div><span>Mac accompagnant le stick</span><strong id="energy-stick">— <small>mJ / décision</small></strong><p id="energy-detail-stick">Énergie du Mac uniquement.</p></div>
-      </div>
-      <div id="energy-breakdown" hidden class="table-scroll"><table><thead><tr><th>Mode d’inférence</th><th>CPU du Mac</th><th>GPU du Mac</th><th>ANE du Mac</th><th>Lot</th><th>Décisions</th></tr></thead><tbody id="energy-rows"></tbody></table></div>
-      <p id="energy-note" class="measurement-note">Les valeurs incluent l’activité des autres applications. Il s’agit d’estimations de compteurs matériels, pas d’une mesure au wattmètre.</p>
-      <div class="stick-energy"><span class="mono">STICK / ÉLECTRIQUE</span><span>Non mesuré — nécessite un wattmètre USB externe.</span></div>
-    </section>
     <footer><span>Crivo-17M · BANKING77 · aucun service cloud · messages non enregistrés</span><button id="export" disabled>Exporter les résultats JSON ↓</button></footer>
   </main>
 </body>

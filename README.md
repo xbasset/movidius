@@ -9,8 +9,8 @@ boundaries and measured results.
 
 **Live local interface:** run `.venv/bin/python -m scripts.serve_crivo`, then
 open <http://127.0.0.1:8765> to compare decisions, probabilities and latency on
-all three backends, and sample estimated Mac CPU/GPU/ANE energy. The stick's
-electrical energy requires a USB meter. See [LOCAL_UI.md](LOCAL_UI.md).
+all three backends. Energy measurement is outside the experiment scope.
+See [LOCAL_UI.md](LOCAL_UI.md).
 
 ```sh
 bash scripts/setup_crivo.sh
@@ -142,8 +142,7 @@ control. Original local captures from this experiment remain under the ignored
    keeps one graph resident and works reliably in these tests.
 2. Offload a complete decoder block, then the full model, with device-resident
    weights and KV state. Preserve reference probabilities at each step.
-3. Measure longer contexts and full held-out benchmarks. Add a USB power meter
-   for device watts/joules per token; record the host's contribution separately.
+3. Measure longer contexts and full held-out benchmarks.
 
 An experimental `--offload all-dense` path is retained to reproduce the failure:
 

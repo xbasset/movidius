@@ -34,62 +34,14 @@ banking intents, including for messages outside that domain.
 
 Messages are not written to logs, files or browser storage. The server holds
 only the current job result in memory. The JSON export downloads the current
-probabilities, timings and energy metrics; it does not include the message text.
+probabilities and timings; it does not include the message text.
 
-## Mac energy measurement
+## Experiment scope
 
-“Mesurer l’énergie” takes roughly 15 seconds. It reads the system library
-IOReport's **Energy Model** counters without sudo. These are model-based CPU,
-GPU and ANE energy estimates, not readings from an electrical power meter.
-The API is private and may change with macOS; missing counters are reported
-as unavailable. Tested here on Apple M2 Pro / macOS 26.6.2.
-
-The channels expose different units on this Mac:
-
-| Channel | Native unit | Conversion to joules |
-|---|---|---|
-| CPU Energy | mJ | × 0.001 |
-| GPU Energy | nJ | × 0.000000001 |
-| ANE0 | mJ | × 0.001 |
-
-For each backend, the app first allows a short settling interval, then samples
-one second at idle and a serial inference loop lasting at least three seconds.
-The input shape is warmed before measurement. Each loop remains batch size one.
-
-`average watts = counter delta in joules / sampling seconds`
-
-`gross joules per decision = counter delta in joules / completed decisions`
-
-`incremental joules per decision = (joules − idle watts × sampling seconds) / completed decisions`
-
-The large figures are **gross energy, idle included**. The smaller detail shows
-the estimated increment above the immediately preceding idle window. Negative
-increments are retained in exported data and shown as “below background noise”,
-not clamped into a fake zero-cost result. Other applications, browser rendering,
-DVFS and thermal state affect these machine-wide component counters. Short
-windows are useful for exploration, not calibrated cross-device efficiency claims.
-
-The UI separates these three modes:
-
-1. Mac components while the CPU runs Crivo.
-2. Mac components while the GPU runs Crivo.
-3. Mac components **while accompanying stick inference**. This excludes the
-   stick's USB electrical consumption and must never be called the stick's energy.
-
-The sum is not the Mac's total electrical draw, wall power or battery energy.
-The UI deliberately leaves stick electrical energy unavailable: this stick has
-no voltage/current telemetry in its inference API. An external inline USB meter
-is needed to measure it. A USB descriptor's negotiated current is not a reading.
-
-Numerical examples from one repeated public BANKING77 test input are saved in
-[results/crivo_mac_energy.json](results/crivo_mac_energy.json), including sampling
-durations, completed counts, idle windows, native channel metadata, joules and
-watts. They are a short software-estimate session, not a full-dataset energy
-benchmark or a measured CPU-versus-stick electrical-efficiency comparison.
-
-The read-only IOReport binding follows the public API usage documented in
-[macmon's source](https://github.com/vladkens/macmon/blob/main/src/sources.rs)
-(MIT). No macmon binary, Rust runtime or privileged service is installed.
+The experiment evaluates prediction quality and latency. Energy measurement is
+excluded: software estimates of Mac components do not cover USB stick power,
+and no external electrical instrumentation is available. The exploratory energy
+UI, counter binding and numerical artifact have been removed.
 
 ## Validation and code
 
@@ -100,19 +52,17 @@ With the server running and the stick connected:
 ```
 
 This exercises real stick/CPU/GPU predictions, the complete 77-option outputs,
-energy-counter arithmetic and per-backend idle windows, input bounds, serialized
-jobs, and rejection of foreign Host/Origin headers. It saves numerical evidence
-without message text. Browser QA also covers example selection, probability
-display, energy results and clearing stale results when the input changes.
+input bounds, serialized jobs, and rejection of foreign Host/Origin headers.
+It saves numerical evidence without message text. Browser QA also covers example
+selection, probability display and clearing stale results when the input changes.
 
 | File | Responsibility |
 |---|---|
 | `web/` | Buildless French interface, probability comparison and local JSON export |
 | `scripts/serve_crivo.py` | Loopback HTTP API, bounded jobs and one model-owning worker |
-| `movidius_lab/live.py` | Resident models, sequential latency and energy trials |
-| `movidius_lab/energy.py` | Unit-aware, read-only IOReport snapshots and counter deltas |
+| `movidius_lab/live.py` | Resident models and sequential latency trials |
 | `scripts/verify_crivo_live.py` | Integration checks against the running hardware-backed server |
 
 The server rejects foreign origins, unexpected Host headers, non-JSON POSTs and
-oversized requests. It does not enable CORS or log request bodies. Models and
-IOReport resources close on the owning worker when the server stops.
+oversized requests. It does not enable CORS or log request bodies. Models close
+on the owning worker when the server stops.

@@ -1,4 +1,4 @@
-"""Exercise the running local UI API, real inference, and energy accounting."""
+"""Exercise the running local UI API, real inference, and request boundaries."""
 
 import argparse
 import json
@@ -31,6 +31,9 @@ def main():
             break
         time.sleep(.2)
     assert status["ready"] and all(x["ready"] for x in status["backends"].values())
+    assert "energy" not in status
+    assert session.post(base + "/api/run", json={"kind": "energy", "message": "test"},
+                        timeout=5).status_code == 400
     assert session.get(base + "/api/status", headers={"Host": "external.example"}, timeout=5).status_code == 403
     assert session.post(base + "/api/run", json={"message": "test"},
                         headers={"Origin": "https://external.example"}, timeout=5).status_code == 403
@@ -48,25 +51,9 @@ def main():
         assert value["decision"] == "card_arrival" and value["median_ms"] > 0
         assert len(value["probabilities"]) == 77 and len(value["samples_ms"]) == 3
 
-    job = session.post(base + "/api/run", json={"kind": "energy", "message": message}, timeout=5).json()
-    energy = wait(job["id"])
-    assert energy["state"] == "complete", energy
-    data = energy["result"]
-    for value in data["results"].values():
-        assert value["seconds"] >= 3 and value["inferences"] >= 1
-        assert value["sum_j"] > 0
-        assert abs(value["sum_j"] - sum(value["components_j"].values())) < 1e-9
-        assert abs(value["sum_w"] * value["seconds"] - value["sum_j"]) < 1e-9
-        assert abs(value["gross_j_per_inference"] * value["inferences"] - value["sum_j"]) < 1e-9
-        assert value["stick_electrical_j"] is None
-    assert data["stick_energy"]["available"] is False
-    artifact = {**data, "fixture": "BANKING77 public test case 1, repeated; one short sampling session",
-                "software_only": True, "channel_metadata": status["energy"]["channels"]}
-    (ROOT / "results/crivo_mac_energy.json").write_text(json.dumps(artifact, indent=2) + "\n")
     summary = {"passed": True, "backends": list(comparison["result"]["results"]),
                "checks": ["host/origin restrictions", "request bounds", "no truncation", "one active job",
-                          "physical stick + CPU + Metal decisions", "77 probabilities", "energy unit accounting",
-                          "per-backend idle windows", "stick energy explicitly unmeasured"]}
+                          "physical stick + CPU + Metal decisions", "77 probabilities", "energy measurement removed"]}
     (ROOT / "results/crivo_live_verification.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
 

@@ -149,7 +149,7 @@ h1 span {
   color:var(--ink);
   line-height:1;
 }
-.input-panel,.details-panel,.energy-panel {
+.input-panel,.details-panel {
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:9px;
@@ -430,65 +430,6 @@ td:first-child {
   font-size:9px;
   white-space:nowrap;
 }
-.energy-panel>.section-line .eyebrow {
-  margin-bottom:7px;
-}
-.energy-panel h2 {
-  font-size:19px;
-}
-.energy-explanation {
-  font-size:12px;
-  line-height:1.7;
-  color:var(--muted);
-  max-width:850px;
-  margin:0 0 21px;
-}
-.energy-cards {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-  margin:20px 0;
-}
-.energy-cards>div:not(:first-child) {
-  border-left:1px solid var(--line);
-  padding-left:24px;
-}
-.energy-cards>div>span {
-  font-size:11px;
-  font-weight:550;
-}
-.energy-cards strong {
-  font-family:var(--mono);
-  font-size:29px;
-  font-weight:400;
-  display:block;
-  margin:14px 0 10px;
-  letter-spacing:-.04em;
-}
-.energy-cards small {
-  font-size:9px;
-  font-weight:400;
-  letter-spacing:0;
-  color:var(--muted);
-}
-.energy-cards p {
-  font-size:10px;
-  line-height:1.8;
-  color:var(--muted);
-  margin:0;
-}
-.stick-energy {
-  display:flex;
-  align-items:center;
-  gap:20px;
-  border-top:1px solid var(--line);
-  padding-top:16px;
-  font-size:11px;
-  color:var(--muted);
-}
-.stick-energy .mono {
-  font-size:9px;
-}
 footer {
   margin-top:24px;
   display:flex;
@@ -535,7 +476,7 @@ footer button {
   .section-line>.mono {
     font-size:9px;
   }
-  .input-panel,.details-panel,.energy-panel {
+  .input-panel,.details-panel {
     padding:17px;
   }
   .actions {
@@ -578,25 +519,6 @@ footer button {
   .decision {
     font-size:10px;
   }
-  .energy-cards {
-    gap:13px;
-  }
-  .energy-cards>div:not(:first-child) {
-    padding-left:12px;
-  }
-  .energy-cards strong {
-    font-size:23px;
-  }
-  .energy-cards small {
-    display:block;
-    font-size:8px;
-    line-height:1.8;
-  }
-  .stick-energy {
-    align-items:flex-start;
-    flex-direction:column;
-    gap:7px;
-  }
   footer {
     align-items:flex-start;
     flex-direction:column;
@@ -610,7 +532,7 @@ footer button {
   }
 }
 @media(max-width:500px) {
-  .cards,.energy-cards {
+  .cards {
     grid-template-columns:1fr;
   }
   .card-top {
@@ -634,14 +556,6 @@ footer button {
   .decision {
     font-size:13px;
     min-height:0;
-  }
-  .energy-cards>div:not(:first-child) {
-    border-left:0;
-    border-top:1px solid var(--line);
-    padding:18px 0 0;
-  }
-  .energy-cards strong small {
-    display:inline;
   }
   .actions>button {
     width:100%;

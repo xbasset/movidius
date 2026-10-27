@@ -50,9 +50,7 @@ class Workbench:
 
     def run(self, kind, message):
         try:
-            if kind == "energy":
-                value = self.engine.measure_energy(message, progress=self.update)
-            elif kind == "reconnect":
+            if kind == "reconnect":
                 value = self.engine.reconnect()
             else:
                 value = self.engine.compare(message, self.update)
@@ -131,7 +129,7 @@ def handler(workbench, port):
                     raise ValueError("Requête trop grande ou vide")
                 payload = json.loads(self.rfile.read(size))
                 kind = payload.get("kind", "compare")
-                if kind not in {"compare", "energy", "reconnect"}:
+                if kind not in {"compare", "reconnect"}:
                     raise ValueError("Action inconnue")
                 result = workbench.start(kind, payload.get("message", ""))
                 self.send(202, result)
