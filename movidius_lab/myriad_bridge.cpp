@@ -34,9 +34,12 @@ extern "C" void* crivo_open(const char* registry, const char* xml, char* error, 
                                        ? ie::Precision::I32 : ie::Precision::FP16);
         }
         for (auto& output : c->network.getOutputsInfo()) {
+            if (output.second->getPrecision() == ie::Precision::I32) continue;
             output.second->setPrecision(ie::Precision::FP32);
             c->output = output.first;
         }
+        // TopK also exposes unused index outputs; select the complete score/map output.
+        if (c->network.getOutputsInfo().count("anomaly_output")) c->output = "anomaly_output";
         if (std::getenv("MOVI_DEBUG")) std::fprintf(stderr, "LoadNetwork MYRIAD\n");
         c->executable = c->core.LoadNetwork(c->network, "MYRIAD", {{"PERF_COUNT", "YES"}});
         c->request = c->executable.CreateInferRequest();

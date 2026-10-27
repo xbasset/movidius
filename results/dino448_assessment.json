@@ -1,0 +1,560 @@
+{
+  "complete": true,
+  "resolution": [
+    448,
+    448
+  ],
+  "categories": 15,
+  "test_images": 1725,
+  "one_shot_trials": 3,
+  "quality": {
+    "myriad": {
+      "mean": {
+        "image_auroc": 0.965354484622352,
+        "image_ap": 0.9812710323824785,
+        "image_f1_max": 0.9598624583567344,
+        "pixel_auroc": 0.9627634902028439,
+        "pixel_f1_max": 0.5798091827750321,
+        "aupro_0_3": 0.9175946177615905
+      },
+      "std": {
+        "image_auroc": 0.003882316111325422,
+        "image_ap": 0.002162502665215766,
+        "image_f1_max": 0.0026586596634989614,
+        "pixel_auroc": 0.0014664334689261146,
+        "pixel_f1_max": 0.007896752023396455,
+        "aupro_0_3": 0.0005383170204145226
+      },
+      "macro_trials": {
+        "image_auroc": [
+          0.9701346063412911,
+          0.9606253224725403,
+          0.9653035250532246
+        ],
+        "image_ap": [
+          0.9841297281584254,
+          0.9789006635005653,
+          0.9807827054884446
+        ],
+        "image_f1_max": [
+          0.963080683800234,
+          0.9599370842000778,
+          0.956569607069891
+        ],
+        "pixel_auroc": [
+          0.9647383574722297,
+          0.9623242947731419,
+          0.9612278183631602
+        ],
+        "pixel_f1_max": [
+          0.5888134973924669,
+          0.5810280199149411,
+          0.5695860310176886
+        ],
+        "aupro_0_3": [
+          0.9183305482297773,
+          0.9173954203597332,
+          0.917057884695261
+        ]
+      }
+    },
+    "cpu": {
+      "mean": {
+        "image_auroc": 0.9652024040760844,
+        "image_ap": 0.9814930027126602,
+        "image_f1_max": 0.9598172105172661,
+        "pixel_auroc": 0.9626226871706981,
+        "pixel_f1_max": 0.5794435532465717,
+        "aupro_0_3": 0.9172122365396941
+      },
+      "std": {
+        "image_auroc": 0.003962216832164944,
+        "image_ap": 0.002475683089260244,
+        "image_f1_max": 0.0020987742931673392,
+        "pixel_auroc": 0.0014390731976011474,
+        "pixel_f1_max": 0.0077793841838849475,
+        "aupro_0_3": 0.0006317453044090497
+      },
+      "macro_trials": {
+        "image_auroc": [
+          0.9702062770751821,
+          0.960516506818117,
+          0.9648844283349541
+        ],
+        "image_ap": [
+          0.9848776767673721,
+          0.9790251037630872,
+          0.9805762276075207
+        ],
+        "image_f1_max": [
+          0.9621457313517809,
+          0.9602469304458452,
+          0.9570589697541723
+        ],
+        "pixel_auroc": [
+          0.9646191047960352,
+          0.9619667282682032,
+          0.9612822284478562
+        ],
+        "pixel_f1_max": [
+          0.5886412459862366,
+          0.5800725232106166,
+          0.5696168905428618
+        ],
+        "aupro_0_3": [
+          0.9181055054158762,
+          0.9167799628326955,
+          0.9167512413705105
+        ]
+      }
+    },
+    "mps": {
+      "mean": {
+        "image_auroc": 0.9652024040760844,
+        "image_ap": 0.9814930027126602,
+        "image_f1_max": 0.9598172105172661,
+        "pixel_auroc": 0.9626227098141209,
+        "pixel_f1_max": 0.57944358482581,
+        "aupro_0_3": 0.9172122661107432
+      },
+      "std": {
+        "image_auroc": 0.003962216832164944,
+        "image_ap": 0.002475683089260244,
+        "image_f1_max": 0.0020987742931673392,
+        "pixel_auroc": 0.0014390616554380473,
+        "pixel_f1_max": 0.007779452499718385,
+        "aupro_0_3": 0.000631747013339662
+      },
+      "macro_trials": {
+        "image_auroc": [
+          0.9702062770751821,
+          0.960516506818117,
+          0.9648844283349541
+        ],
+        "image_ap": [
+          0.9848776767673721,
+          0.9790251037630872,
+          0.9805762276075207
+        ],
+        "image_f1_max": [
+          0.9621457313517809,
+          0.9602469304458452,
+          0.9570589697541723
+        ],
+        "pixel_auroc": [
+          0.9646191074079231,
+          0.9619667757653662,
+          0.9612822462690734
+        ],
+        "pixel_f1_max": [
+          0.5886413283614932,
+          0.5800726148533266,
+          0.5696168112626101
+        ],
+        "aupro_0_3": [
+          0.9181055370208021,
+          0.9167800092588199,
+          0.9167512520526077
+        ]
+      }
+    }
+  },
+  "single_head_latency": {
+    "myriad": {
+      "samples": 150,
+      "median_ms": 2743.381062500248,
+      "p95_ms": 2746.781083000019,
+      "pca": "64 FP16 power iterations on MYRIAD, also computed when mask disabled",
+      "timing": "prepared host tensor to host patch map and score; calibration excluded"
+    },
+    "cpu": {
+      "samples": 150,
+      "median_ms": 112.39531199998964,
+      "p95_ms": 119.92931249983485,
+      "pca": "author sklearn PCA on CPU for five categories; other inference on selected backend",
+      "timing": "prepared host tensor to host patch map and score; calibration excluded"
+    },
+    "mps": {
+      "samples": 150,
+      "median_ms": 33.26933349990213,
+      "p95_ms": 35.31137674999627,
+      "pca": "author sklearn PCA on CPU for five categories; other inference on selected backend",
+      "timing": "prepared host tensor to host patch map and score; calibration excluded"
+    }
+  },
+  "single_head_vs_joint_first_head": {
+    "myriad": {
+      "score_mae": 0.0,
+      "score_max_error": 0.0
+    },
+    "cpu": {
+      "score_mae": 0.0,
+      "score_max_error": 0.0
+    },
+    "mps": {
+      "score_mae": 0.0,
+      "score_max_error": 0.0
+    }
+  },
+  "paper": {
+    "source": "https://arxiv.org/html/2405.14529v3#S4.T2",
+    "row": "AnomalyDINO-S (448), one-shot, agnostic",
+    "mean_std": {
+      "image_auroc": [
+        0.965,
+        0.004
+      ],
+      "image_f1_max": [
+        0.96,
+        0.002
+      ],
+      "image_ap": [
+        0.981,
+        0.003
+      ],
+      "pixel_auroc": [
+        0.963,
+        0.001
+      ],
+      "pixel_f1_max": [
+        0.579,
+        0.008
+      ],
+      "aupro_0_3": [
+        0.917,
+        0.001
+      ]
+    }
+  },
+  "difference_from_paper_percentage_points": {
+    "myriad": {
+      "image_auroc": 0.03544846223519915,
+      "image_f1_max": -0.013754164326551521,
+      "image_ap": 0.02710323824784977,
+      "pixel_auroc": -0.023650979715605924,
+      "pixel_f1_max": 0.0809182775032169,
+      "aupro_0_3": 0.059461776159042135
+    },
+    "cpu": {
+      "image_auroc": 0.02024040760844059,
+      "image_f1_max": -0.01827894827338694,
+      "image_ap": 0.049300271266017326,
+      "pixel_auroc": -0.037731282930186794,
+      "pixel_f1_max": 0.044355324657174844,
+      "aupro_0_3": 0.0212236539694044
+    },
+    "mps": {
+      "image_auroc": 0.02024040760844059,
+      "image_f1_max": -0.01827894827338694,
+      "image_ap": 0.049300271266017326,
+      "pixel_auroc": -0.03772901858790645,
+      "pixel_f1_max": 0.044358482581008385,
+      "aupro_0_3": 0.02122661107432089
+    }
+  },
+  "category_image_auroc": [
+    {
+      "category": "bottle",
+      "test_images": 83,
+      "image_auroc": {
+        "myriad": 0.9944444444444445,
+        "cpu": 0.9947089947089948,
+        "mps": 0.9947089947089948
+      }
+    },
+    {
+      "category": "cable",
+      "test_images": 150,
+      "image_auroc": {
+        "myriad": 0.91369940029985,
+        "cpu": 0.9159795102448776,
+        "mps": 0.9159795102448776
+      }
+    },
+    {
+      "category": "capsule",
+      "test_images": 132,
+      "image_auroc": {
+        "myriad": 0.9039356468554715,
+        "cpu": 0.9002792181890706,
+        "mps": 0.9002792181890706
+      }
+    },
+    {
+      "category": "carpet",
+      "test_images": 117,
+      "image_auroc": {
+        "myriad": 1.0,
+        "cpu": 1.0,
+        "mps": 1.0
+      }
+    },
+    {
+      "category": "grid",
+      "test_images": 78,
+      "image_auroc": {
+        "myriad": 0.9913673071567808,
+        "cpu": 0.9919242550821498,
+        "mps": 0.9919242550821498
+      }
+    },
+    {
+      "category": "hazelnut",
+      "test_images": 110,
+      "image_auroc": {
+        "myriad": 0.9794642857142857,
+        "cpu": 0.9801190476190476,
+        "mps": 0.9801190476190476
+      }
+    },
+    {
+      "category": "leather",
+      "test_images": 124,
+      "image_auroc": {
+        "myriad": 1.0,
+        "cpu": 1.0,
+        "mps": 1.0
+      }
+    },
+    {
+      "category": "metal_nut",
+      "test_images": 115,
+      "image_auroc": {
+        "myriad": 0.9991854024112089,
+        "cpu": 0.9988595633756924,
+        "mps": 0.9988595633756924
+      }
+    },
+    {
+      "category": "pill",
+      "test_images": 167,
+      "image_auroc": {
+        "myriad": 0.925168212402255,
+        "cpu": 0.9233496999454446,
+        "mps": 0.9233496999454446
+      }
+    },
+    {
+      "category": "screw",
+      "test_images": 160,
+      "image_auroc": {
+        "myriad": 0.8917127826740452,
+        "cpu": 0.8907563025210085,
+        "mps": 0.8907563025210085
+      }
+    },
+    {
+      "category": "tile",
+      "test_images": 117,
+      "image_auroc": {
+        "myriad": 1.0,
+        "cpu": 0.9997594997594997,
+        "mps": 0.9997594997594997
+      }
+    },
+    {
+      "category": "toothbrush",
+      "test_images": 42,
+      "image_auroc": {
+        "myriad": 0.9962962962962963,
+        "cpu": 0.9962962962962963,
+        "mps": 0.9962962962962963
+      }
+    },
+    {
+      "category": "transistor",
+      "test_images": 100,
+      "image_auroc": {
+        "myriad": 0.9090277777777779,
+        "cpu": 0.9091666666666667,
+        "mps": 0.9091666666666667
+      }
+    },
+    {
+      "category": "wood",
+      "test_images": 79,
+      "image_auroc": {
+        "myriad": 0.9862573099415205,
+        "cpu": 0.9883040935672515,
+        "mps": 0.9883040935672515
+      }
+    },
+    {
+      "category": "zipper",
+      "test_images": 151,
+      "image_auroc": {
+        "myriad": 0.9897584033613446,
+        "cpu": 0.9885329131652661,
+        "mps": 0.9885329131652661
+      }
+    }
+  ],
+  "parity": {
+    "myriad_vs_cpu": {
+      "score_mae": 0.0047212084755301476,
+      "score_max_error": 0.029911339282989502,
+      "patch_distance_mae": 0.0025954346638172865,
+      "patch_distance_max_error": 0.49462890625
+    },
+    "mps_vs_cpu": {
+      "score_mae": 5.02327509366296e-07,
+      "score_max_error": 6.616115570068359e-06,
+      "patch_distance_mae": 4.842187308895518e-07,
+      "patch_distance_max_error": 8.082389831542969e-05
+    }
+  },
+  "foreground_output_support": {
+    "different_pixels": 1088,
+    "compared_pixels": 625664,
+    "disagreement_fraction": 0.0017389525368248773,
+    "definition": "Nonzero patch-map support on five masked categories; combines PCA solver, FP16 backbone drift and zero rounding; not an isolated PCA-mask measurement"
+  },
+  "device_execution": {
+    "backend": "MYRIAD only",
+    "executed_stages": 965,
+    "profile_cpu_us": 0,
+    "executed_pca_stages": 419,
+    "executed_head_stages": [
+      "head0/cosine_distance",
+      "head0/masked",
+      "head0/nearest",
+      "head0/nonnegative",
+      "head0/output",
+      "head0/score",
+      "head0/similarity",
+      "head0/top10"
+    ]
+  },
+  "graph_sha256": {
+    "features": {
+      "xml": "6aad65627301a315cc812c29759e9f0465a935ddd5a1790b478d24474d5b7d31",
+      "bin": "55ea94dda1161eb4dfa085cbee3ebe0abc26c242cac2b3aa1a63a12528cb2907"
+    },
+    "paper_1": {
+      "xml": "84baab6ca605b73295a755942d131f33de600adb750a2ead9a2399e6598d52ba",
+      "bin": "10b5a82398216d2d7ee82dbeccdfdf77762cfd309af2464fa6bd8b62ce1b341b"
+    },
+    "paper_3": {
+      "xml": "665193f101000d3b7620f56120695ddfc3c68bd24f5cc21aa2d03778f1e0302c",
+      "bin": "10b5a82398216d2d7ee82dbeccdfdf77762cfd309af2464fa6bd8b62ce1b341b"
+    }
+  },
+  "model": {
+    "repo": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "license": "Apache-2.0",
+    "sha256": {
+      "config.json": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "model.safetensors": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "README.md": "4c20dca454a8e5c670e8de5c7e6040f512aeca5438516f7623eedc4e3b00599c"
+    },
+    "meta_code_revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "anomalydino_code_revision": "b9d1c2648e3a5247437d4d953d907a8f3d994457"
+  },
+  "hardware": {
+    "stick": "Intel NCS1 / Myriad 2 (MA2450)",
+    "mac": "Apple M2 Pro, 16 GiB"
+  },
+  "verification": {
+    "passed": true,
+    "resolution": [
+      448,
+      448
+    ],
+    "cases": [
+      {
+        "id": "bottle/test/good/000.png",
+        "meta_feature_max_error": 0.0,
+        "device_feature_mae": 0.0018636524910107255,
+        "device_feature_max_error": 0.03941984474658966,
+        "mean_feature_cosine": 0.9988028407096863
+      },
+      {
+        "id": "capsule/test/good/000.png",
+        "meta_feature_max_error": 0.0,
+        "device_feature_mae": 0.00199441728182137,
+        "device_feature_max_error": 0.038962237536907196,
+        "mean_feature_cosine": 0.9985781908035278,
+        "pca_mask_pixels_different": 0
+      },
+      {
+        "id": "hazelnut/test/good/000.png",
+        "meta_feature_max_error": 0.0,
+        "device_feature_mae": 0.0018357097869738936,
+        "device_feature_max_error": 0.03854188323020935,
+        "mean_feature_cosine": 0.9988223910331726,
+        "pca_mask_pixels_different": 0
+      },
+      {
+        "id": "pill/test/good/000.png",
+        "meta_feature_max_error": 0.0,
+        "device_feature_mae": 0.0023434986360371113,
+        "device_feature_max_error": 0.08530309796333313,
+        "mean_feature_cosine": 0.9979478716850281,
+        "pca_mask_pixels_different": 0
+      },
+      {
+        "id": "screw/test/good/000.png",
+        "meta_feature_max_error": 0.0,
+        "device_feature_mae": 0.001749240793287754,
+        "device_feature_max_error": 0.035008229315280914,
+        "mean_feature_cosine": 0.9989194869995117,
+        "pca_mask_pixels_different": 0
+      },
+      {
+        "id": "toothbrush/test/good/000.png",
+        "meta_feature_max_error": 0.0,
+        "device_feature_mae": 0.003056521760299802,
+        "device_feature_max_error": 0.11205235123634338,
+        "mean_feature_cosine": 0.9963991045951843,
+        "pca_mask_pixels_different": 0
+      }
+    ],
+    "unchanged_224_graph_sha256": {
+      ".xml": "f27f25483282ba578ec29f06ae8de1370419c2814eddf1cd1ddd685b04b2c501",
+      ".bin": "9e36980cdc40266baaf389cf81eb76a309bc2d4b0b645357a9350c2fbff25828"
+    },
+    "pca": "same raw FP32 features as input; FP16 device power iteration vs original randomized PCA",
+    "metric_validation": "scripts.check_anomaly_metrics: sklearn and independent threshold PRO, ties and chunk boundaries",
+    "reference_only": false
+  },
+  "broadcast_verification": {
+    "passed": true,
+    "input": "seed-0 standard normal, rounded FP16",
+    "operation": "DINOv2 first LayerNorm, trained gamma and bias",
+    "cases": [
+      {
+        "tokens": 257,
+        "expanded_constants": false,
+        "mae": 0.0004492148000281304,
+        "max_error": 0.016263961791992188,
+        "rows_with_error_above_0_1": 0
+      },
+      {
+        "tokens": 257,
+        "expanded_constants": true,
+        "mae": 0.0004492148000281304,
+        "max_error": 0.016263961791992188,
+        "rows_with_error_above_0_1": 0
+      },
+      {
+        "tokens": 1025,
+        "expanded_constants": false,
+        "mae": 0.023035578429698944,
+        "max_error": 6.9560041427612305,
+        "rows_with_error_above_0_1": 53
+      },
+      {
+        "tokens": 1025,
+        "expanded_constants": true,
+        "mae": 0.0004401869373396039,
+        "max_error": 0.016263961791992188,
+        "rows_with_error_above_0_1": 0
+      }
+    ],
+    "topk_values_output_with_unused_integer_indices": "passed"
+  },
+  "energy": "excluded",
+  "firmware_sha256": "6cf079e614d0fa68381ec29d0b30f44766cf3cf62355620a91912128f0bfdaac"
+}

@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "resolution": [
+    448,
+    448
+  ],
+  "cases": [
+    {
+      "id": "bottle/test/good/000.png",
+      "meta_feature_max_error": 0.0
+    },
+    {
+      "id": "capsule/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "author_mask_matches": true
+    },
+    {
+      "id": "hazelnut/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "author_mask_matches": true
+    },
+    {
+      "id": "pill/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "author_mask_matches": true
+    },
+    {
+      "id": "screw/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "author_mask_matches": true
+    },
+    {
+      "id": "toothbrush/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "author_mask_matches": true
+    }
+  ],
+  "unchanged_224_graph_sha256": {
+    ".xml": "f27f25483282ba578ec29f06ae8de1370419c2814eddf1cd1ddd685b04b2c501",
+    ".bin": "9e36980cdc40266baaf389cf81eb76a309bc2d4b0b645357a9350c2fbff25828"
+  },
+  "pca": "FP32 reference mask vs pinned author code",
+  "metric_validation": "scripts.check_anomaly_metrics: sklearn and independent threshold PRO, ties and chunk boundaries",
+  "reference_only": true
+}

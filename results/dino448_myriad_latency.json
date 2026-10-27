@@ -1,0 +1,769 @@
+{
+  "device": "myriad",
+  "resolution": [
+    448,
+    448
+  ],
+  "threads": 4,
+  "shots": 1,
+  "rotations": 8,
+  "samples": 150,
+  "selection": "ten evenly spaced sorted test IDs per category",
+  "warmups_per_category": 3,
+  "timing": "prepared host tensor to host patch map and score; calibration excluded",
+  "pca": "64 FP16 power iterations on MYRIAD, also computed when mask disabled",
+  "median_ms": 2743.381062500248,
+  "p95_ms": 2746.781083000019,
+  "rows": [
+    {
+      "id": "bottle/test/broken_large/000.png",
+      "ms": 2747.2292920001564,
+      "score": 0.371337890625
+    },
+    {
+      "id": "bottle/test/broken_large/009.png",
+      "ms": 2748.9879999998266,
+      "score": 0.331787109375
+    },
+    {
+      "id": "bottle/test/broken_large/018.png",
+      "ms": 2747.1519159998934,
+      "score": 0.376220703125
+    },
+    {
+      "id": "bottle/test/broken_small/007.png",
+      "ms": 2746.3455000001886,
+      "score": 0.281494140625
+    },
+    {
+      "id": "bottle/test/broken_small/016.png",
+      "ms": 2747.2522919997573,
+      "score": 0.418212890625
+    },
+    {
+      "id": "bottle/test/contamination/003.png",
+      "ms": 2745.5082080000466,
+      "score": 0.297119140625
+    },
+    {
+      "id": "bottle/test/contamination/012.png",
+      "ms": 2743.4652500000993,
+      "score": 0.448486328125
+    },
+    {
+      "id": "bottle/test/good/000.png",
+      "ms": 2741.307790999599,
+      "score": 0.1380615234375
+    },
+    {
+      "id": "bottle/test/good/009.png",
+      "ms": 2746.1021250001068,
+      "score": 0.177734375
+    },
+    {
+      "id": "bottle/test/good/019.png",
+      "ms": 2745.2834169998823,
+      "score": 0.16943359375
+    },
+    {
+      "id": "cable/test/bent_wire/000.png",
+      "ms": 2742.540166999788,
+      "score": 0.380126953125
+    },
+    {
+      "id": "cable/test/cable_swap/003.png",
+      "ms": 2741.851875000066,
+      "score": 0.27978515625
+    },
+    {
+      "id": "cable/test/combined/008.png",
+      "ms": 2741.7306660004215,
+      "score": 0.533203125
+    },
+    {
+      "id": "cable/test/cut_inner_insulation/013.png",
+      "ms": 2740.8511670000735,
+      "score": 0.3759765625
+    },
+    {
+      "id": "cable/test/good/006.png",
+      "ms": 2739.9632090000523,
+      "score": 0.2078857421875
+    },
+    {
+      "id": "cable/test/good/022.png",
+      "ms": 2742.5418749999153,
+      "score": 0.2239990234375
+    },
+    {
+      "id": "cable/test/good/039.png",
+      "ms": 2741.0672500000146,
+      "score": 0.304931640625
+    },
+    {
+      "id": "cable/test/good/055.png",
+      "ms": 2740.7757500000116,
+      "score": 0.26171875
+    },
+    {
+      "id": "cable/test/missing_wire/002.png",
+      "ms": 2740.3559170002154,
+      "score": 0.3154296875
+    },
+    {
+      "id": "cable/test/poke_insulation/009.png",
+      "ms": 2744.2851669998163,
+      "score": 0.475341796875
+    },
+    {
+      "id": "capsule/test/crack/000.png",
+      "ms": 2740.510458999779,
+      "score": 0.2366943359375
+    },
+    {
+      "id": "capsule/test/crack/014.png",
+      "ms": 2739.4069580000178,
+      "score": 0.3037109375
+    },
+    {
+      "id": "capsule/test/faulty_imprint/006.png",
+      "ms": 2737.592959000267,
+      "score": 0.267333984375
+    },
+    {
+      "id": "capsule/test/faulty_imprint/020.png",
+      "ms": 2737.3311659998762,
+      "score": 0.27197265625
+    },
+    {
+      "id": "capsule/test/good/013.png",
+      "ms": 2739.4795420000264,
+      "score": 0.28271484375
+    },
+    {
+      "id": "capsule/test/poke/004.png",
+      "ms": 2740.333582999938,
+      "score": 0.36181640625
+    },
+    {
+      "id": "capsule/test/poke/019.png",
+      "ms": 2741.844124999716,
+      "score": 0.30224609375
+    },
+    {
+      "id": "capsule/test/scratch/012.png",
+      "ms": 2741.7948749998686,
+      "score": 0.349609375
+    },
+    {
+      "id": "capsule/test/squeeze/004.png",
+      "ms": 2741.99974999965,
+      "score": 0.259033203125
+    },
+    {
+      "id": "capsule/test/squeeze/019.png",
+      "ms": 2742.0458330002475,
+      "score": 0.24951171875
+    },
+    {
+      "id": "carpet/test/color/000.png",
+      "ms": 2745.1261249998424,
+      "score": 0.5146484375
+    },
+    {
+      "id": "carpet/test/color/012.png",
+      "ms": 2745.195208000041,
+      "score": 0.45947265625
+    },
+    {
+      "id": "carpet/test/cut/006.png",
+      "ms": 2745.562915999926,
+      "score": 0.61962890625
+    },
+    {
+      "id": "carpet/test/good/002.png",
+      "ms": 2744.202082999891,
+      "score": 0.129638671875
+    },
+    {
+      "id": "carpet/test/good/015.png",
+      "ms": 2743.956999999682,
+      "score": 0.1131591796875
+    },
+    {
+      "id": "carpet/test/hole/000.png",
+      "ms": 2743.2454589998088,
+      "score": 0.416748046875
+    },
+    {
+      "id": "carpet/test/hole/013.png",
+      "ms": 2744.2374580000433,
+      "score": 0.48095703125
+    },
+    {
+      "id": "carpet/test/metal_contamination/009.png",
+      "ms": 2742.8439169998455,
+      "score": 0.6123046875
+    },
+    {
+      "id": "carpet/test/thread/005.png",
+      "ms": 2742.906791999758,
+      "score": 0.634765625
+    },
+    {
+      "id": "carpet/test/thread/018.png",
+      "ms": 2742.916707999939,
+      "score": 0.3427734375
+    },
+    {
+      "id": "grid/test/bent/000.png",
+      "ms": 2740.153042000202,
+      "score": 0.448974609375
+    },
+    {
+      "id": "grid/test/bent/008.png",
+      "ms": 2743.262415999652,
+      "score": 0.3759765625
+    },
+    {
+      "id": "grid/test/broken/005.png",
+      "ms": 2742.872707999595,
+      "score": 0.41552734375
+    },
+    {
+      "id": "grid/test/glue/001.png",
+      "ms": 2742.5608329999704,
+      "score": 0.37255859375
+    },
+    {
+      "id": "grid/test/glue/010.png",
+      "ms": 2744.032291000167,
+      "score": 0.4150390625
+    },
+    {
+      "id": "grid/test/good/007.png",
+      "ms": 2743.9079580003636,
+      "score": 0.2034912109375
+    },
+    {
+      "id": "grid/test/good/016.png",
+      "ms": 2743.265957999938,
+      "score": 0.21484375
+    },
+    {
+      "id": "grid/test/metal_contamination/003.png",
+      "ms": 2741.1285829998633,
+      "score": 0.498046875
+    },
+    {
+      "id": "grid/test/thread/001.png",
+      "ms": 2740.877249999812,
+      "score": 0.79443359375
+    },
+    {
+      "id": "grid/test/thread/010.png",
+      "ms": 2740.690832999917,
+      "score": 0.50146484375
+    },
+    {
+      "id": "hazelnut/test/crack/000.png",
+      "ms": 2742.231666999942,
+      "score": 0.485107421875
+    },
+    {
+      "id": "hazelnut/test/crack/012.png",
+      "ms": 2742.955666999933,
+      "score": 0.346435546875
+    },
+    {
+      "id": "hazelnut/test/cut/006.png",
+      "ms": 2740.8961249998356,
+      "score": 0.3349609375
+    },
+    {
+      "id": "hazelnut/test/good/001.png",
+      "ms": 2743.0488749996584,
+      "score": 0.306396484375
+    },
+    {
+      "id": "hazelnut/test/good/013.png",
+      "ms": 2741.273084000113,
+      "score": 0.2479248046875
+    },
+    {
+      "id": "hazelnut/test/good/025.png",
+      "ms": 2741.870333999941,
+      "score": 0.267578125
+    },
+    {
+      "id": "hazelnut/test/good/037.png",
+      "ms": 2740.1254999999765,
+      "score": 0.2279052734375
+    },
+    {
+      "id": "hazelnut/test/hole/009.png",
+      "ms": 2741.836458999842,
+      "score": 0.4453125
+    },
+    {
+      "id": "hazelnut/test/print/003.png",
+      "ms": 2740.0559999996403,
+      "score": 0.366455078125
+    },
+    {
+      "id": "hazelnut/test/print/016.png",
+      "ms": 2742.099249999683,
+      "score": 0.396728515625
+    },
+    {
+      "id": "leather/test/color/000.png",
+      "ms": 2739.5059579998815,
+      "score": 0.477783203125
+    },
+    {
+      "id": "leather/test/color/013.png",
+      "ms": 2742.6395420002336,
+      "score": 0.501953125
+    },
+    {
+      "id": "leather/test/cut/008.png",
+      "ms": 2742.0148329997573,
+      "score": 0.52978515625
+    },
+    {
+      "id": "leather/test/fold/003.png",
+      "ms": 2743.9157909998357,
+      "score": 0.405029296875
+    },
+    {
+      "id": "leather/test/fold/016.png",
+      "ms": 2743.2385419997445,
+      "score": 0.442626953125
+    },
+    {
+      "id": "leather/test/glue/013.png",
+      "ms": 2743.328915999882,
+      "score": 0.64794921875
+    },
+    {
+      "id": "leather/test/good/008.png",
+      "ms": 2743.5353750001923,
+      "score": 0.12164306640625
+    },
+    {
+      "id": "leather/test/good/021.png",
+      "ms": 2743.995249999898,
+      "score": 0.174072265625
+    },
+    {
+      "id": "leather/test/poke/003.png",
+      "ms": 2744.032709000294,
+      "score": 0.5810546875
+    },
+    {
+      "id": "leather/test/poke/017.png",
+      "ms": 2742.859791000228,
+      "score": 0.51318359375
+    },
+    {
+      "id": "metal_nut/test/bent/000.png",
+      "ms": 2745.3933339998002,
+      "score": 0.341552734375
+    },
+    {
+      "id": "metal_nut/test/bent/012.png",
+      "ms": 2746.9121670001186,
+      "score": 0.4072265625
+    },
+    {
+      "id": "metal_nut/test/color/000.png",
+      "ms": 2746.165624999776,
+      "score": 0.4345703125
+    },
+    {
+      "id": "metal_nut/test/color/013.png",
+      "ms": 2746.017875000234,
+      "score": 0.487548828125
+    },
+    {
+      "id": "metal_nut/test/flip/003.png",
+      "ms": 2745.3519999999116,
+      "score": 0.367919921875
+    },
+    {
+      "id": "metal_nut/test/flip/016.png",
+      "ms": 2744.866749999801,
+      "score": 0.35400390625
+    },
+    {
+      "id": "metal_nut/test/good/006.png",
+      "ms": 2744.564542000262,
+      "score": 0.181396484375
+    },
+    {
+      "id": "metal_nut/test/good/018.png",
+      "ms": 2744.8823750000884,
+      "score": 0.202880859375
+    },
+    {
+      "id": "metal_nut/test/scratch/009.png",
+      "ms": 2742.643499999758,
+      "score": 0.300048828125
+    },
+    {
+      "id": "metal_nut/test/scratch/022.png",
+      "ms": 2747.323417000189,
+      "score": 0.492919921875
+    },
+    {
+      "id": "pill/test/color/000.png",
+      "ms": 2741.697083999952,
+      "score": 0.205810546875
+    },
+    {
+      "id": "pill/test/color/018.png",
+      "ms": 2743.2757080000556,
+      "score": 0.241943359375
+    },
+    {
+      "id": "pill/test/combined/011.png",
+      "ms": 2743.6938749997353,
+      "score": 0.390869140625
+    },
+    {
+      "id": "pill/test/contamination/013.png",
+      "ms": 2743.5409160002564,
+      "score": 0.3017578125
+    },
+    {
+      "id": "pill/test/crack/010.png",
+      "ms": 2743.0524579999656,
+      "score": 0.318603515625
+    },
+    {
+      "id": "pill/test/faulty_imprint/003.png",
+      "ms": 2743.834375000006,
+      "score": 0.292236328125
+    },
+    {
+      "id": "pill/test/good/002.png",
+      "ms": 2741.332208000131,
+      "score": 0.2296142578125
+    },
+    {
+      "id": "pill/test/good/021.png",
+      "ms": 2741.661750000276,
+      "score": 0.2091064453125
+    },
+    {
+      "id": "pill/test/scratch/004.png",
+      "ms": 2743.0237920002583,
+      "score": 0.417236328125
+    },
+    {
+      "id": "pill/test/scratch/023.png",
+      "ms": 2743.185791000087,
+      "score": 0.4052734375
+    },
+    {
+      "id": "screw/test/good/000.png",
+      "ms": 2743.9670830003706,
+      "score": 0.12841796875
+    },
+    {
+      "id": "screw/test/good/017.png",
+      "ms": 2745.8697920001214,
+      "score": 0.1434326171875
+    },
+    {
+      "id": "screw/test/good/035.png",
+      "ms": 2746.8789579997974,
+      "score": 0.179931640625
+    },
+    {
+      "id": "screw/test/manipulated_front/012.png",
+      "ms": 2745.3534999999647,
+      "score": 0.202880859375
+    },
+    {
+      "id": "screw/test/scratch_head/005.png",
+      "ms": 2745.5283330000384,
+      "score": 0.3427734375
+    },
+    {
+      "id": "screw/test/scratch_head/023.png",
+      "ms": 2745.421458000237,
+      "score": 0.21484375
+    },
+    {
+      "id": "screw/test/scratch_neck/017.png",
+      "ms": 2745.6681250000656,
+      "score": 0.249755859375
+    },
+    {
+      "id": "screw/test/thread_side/009.png",
+      "ms": 2745.11770800018,
+      "score": 0.168701171875
+    },
+    {
+      "id": "screw/test/thread_top/004.png",
+      "ms": 2746.1218749999716,
+      "score": 0.31884765625
+    },
+    {
+      "id": "screw/test/thread_top/022.png",
+      "ms": 2745.57862499978,
+      "score": 0.1962890625
+    },
+    {
+      "id": "tile/test/crack/000.png",
+      "ms": 2743.649374999677,
+      "score": 0.67578125
+    },
+    {
+      "id": "tile/test/crack/012.png",
+      "ms": 2741.3583749998907,
+      "score": 0.65478515625
+    },
+    {
+      "id": "tile/test/glue_strip/008.png",
+      "ms": 2745.8061249999446,
+      "score": 0.5791015625
+    },
+    {
+      "id": "tile/test/good/003.png",
+      "ms": 2745.3008339998632,
+      "score": 0.15576171875
+    },
+    {
+      "id": "tile/test/good/016.png",
+      "ms": 2744.922792000125,
+      "score": 0.209716796875
+    },
+    {
+      "id": "tile/test/good/029.png",
+      "ms": 2745.244791999994,
+      "score": 0.1722412109375
+    },
+    {
+      "id": "tile/test/gray_stroke/009.png",
+      "ms": 2747.206292000101,
+      "score": 0.320556640625
+    },
+    {
+      "id": "tile/test/oil/006.png",
+      "ms": 2743.9237080002385,
+      "score": 0.5517578125
+    },
+    {
+      "id": "tile/test/rough/001.png",
+      "ms": 2741.1714170002597,
+      "score": 0.472412109375
+    },
+    {
+      "id": "tile/test/rough/014.png",
+      "ms": 2744.3508340002154,
+      "score": 0.423095703125
+    },
+    {
+      "id": "toothbrush/test/defective/000.png",
+      "ms": 2741.871292000269,
+      "score": 0.418212890625
+    },
+    {
+      "id": "toothbrush/test/defective/004.png",
+      "ms": 2742.177499999798,
+      "score": 0.460693359375
+    },
+    {
+      "id": "toothbrush/test/defective/009.png",
+      "ms": 2743.4784999995827,
+      "score": 0.434814453125
+    },
+    {
+      "id": "toothbrush/test/defective/013.png",
+      "ms": 2741.339458999846,
+      "score": 0.415283203125
+    },
+    {
+      "id": "toothbrush/test/defective/018.png",
+      "ms": 2742.4495000000206,
+      "score": 0.366455078125
+    },
+    {
+      "id": "toothbrush/test/defective/022.png",
+      "ms": 2744.6653749998404,
+      "score": 0.470458984375
+    },
+    {
+      "id": "toothbrush/test/defective/027.png",
+      "ms": 2743.392333000429,
+      "score": 0.393310546875
+    },
+    {
+      "id": "toothbrush/test/good/001.png",
+      "ms": 2743.9420830000927,
+      "score": 0.2198486328125
+    },
+    {
+      "id": "toothbrush/test/good/006.png",
+      "ms": 2744.2537920001087,
+      "score": 0.30029296875
+    },
+    {
+      "id": "toothbrush/test/good/011.png",
+      "ms": 2743.369792000067,
+      "score": 0.303466796875
+    },
+    {
+      "id": "transistor/test/bent_lead/000.png",
+      "ms": 2745.1509579996127,
+      "score": 0.2958984375
+    },
+    {
+      "id": "transistor/test/cut_lead/001.png",
+      "ms": 2743.930042000102,
+      "score": 0.298095703125
+    },
+    {
+      "id": "transistor/test/damaged_case/002.png",
+      "ms": 2741.216207999969,
+      "score": 0.317138671875
+    },
+    {
+      "id": "transistor/test/good/003.png",
+      "ms": 2744.7779169997375,
+      "score": 0.239501953125
+    },
+    {
+      "id": "transistor/test/good/014.png",
+      "ms": 2745.6212080001023,
+      "score": 0.302734375
+    },
+    {
+      "id": "transistor/test/good/025.png",
+      "ms": 2744.945542000096,
+      "score": 0.24853515625
+    },
+    {
+      "id": "transistor/test/good/036.png",
+      "ms": 2743.448041999727,
+      "score": 0.26953125
+    },
+    {
+      "id": "transistor/test/good/047.png",
+      "ms": 2746.6614580002897,
+      "score": 0.230224609375
+    },
+    {
+      "id": "transistor/test/good/058.png",
+      "ms": 2745.5353329996797,
+      "score": 0.276611328125
+    },
+    {
+      "id": "transistor/test/misplaced/009.png",
+      "ms": 2744.7185420001006,
+      "score": 0.358154296875
+    },
+    {
+      "id": "wood/test/color/000.png",
+      "ms": 2743.49516600023,
+      "score": 0.48486328125
+    },
+    {
+      "id": "wood/test/combined/000.png",
+      "ms": 2744.1552919999594,
+      "score": 0.5361328125
+    },
+    {
+      "id": "wood/test/combined/009.png",
+      "ms": 2743.0626669997764,
+      "score": 0.391845703125
+    },
+    {
+      "id": "wood/test/good/007.png",
+      "ms": 2742.7569579999727,
+      "score": 0.383544921875
+    },
+    {
+      "id": "wood/test/good/015.png",
+      "ms": 2741.1565829997926,
+      "score": 0.203125
+    },
+    {
+      "id": "wood/test/hole/005.png",
+      "ms": 2742.7284999998847,
+      "score": 0.4794921875
+    },
+    {
+      "id": "wood/test/liquid/004.png",
+      "ms": 2743.45804099994,
+      "score": 0.59619140625
+    },
+    {
+      "id": "wood/test/scratch/002.png",
+      "ms": 2743.699916999958,
+      "score": 0.48388671875
+    },
+    {
+      "id": "wood/test/scratch/011.png",
+      "ms": 2743.667500000356,
+      "score": 0.5283203125
+    },
+    {
+      "id": "wood/test/scratch/020.png",
+      "ms": 2743.2439160002104,
+      "score": 0.44921875
+    },
+    {
+      "id": "zipper/test/broken_teeth/000.png",
+      "ms": 2740.870124999674,
+      "score": 0.2099609375
+    },
+    {
+      "id": "zipper/test/broken_teeth/016.png",
+      "ms": 2743.1575420000627,
+      "score": 0.1898193359375
+    },
+    {
+      "id": "zipper/test/combined/014.png",
+      "ms": 2744.6557499997652,
+      "score": 0.444580078125
+    },
+    {
+      "id": "zipper/test/fabric_border/015.png",
+      "ms": 2744.8104170002807,
+      "score": 0.525390625
+    },
+    {
+      "id": "zipper/test/fabric_interior/014.png",
+      "ms": 2740.621542000099,
+      "score": 0.4912109375
+    },
+    {
+      "id": "zipper/test/good/015.png",
+      "ms": 2743.825958999878,
+      "score": 0.1636962890625
+    },
+    {
+      "id": "zipper/test/rough/000.png",
+      "ms": 2742.1980829999484,
+      "score": 0.332763671875
+    },
+    {
+      "id": "zipper/test/rough/016.png",
+      "ms": 2742.530957999861,
+      "score": 0.34228515625
+    },
+    {
+      "id": "zipper/test/split_teeth/016.png",
+      "ms": 2742.364582999926,
+      "score": 0.337646484375
+    },
+    {
+      "id": "zipper/test/squeezed_teeth/015.png",
+      "ms": 2744.4872910000413,
+      "score": 0.334228515625
+    }
+  ]
+}

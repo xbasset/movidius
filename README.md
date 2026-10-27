@@ -1,10 +1,19 @@
 # Movidius time machine
 
 **Third experiment:** complete DINOv2 Small + AnomalyDINO visual anomaly inference
-on Myriad 2. At **224 × 224**, the complete MVTec AD **bottle** test split, with
+on Myriad 2. The **448 × 448 extension covers all 15 MVTec AD categories**, all
+1,725 test images and three independent one-shot references, including query
+PCA masking on the stick. See [DINO448_REPORT.md](DINO448_REPORT.md) for the six
+paper metrics and stick / CPU / GPU latency, and
+[DINO448_PROTOCOL.md](DINO448_PROTOCOL.md) for reproduction commands.
+The stick reaches **96.54% image AUROC**, versus **96.52% on the Mac** and
+**96.5% in the paper**. Median single-reference inference is **2,743 ms** on
+the stick, **112 ms** on CPU and **33 ms** on Metal.
+
+The initial **224 × 224** pilot on the complete MVTec AD **bottle** test split, with
 three one-shot references, gives **99.15% mean image AUROC at 546 ms/image** on
 the stick, versus **99.23% at 36 ms on CPU and 15 ms on Metal**. This is one
-category, not the full fifteen-category benchmark. See
+category. See
 [DINO_REPORT.md](DINO_REPORT.md) for code, measurements and limitations.
 
 **Camera demo:** run `.venv/bin/python -m scripts.serve_dino`, then open

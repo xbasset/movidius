@@ -1,0 +1,479 @@
+{
+  "model": {
+    "repo": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "license": "Apache-2.0",
+    "sha256": {
+      "config.json": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "model.safetensors": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "README.md": "4c20dca454a8e5c670e8de5c7e6040f512aeca5438516f7623eedc4e3b00599c"
+    },
+    "meta_code_revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "anomalydino_code_revision": "b9d1c2648e3a5247437d4d953d907a8f3d994457"
+  },
+  "device": "myriad",
+  "resolution": [
+    448,
+    448
+  ],
+  "protocol": "one shot, agnostic: eight rotations, query PCA mask on five categories",
+  "pca": "64 normalized power iterations, FP16 on MYRIAD",
+  "distance": "1 minus cosine similarity",
+  "reference_banks_are_isolated": true,
+  "encoder_shared_across_three_reference_trials": true,
+  "timing_boundary": "prepared tensor to three score/maps; includes query mask and synchronization",
+  "complete": true,
+  "categories": [
+    {
+      "category": "bottle",
+      "cases": 83,
+      "masked": false,
+      "joint_three_head_median_ms": 3061.1725830240175,
+      "references": [
+        {
+          "id": "bottle/train/good/000.png",
+          "sha256": "8a25eb07475a5102f4823fefd82662dd65f8f2a0a333bf958124ceeee38f0e38"
+        },
+        {
+          "id": "bottle/train/good/001.png",
+          "sha256": "ba13b82fc8c732a02277816521fe93a0fee00c524f2742bbb3feed0a31cda8df"
+        },
+        {
+          "id": "bottle/train/good/002.png",
+          "sha256": "7de0414f1744aaf5cec488928ee3b761509e4bad4f607dc4f6d41ad7862dab69"
+        }
+      ],
+      "cache_sha256": "da0430b6610dcbec3083b209a9f78214200b48af5a2d5ef679361e8296508385",
+      "reference_self_scores": [
+        0.005321502685546875,
+        0.00522613525390625,
+        0.00522613525390625
+      ],
+      "maximum_score_difference_vs_cpu": 0.02232488989830017,
+      "mean_score_difference_vs_cpu": 0.006578568952629365,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "cable",
+      "cases": 150,
+      "masked": false,
+      "joint_three_head_median_ms": 3063.0616454873234,
+      "references": [
+        {
+          "id": "cable/train/good/000.png",
+          "sha256": "7457390d52de2e34f706abcbc1185da287a5dfd90573af23fef6816fa5d7a1aa"
+        },
+        {
+          "id": "cable/train/good/001.png",
+          "sha256": "9cb4ed588400ea96380e37b6b0d659fc68144cb8db832e8fa8869f2f4f989a1b"
+        },
+        {
+          "id": "cable/train/good/002.png",
+          "sha256": "1402284830cf1992d9be60b38c0dda29859670062ce1e1c91aa02dd1808d2d00"
+        }
+      ],
+      "cache_sha256": "6703546b5bfd320ece11ac0a84adb0367443ef49633e07447d35c36bc7af4a63",
+      "reference_self_scores": [
+        0.005077362060546875,
+        0.004833221435546875,
+        0.005126953125
+      ],
+      "maximum_score_difference_vs_cpu": 0.012938916683197021,
+      "mean_score_difference_vs_cpu": 0.00493186225493749,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "capsule",
+      "cases": 132,
+      "masked": true,
+      "joint_three_head_median_ms": 3064.173854480032,
+      "references": [
+        {
+          "id": "capsule/train/good/000.png",
+          "sha256": "96a77c1cca9d6efbd4fb487c9113fe775ac0559730131850c6c6523e944611d3"
+        },
+        {
+          "id": "capsule/train/good/001.png",
+          "sha256": "8574a157d5f4f0c56caad60d026dbc9d11803a430032d7dc42e4ed2201c2af6c"
+        },
+        {
+          "id": "capsule/train/good/002.png",
+          "sha256": "e8874cb38b54aa75a5cfaffa7c5ca58d3c7dc96879b2662d26318c1350ec8ae6"
+        }
+      ],
+      "cache_sha256": "6af285a1714298cde56f7b94ca2ae85d3292a526f5a8c1577c182f9768520842",
+      "reference_self_scores": [
+        0.00429534912109375,
+        0.00449371337890625,
+        0.00449371337890625
+      ],
+      "maximum_score_difference_vs_cpu": 0.018800735473632812,
+      "mean_score_difference_vs_cpu": 0.00684852661056952,
+      "mask_pixels_different_vs_cpu": 217,
+      "mask_pixels_compared": 135168
+    },
+    {
+      "category": "carpet",
+      "cases": 117,
+      "masked": false,
+      "joint_three_head_median_ms": 3063.8965000398457,
+      "references": [
+        {
+          "id": "carpet/train/good/000.png",
+          "sha256": "9fd2420a125701bb31dc8025cbf62cc7152dc04505fe5f151b782493e303f39e"
+        },
+        {
+          "id": "carpet/train/good/001.png",
+          "sha256": "beff2c083b8b9213ea6560296dc9295592e9e209f31316df06ea829f082ea51a"
+        },
+        {
+          "id": "carpet/train/good/002.png",
+          "sha256": "716386180b348b1f0397cbc18fd4435aa0a17287c0b22e6d1ea895e867829743"
+        }
+      ],
+      "cache_sha256": "244c49194e657f250d322f54f292c1616009383944cd3cdc824df1e8f853219f",
+      "reference_self_scores": [
+        0.00478363037109375,
+        0.00537109375,
+        0.0048828125
+      ],
+      "maximum_score_difference_vs_cpu": 0.026661217212677002,
+      "mean_score_difference_vs_cpu": 0.008146170876983903,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "grid",
+      "cases": 78,
+      "masked": false,
+      "joint_three_head_median_ms": 3059.621520456858,
+      "references": [
+        {
+          "id": "grid/train/good/000.png",
+          "sha256": "94e29cc6c4c46225590138559736c8649959c4fa8b25fb5569755e624af1b137"
+        },
+        {
+          "id": "grid/train/good/001.png",
+          "sha256": "578683b92f8c10abfdc9e70157f313b285f072f8205ebc07cdd5aca0c835e398"
+        },
+        {
+          "id": "grid/train/good/002.png",
+          "sha256": "0bbb01b644d7ca4ebeb74cc3d9aa8ba029ff435554c7ece08009bfebb17678f6"
+        }
+      ],
+      "cache_sha256": "2d2bc21fd796dbb0cd896a224c8302decb0c4b1a4b6bcef6959404559179127c",
+      "reference_self_scores": [
+        0.00473785400390625,
+        0.005126953125,
+        0.0048828125
+      ],
+      "maximum_score_difference_vs_cpu": 0.025234222412109375,
+      "mean_score_difference_vs_cpu": 0.009950749002970181,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "hazelnut",
+      "cases": 110,
+      "masked": true,
+      "joint_three_head_median_ms": 3059.086999972351,
+      "references": [
+        {
+          "id": "hazelnut/train/good/000.png",
+          "sha256": "5e28a714fa36ef5198c683058b607435b792974cdd23f3e0810b887dbdfe7112"
+        },
+        {
+          "id": "hazelnut/train/good/001.png",
+          "sha256": "612e2884069ce4ca26c96b9e885d54cee1cf3f16256c83a74b985966c4098c4f"
+        },
+        {
+          "id": "hazelnut/train/good/002.png",
+          "sha256": "96ec0d30fb80620a0c3dc09173a856cda9681a24c383866272a04f05e360c2d2"
+        }
+      ],
+      "cache_sha256": "45aac1c3f7a081b8b41b7f1f6bd89f91ab0f518e38a4443fe037a158db3f79da",
+      "reference_self_scores": [
+        0.00424957275390625,
+        0.004589080810546875,
+        0.00453948974609375
+      ],
+      "maximum_score_difference_vs_cpu": 0.01979750394821167,
+      "mean_score_difference_vs_cpu": 0.008092552558942274,
+      "mask_pixels_different_vs_cpu": 61,
+      "mask_pixels_compared": 112640
+    },
+    {
+      "category": "leather",
+      "cases": 124,
+      "masked": false,
+      "joint_three_head_median_ms": 3062.5791040365584,
+      "references": [
+        {
+          "id": "leather/train/good/000.png",
+          "sha256": "b9b62731f4a804dbf941ae1c1f99506c784f256f634f5b3f28ac429e246e0d6a"
+        },
+        {
+          "id": "leather/train/good/001.png",
+          "sha256": "110fc5bfbe7b7a76a0bd5040ea6a21d0c07ba00ae937bcd188a39a9a9d926e9f"
+        },
+        {
+          "id": "leather/train/good/002.png",
+          "sha256": "8fd24f0c8f232fbb8779bb4ba0980f5f6135167c20a8cc45e054cdaa35d15540"
+        }
+      ],
+      "cache_sha256": "bb7b10594d8f8f8f9e2a9577d5bae5de487c9882458c1aa63286893df2c335ca",
+      "reference_self_scores": [
+        0.005077362060546875,
+        0.00498199462890625,
+        0.004932403564453125
+      ],
+      "maximum_score_difference_vs_cpu": 0.021656125783920288,
+      "mean_score_difference_vs_cpu": 0.0074358365588611175,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "metal_nut",
+      "cases": 115,
+      "masked": false,
+      "joint_three_head_median_ms": 3061.8503749137744,
+      "references": [
+        {
+          "id": "metal_nut/train/good/000.png",
+          "sha256": "b0309325bc305ae8b19246884f20397b951285786aecca0ebf1d009e9799e350"
+        },
+        {
+          "id": "metal_nut/train/good/001.png",
+          "sha256": "6b7a678d0e13086f46a1c04c915b39b93f5551445613b24e1646d94cc84a8764"
+        },
+        {
+          "id": "metal_nut/train/good/002.png",
+          "sha256": "cdfeb493f7d1b6b3c78b7e2e72a2267056f3b549913d2154ea67a6e9d45bca31"
+        }
+      ],
+      "cache_sha256": "ed1967003b6526c7de1006b4a7837f9c54d37a09140a132933d41ffd65075120",
+      "reference_self_scores": [
+        0.00527191162109375,
+        0.004932403564453125,
+        0.004932403564453125
+      ],
+      "maximum_score_difference_vs_cpu": 0.023153990507125854,
+      "mean_score_difference_vs_cpu": 0.007973929073499596,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "pill",
+      "cases": 167,
+      "masked": true,
+      "joint_three_head_median_ms": 3063.5496249888092,
+      "references": [
+        {
+          "id": "pill/train/good/000.png",
+          "sha256": "5f01a9be11029dcdac12a84308f345babe6bca33ccee4c50fb54e656fb42611a"
+        },
+        {
+          "id": "pill/train/good/001.png",
+          "sha256": "8720754687b45728af0da6cc2a11a09818deccc7845ee4403bfcac331126fd54"
+        },
+        {
+          "id": "pill/train/good/002.png",
+          "sha256": "161a78530a11fa6b349676c8ef4050518e7e13368043fe6444fbd26e5793e077"
+        }
+      ],
+      "cache_sha256": "26ea968578dd3529ff8bbb34b15044c8b7fa375707ba69fe07db06c8ac41694e",
+      "reference_self_scores": [
+        0.004589080810546875,
+        0.0048828125,
+        0.00453948974609375
+      ],
+      "maximum_score_difference_vs_cpu": 0.022698193788528442,
+      "mean_score_difference_vs_cpu": 0.007733270347475292,
+      "mask_pixels_different_vs_cpu": 54,
+      "mask_pixels_compared": 171008
+    },
+    {
+      "category": "screw",
+      "cases": 160,
+      "masked": true,
+      "joint_three_head_median_ms": 3060.4273334611207,
+      "references": [
+        {
+          "id": "screw/train/good/000.png",
+          "sha256": "44b81b1b5779d5bc1695e8fdb1ca361eeda32b771ce91b0cc5468cc1f8aa735b"
+        },
+        {
+          "id": "screw/train/good/001.png",
+          "sha256": "ce993d2c0b761f710ef845a92fcbfb49adb7af9570964cef6b7247b48a72a5ef"
+        },
+        {
+          "id": "screw/train/good/002.png",
+          "sha256": "b51b65c5aa7ff9b21ef8ee7104dc19289525cf9e0b62fec2e591cee1d04619bc"
+        }
+      ],
+      "cache_sha256": "4744ea2f5603f1770e6f42d561a7cb0717ce30348722d48fbe0d8165c48b5673",
+      "reference_self_scores": [
+        0.00502777099609375,
+        0.00424957275390625,
+        0.004444122314453125
+      ],
+      "maximum_score_difference_vs_cpu": 0.029911339282989502,
+      "mean_score_difference_vs_cpu": 0.004311154130846262,
+      "mask_pixels_different_vs_cpu": 704,
+      "mask_pixels_compared": 163840
+    },
+    {
+      "category": "tile",
+      "cases": 117,
+      "masked": false,
+      "joint_three_head_median_ms": 3059.573874925263,
+      "references": [
+        {
+          "id": "tile/train/good/000.png",
+          "sha256": "522535bee0cc7e38a853dbdab79302f99f2f0f7fe66533e386f1b0c558ce5d0b"
+        },
+        {
+          "id": "tile/train/good/001.png",
+          "sha256": "52199e4b50f6f4810ec40ade431de5942e5359de9e8eca70e4d817b14786fc0e"
+        },
+        {
+          "id": "tile/train/good/002.png",
+          "sha256": "2500b57fe2e0a7988629a6ee3639a028687af02962cebac5f9e65103243c1b6f"
+        }
+      ],
+      "cache_sha256": "c3e164d77c2bdc22650a1d470b2d92879a54d7fefb488bfa7523e9a1f81940c0",
+      "reference_self_scores": [
+        0.00498199462890625,
+        0.005615234375,
+        0.005615234375
+      ],
+      "maximum_score_difference_vs_cpu": 0.021048367023468018,
+      "mean_score_difference_vs_cpu": 0.007500835972973424,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "toothbrush",
+      "cases": 42,
+      "masked": true,
+      "joint_three_head_median_ms": 3063.14670847496,
+      "references": [
+        {
+          "id": "toothbrush/train/good/000.png",
+          "sha256": "91c3ac02df7e987a1571aa5a2eb5b7e1f6b291cf61450aa949267465b6a9473e"
+        },
+        {
+          "id": "toothbrush/train/good/001.png",
+          "sha256": "344a89e778e52e0834f5fe9a4ec83021d735bd58f7a23d15be7d4f1f2697d611"
+        },
+        {
+          "id": "toothbrush/train/good/002.png",
+          "sha256": "8fa5dd89a75aabf58e9771f3cd2785628c5b0472cd23c75cab8f94f3214d2907"
+        }
+      ],
+      "cache_sha256": "7d3e73e59aacb4e77e83eb7fc0ef515d3f0727b432b9c1dc6cd59418963fb291",
+      "reference_self_scores": [
+        0.004638671875,
+        0.0048828125,
+        0.00449371337890625
+      ],
+      "maximum_score_difference_vs_cpu": 0.018587052822113037,
+      "mean_score_difference_vs_cpu": 0.006786932902676719,
+      "mask_pixels_different_vs_cpu": 52,
+      "mask_pixels_compared": 43008
+    },
+    {
+      "category": "transistor",
+      "cases": 100,
+      "masked": false,
+      "joint_three_head_median_ms": 3059.9730209214613,
+      "references": [
+        {
+          "id": "transistor/train/good/000.png",
+          "sha256": "d755cd3f9334acc338db228fbccfe531397add1794181c09dafafa35c9014741"
+        },
+        {
+          "id": "transistor/train/good/001.png",
+          "sha256": "479e538decadde0c2d687834e117a6e1a3002ece07d6b02ed145b1f116497e75"
+        },
+        {
+          "id": "transistor/train/good/002.png",
+          "sha256": "7e29cfe96f5183455a3f0298f4b29fd1879908887224cb79a2aab7bb102db828"
+        }
+      ],
+      "cache_sha256": "06a09805ffaf7e0ff3f47acefa61a450caab50294571449d8c212559c58d5000",
+      "reference_self_scores": [
+        0.0048828125,
+        0.00522613525390625,
+        0.004688262939453125
+      ],
+      "maximum_score_difference_vs_cpu": 0.017192214727401733,
+      "mean_score_difference_vs_cpu": 0.00490323469042778,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "wood",
+      "cases": 79,
+      "masked": false,
+      "joint_three_head_median_ms": 3063.93945800005,
+      "references": [
+        {
+          "id": "wood/train/good/000.png",
+          "sha256": "d6d87826ab78b00bca17872acf7d06fc9d21b0e81567bed2ccebb7ba57b85e76"
+        },
+        {
+          "id": "wood/train/good/001.png",
+          "sha256": "a7ad5db5ec0ba0aaf15a32b7d685e4e5e1f9d472c86844b6617ad3f09e0bd9f8"
+        },
+        {
+          "id": "wood/train/good/002.png",
+          "sha256": "8b05ad057d645960666b5d6b0cdd08b2fc4f343f0b9f06589fb3e54fad45c0ff"
+        }
+      ],
+      "cache_sha256": "cb869d023eea6765b5acbd7f516017bdaf817d5aba2e085e0a79c84a5c9647cf",
+      "reference_self_scores": [
+        0.005077362060546875,
+        0.005126953125,
+        0.004932403564453125
+      ],
+      "maximum_score_difference_vs_cpu": 0.028625190258026123,
+      "mean_score_difference_vs_cpu": 0.008532641809197921,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    },
+    {
+      "category": "zipper",
+      "cases": 151,
+      "masked": false,
+      "joint_three_head_median_ms": 3064.7369170001184,
+      "references": [
+        {
+          "id": "zipper/train/good/000.png",
+          "sha256": "42e15bf4d9672ad7b0fa08e99110aa9b9715b9c1889a820220db101cf76fec29"
+        },
+        {
+          "id": "zipper/train/good/001.png",
+          "sha256": "0a21f15092b012e0c15fe403a32019664a825e6e45577bf4dd20bb5e0d29c814"
+        },
+        {
+          "id": "zipper/train/good/002.png",
+          "sha256": "6bd470984283b152ad0e4bd36c1dfdc386f7cd2e5bbc29b02bfe4c1f197b83fd"
+        }
+      ],
+      "cache_sha256": "51f2c9994b18205e26858256bd097b98ea19ac09c165c79b3005f145b4122886",
+      "reference_self_scores": [
+        0.00498199462890625,
+        0.005077362060546875,
+        0.005176544189453125
+      ],
+      "maximum_score_difference_vs_cpu": 0.018673598766326904,
+      "mean_score_difference_vs_cpu": 0.006137975300384673,
+      "mask_pixels_different_vs_cpu": 0,
+      "mask_pixels_compared": 0
+    }
+  ]
+}

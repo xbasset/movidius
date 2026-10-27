@@ -16,34 +16,36 @@ GRAPH_DIR = ROOT / "assets/dino-ir"
 SIZE, PATCHES, WIDTH = 224, 256, 384
 
 
-def prepare_image(image):
+def prepare_image(image, size=224):
     if isinstance(image, (str, Path)):
         image = Image.open(image)
     image = image.convert("RGB")
     # Bottle is square; camera inputs use a documented center-square crop.
     side = min(image.size)
     left, top = (image.width - side) // 2, (image.height - side) // 2
-    image = image.crop((left, top, left + side, top + side)).resize((SIZE, SIZE), Image.Resampling.BICUBIC)
+    image = image.crop((left, top, left + side, top + side)).resize((size, size), Image.Resampling.BICUBIC)
     array = np.asarray(image, dtype=np.float32).transpose(2, 0, 1) / 255
     array = (array - np.array([.485, .456, .406], dtype=np.float32)[:, None, None]) / np.array(
         [.229, .224, .225], dtype=np.float32)[:, None, None]
     return np.ascontiguousarray(array[None]), image
 
 
-def position_embeddings(weights):
+def position_embeddings(weights, size=224):
+    grid = size // 14
     table = weights["embeddings.position_embeddings"]
     patches = table[:, 1:].reshape(1, 37, 37, WIDTH).permute(0, 3, 1, 2)
     # Match the original Meta / AnomalyDINO non-register backbone's offset.
-    patches = F.interpolate(patches, scale_factor=(16.1 / 37, 16.1 / 37),
+    patches = F.interpolate(patches, scale_factor=((grid + .1) / 37, (grid + .1) / 37),
                             mode="bicubic", align_corners=False, antialias=False)
-    return torch.cat([table[:, :1], patches.permute(0, 2, 3, 1).reshape(1, PATCHES, WIDTH)], dim=1)
+    return torch.cat([table[:, :1], patches.permute(0, 2, 3, 1).reshape(1, grid * grid, WIDTH)], dim=1)
 
 
 class DinoReference:
-    def __init__(self, device="cpu"):
+    def __init__(self, device="cpu", size=224):
         self.device = torch.device(device)
+        self.size, self.patches = size, (size // 14) ** 2
         weights = load_file(MODEL_DIR / "model.safetensors")
-        self.position = position_embeddings(weights).to(self.device)
+        self.position = position_embeddings(weights, size).to(self.device)
         self.weights = {k: v.to(self.device) for k, v in weights.items()}
         self.bank = None
 
@@ -64,9 +66,9 @@ class DinoReference:
         for i in range(layers):
             p = f"encoder.layer.{i}"
             z = self.norm(x, p + ".norm1")
-            q, k, v = [self.linear(z, p + ".attention.attention." + key).reshape(1, 257, 6, 64).transpose(1, 2)
+            q, k, v = [self.linear(z, p + ".attention.attention." + key).reshape(1, self.patches + 1, 6, 64).transpose(1, 2)
                        for key in ["query", "key", "value"]]
-            z = F.scaled_dot_product_attention(q, k, v).transpose(1, 2).reshape(1, 257, WIDTH)
+            z = F.scaled_dot_product_attention(q, k, v).transpose(1, 2).reshape(1, self.patches + 1, WIDTH)
             x = x + self.linear(z, p + ".attention.output.dense") * self.weights[p + ".layer_scale1.lambda1"]
             z = self.linear(F.gelu(self.linear(self.norm(x, p + ".norm2"), p + ".mlp.fc1")), p + ".mlp.fc2")
             x = x + z * self.weights[p + ".layer_scale2.lambda1"]

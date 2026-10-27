@@ -22,6 +22,7 @@ class IR:
         self.edges = ET.SubElement(self.root, "edges")
         self.weights = bytearray()
         self.constants = {}
+        self.constant_values = {}
 
     @staticmethod
     def port(parent, number, shape, precision):
@@ -64,6 +65,7 @@ class IR:
         tensor = self.node(name, "Const", [], a.shape, precision=precision,
                            blobs={"custom": (offset, a.nbytes)})
         self.constants[key] = tensor
+        self.constant_values[tensor.layer] = a
         return tensor
 
     def reshape(self, name, x, shape):
@@ -83,6 +85,12 @@ class IR:
 
     def eltwise(self, name, a, b, operation):
         shape = np.broadcast_shapes(a.shape, b.shape)
+        # Work around tail corruption in the legacy MA2450 broadcast path.
+        if getattr(self, "expand_vector_constants", False) and len(shape) == 3 and shape[1] > 512:
+            if b.layer in self.constant_values and b.shape == (1, 1, shape[2]):
+                b = self.const(name + "/expanded", np.broadcast_to(self.constant_values[b.layer], shape))
+            if a.layer in self.constant_values and a.shape == (1, 1, shape[2]):
+                a = self.const(name + "/expanded_left", np.broadcast_to(self.constant_values[a.layer], shape))
         return self.node(name, "Eltwise", [a, b], shape, {"operation": operation})
 
     def gemm(self, name, a, b, transpose_b=False, alpha=1):
@@ -112,6 +120,15 @@ class IR:
                          {"kernel": f"{kh},{kw}", "strides": f"{stride},{stride}",
                           "pads_begin": "0,0", "pads_end": "0,0", "dilations": "1,1",
                           "output": channels, "group": 1}, blobs=blobs)
+
+    def topk(self, name, x, k, axis):
+        shape = list(x.shape)
+        shape[axis] = k
+        count = self.const(name + "/k", [k], "I32")
+        value = self.node(name, "TopK", [x, count], shape,
+                          {"axis": axis, "mode": "max", "sort": "value"})
+        self.port(self.layers[-1].find("output"), value.port + 1, shape, "I32")
+        return value
 
     def norm(self, name, x, weight, bias=None, eps=1e-5):
         axis = self.const(name + "/axes", [len(x.shape) - 1], "I32")

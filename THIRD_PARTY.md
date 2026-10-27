@@ -86,7 +86,7 @@ component build date; this is not proof of the complete image's release date.
 | [DINOv2 Small](https://huggingface.co/facebook/dinov2-small) | `ed25f3a31f01632728cabb09d1542f84ab7b0056`; weights SHA256 `ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1` | Apache 2.0 checkpoint, converted to FP16; all 12 student layers |
 | [Meta DINOv2 code](https://github.com/facebookresearch/dinov2) | `7764ea0f912e53c92e82eb78a2a1631e92725fc8` | Apache 2.0; independent original-model verification and position interpolation behavior |
 | [AnomalyDINO](https://github.com/dammsi/AnomalyDINO) | `b9d1c2648e3a5247437d4d953d907a8f3d994457` | Apache 2.0; method, reference selection, aggregation and evaluation conventions |
-| [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) | Original-format bottle PNGs from [foersben/mvtec-ad](https://huggingface.co/datasets/foersben/mvtec-ad), `c75b39616f84db43677bcc8228caaafaf5096d7f` | CC BY-NC-SA 4.0; normal train references, all 83 bottle test images and masks |
+| [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) | Original-format PNGs from [foersben/mvtec-ad](https://huggingface.co/datasets/foersben/mvtec-ad), `c75b39616f84db43677bcc8228caaafaf5096d7f` | CC BY-NC-SA 4.0; 224 bottle pilot and 448 all-15-category experiment, all 1,725 test images/masks and first three normal references per category |
 
 The model and sources remain in ignored `assets/` and `third_party/`; dataset
 images, camera captures, generated IRs and firmware are not redistributed in
@@ -95,6 +95,11 @@ Used dataset image hashes and weight hashes are recorded in the public
 assessment. Source/model license terms do not replace the dataset's separate
 non-commercial terms. See [DINO_REPORT.md](DINO_REPORT.md) for the tested subset,
 reference verification, pixel postprocessing and exact runtime boundaries.
+The [448 protocol](DINO448_PROTOCOL.md) follows the same pinned AnomalyDINO
+source for rotations, query masks and all six evaluation metrics. Its device
+PCA uses a documented power-iteration approximation. OpenCV is pinned in the
+Python dependency files. The full selected-file hashes are published in
+`results/dino448_dataset.json`; generated maps and reference banks remain local.
 
 Scientific references: Oquab et al., *DINOv2: Learning Robust Visual Features
 without Supervision* (2023); Damm et al., *AnomalyDINO: Boosting Patch-Based

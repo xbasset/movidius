@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "input": "seed-0 standard normal, rounded FP16",
+  "operation": "DINOv2 first LayerNorm, trained gamma and bias",
+  "cases": [
+    {
+      "tokens": 257,
+      "expanded_constants": false,
+      "mae": 0.0004492148000281304,
+      "max_error": 0.016263961791992188,
+      "rows_with_error_above_0_1": 0
+    },
+    {
+      "tokens": 257,
+      "expanded_constants": true,
+      "mae": 0.0004492148000281304,
+      "max_error": 0.016263961791992188,
+      "rows_with_error_above_0_1": 0
+    },
+    {
+      "tokens": 1025,
+      "expanded_constants": false,
+      "mae": 0.023035578429698944,
+      "max_error": 6.9560041427612305,
+      "rows_with_error_above_0_1": 53
+    },
+    {
+      "tokens": 1025,
+      "expanded_constants": true,
+      "mae": 0.0004401869373396039,
+      "max_error": 0.016263961791992188,
+      "rows_with_error_above_0_1": 0
+    }
+  ],
+  "topk_values_output_with_unused_integer_indices": "passed"
+}

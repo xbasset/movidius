@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "resolution": [
+    448,
+    448
+  ],
+  "cases": [
+    {
+      "id": "bottle/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "device_feature_mae": 0.0018636524910107255,
+      "device_feature_max_error": 0.03941984474658966,
+      "mean_feature_cosine": 0.9988028407096863
+    },
+    {
+      "id": "capsule/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "device_feature_mae": 0.00199441728182137,
+      "device_feature_max_error": 0.038962237536907196,
+      "mean_feature_cosine": 0.9985781908035278,
+      "pca_mask_pixels_different": 0
+    },
+    {
+      "id": "hazelnut/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "device_feature_mae": 0.0018357097869738936,
+      "device_feature_max_error": 0.03854188323020935,
+      "mean_feature_cosine": 0.9988223910331726,
+      "pca_mask_pixels_different": 0
+    },
+    {
+      "id": "pill/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "device_feature_mae": 0.0023434986360371113,
+      "device_feature_max_error": 0.08530309796333313,
+      "mean_feature_cosine": 0.9979478716850281,
+      "pca_mask_pixels_different": 0
+    },
+    {
+      "id": "screw/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "device_feature_mae": 0.001749240793287754,
+      "device_feature_max_error": 0.035008229315280914,
+      "mean_feature_cosine": 0.9989194869995117,
+      "pca_mask_pixels_different": 0
+    },
+    {
+      "id": "toothbrush/test/good/000.png",
+      "meta_feature_max_error": 0.0,
+      "device_feature_mae": 0.003056521760299802,
+      "device_feature_max_error": 0.11205235123634338,
+      "mean_feature_cosine": 0.9963991045951843,
+      "pca_mask_pixels_different": 0
+    }
+  ],
+  "unchanged_224_graph_sha256": {
+    ".xml": "f27f25483282ba578ec29f06ae8de1370419c2814eddf1cd1ddd685b04b2c501",
+    ".bin": "9e36980cdc40266baaf389cf81eb76a309bc2d4b0b645357a9350c2fbff25828"
+  },
+  "pca": "same raw FP32 features as input; FP16 device power iteration vs original randomized PCA",
+  "metric_validation": "scripts.check_anomaly_metrics: sklearn and independent threshold PRO, ties and chunk boundaries",
+  "reference_only": false
+}

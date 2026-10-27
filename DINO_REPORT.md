@@ -1,5 +1,8 @@
 # DINOv2 Small + AnomalyDINO on Myriad 2
 
+The full **448 × 448, 15-category** extension is documented in
+[DINO448_REPORT.md](DINO448_REPORT.md). This page preserves the original pilot.
+
 **A complete visual anomaly detector runs on the original 2017 Movidius stick.**
 At 224 × 224, all twelve DINOv2-S/14 layers, feature normalization, nearest-neighbor
 distances and image-score aggregation execute in a MYRIAD-only graph. On the
@@ -237,6 +240,7 @@ reference. It does not show that the weights, training data or training recipe
 were available in 2017, or that the pipeline outperforms current Mac hardware.
 The actual host runtime is from 2020. We make no energy-efficiency claim.
 
-Next useful steps are more MVTec categories, more reference choices, comparison
-with the author's 448-resolution setting, and reducing device/runtime overhead.
-They are separate experiments, not implied by this pilot result.
+The separate [448-resolution experiment](DINO448_REPORT.md) now evaluates all
+15 MVTec categories with the author's rotations and query masking, and compares
+all six paper metrics. Its results and single-head timings are reported
+separately from this pilot.

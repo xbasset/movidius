@@ -1,0 +1,344 @@
+{
+  "model": {
+    "repo": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "license": "Apache-2.0",
+    "sha256": {
+      "config.json": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "model.safetensors": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "README.md": "4c20dca454a8e5c670e8de5c7e6040f512aeca5438516f7623eedc4e3b00599c"
+    },
+    "meta_code_revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "anomalydino_code_revision": "b9d1c2648e3a5247437d4d953d907a8f3d994457"
+  },
+  "device": "mps",
+  "resolution": [
+    448,
+    448
+  ],
+  "protocol": "one shot, agnostic: eight rotations, query PCA mask on five categories",
+  "pca": "original sklearn randomized PCA, fixed random_state=0; CPU preprocessing as in author code",
+  "distance": "1 minus cosine similarity",
+  "reference_banks_are_isolated": true,
+  "encoder_shared_across_three_reference_trials": true,
+  "timing_boundary": "prepared tensor to three score/maps; includes query mask and synchronization",
+  "complete": true,
+  "categories": [
+    {
+      "category": "bottle",
+      "cases": 83,
+      "masked": false,
+      "joint_three_head_median_ms": 40.54470802657306,
+      "references": [
+        {
+          "id": "bottle/train/good/000.png",
+          "sha256": "8a25eb07475a5102f4823fefd82662dd65f8f2a0a333bf958124ceeee38f0e38"
+        },
+        {
+          "id": "bottle/train/good/001.png",
+          "sha256": "ba13b82fc8c732a02277816521fe93a0fee00c524f2742bbb3feed0a31cda8df"
+        },
+        {
+          "id": "bottle/train/good/002.png",
+          "sha256": "7de0414f1744aaf5cec488928ee3b761509e4bad4f607dc4f6d41ad7862dab69"
+        }
+      ],
+      "cache_sha256": "8f9e3ccdf229c3adeb9c3176dfe3d29669d617a023bcc8259964e70a3ba7aeea"
+    },
+    {
+      "category": "cable",
+      "cases": 150,
+      "masked": false,
+      "joint_three_head_median_ms": 40.714854025281966,
+      "references": [
+        {
+          "id": "cable/train/good/000.png",
+          "sha256": "7457390d52de2e34f706abcbc1185da287a5dfd90573af23fef6816fa5d7a1aa"
+        },
+        {
+          "id": "cable/train/good/001.png",
+          "sha256": "9cb4ed588400ea96380e37b6b0d659fc68144cb8db832e8fa8869f2f4f989a1b"
+        },
+        {
+          "id": "cable/train/good/002.png",
+          "sha256": "1402284830cf1992d9be60b38c0dda29859670062ce1e1c91aa02dd1808d2d00"
+        }
+      ],
+      "cache_sha256": "368f6abab3475bbe3f0846ab6967cbdbeba6d6e5f09f2dc1637a6fb963e1bfff"
+    },
+    {
+      "category": "capsule",
+      "cases": 132,
+      "masked": true,
+      "joint_three_head_median_ms": 44.42437493707985,
+      "references": [
+        {
+          "id": "capsule/train/good/000.png",
+          "sha256": "96a77c1cca9d6efbd4fb487c9113fe775ac0559730131850c6c6523e944611d3"
+        },
+        {
+          "id": "capsule/train/good/001.png",
+          "sha256": "8574a157d5f4f0c56caad60d026dbc9d11803a430032d7dc42e4ed2201c2af6c"
+        },
+        {
+          "id": "capsule/train/good/002.png",
+          "sha256": "e8874cb38b54aa75a5cfaffa7c5ca58d3c7dc96879b2662d26318c1350ec8ae6"
+        }
+      ],
+      "cache_sha256": "0bc248060885cf0ebf70474bfac73f3db5b83ebfe48ad6500ad25fc529970c40"
+    },
+    {
+      "category": "carpet",
+      "cases": 117,
+      "masked": false,
+      "joint_three_head_median_ms": 40.33554089255631,
+      "references": [
+        {
+          "id": "carpet/train/good/000.png",
+          "sha256": "9fd2420a125701bb31dc8025cbf62cc7152dc04505fe5f151b782493e303f39e"
+        },
+        {
+          "id": "carpet/train/good/001.png",
+          "sha256": "beff2c083b8b9213ea6560296dc9295592e9e209f31316df06ea829f082ea51a"
+        },
+        {
+          "id": "carpet/train/good/002.png",
+          "sha256": "716386180b348b1f0397cbc18fd4435aa0a17287c0b22e6d1ea895e867829743"
+        }
+      ],
+      "cache_sha256": "c04b4c6e8c55dd834b5ec7b3ce10a4816d321b23efe8388c2bbeb0f7bbf2a53c"
+    },
+    {
+      "category": "grid",
+      "cases": 78,
+      "masked": false,
+      "joint_three_head_median_ms": 40.32049997476861,
+      "references": [
+        {
+          "id": "grid/train/good/000.png",
+          "sha256": "94e29cc6c4c46225590138559736c8649959c4fa8b25fb5569755e624af1b137"
+        },
+        {
+          "id": "grid/train/good/001.png",
+          "sha256": "578683b92f8c10abfdc9e70157f313b285f072f8205ebc07cdd5aca0c835e398"
+        },
+        {
+          "id": "grid/train/good/002.png",
+          "sha256": "0bbb01b644d7ca4ebeb74cc3d9aa8ba029ff435554c7ece08009bfebb17678f6"
+        }
+      ],
+      "cache_sha256": "4f53740fc53dff6696c0740b0e9524b346c71d7132803b1e919bf5e1c7feff4a"
+    },
+    {
+      "category": "hazelnut",
+      "cases": 110,
+      "masked": true,
+      "joint_three_head_median_ms": 43.8636455219239,
+      "references": [
+        {
+          "id": "hazelnut/train/good/000.png",
+          "sha256": "5e28a714fa36ef5198c683058b607435b792974cdd23f3e0810b887dbdfe7112"
+        },
+        {
+          "id": "hazelnut/train/good/001.png",
+          "sha256": "612e2884069ce4ca26c96b9e885d54cee1cf3f16256c83a74b985966c4098c4f"
+        },
+        {
+          "id": "hazelnut/train/good/002.png",
+          "sha256": "96ec0d30fb80620a0c3dc09173a856cda9681a24c383866272a04f05e360c2d2"
+        }
+      ],
+      "cache_sha256": "660082db9ac7781bc6a2bb44734233d4b03b5d9b48d4ab357080b4d41dc38a6a"
+    },
+    {
+      "category": "leather",
+      "cases": 124,
+      "masked": false,
+      "joint_three_head_median_ms": 40.858395979739726,
+      "references": [
+        {
+          "id": "leather/train/good/000.png",
+          "sha256": "b9b62731f4a804dbf941ae1c1f99506c784f256f634f5b3f28ac429e246e0d6a"
+        },
+        {
+          "id": "leather/train/good/001.png",
+          "sha256": "110fc5bfbe7b7a76a0bd5040ea6a21d0c07ba00ae937bcd188a39a9a9d926e9f"
+        },
+        {
+          "id": "leather/train/good/002.png",
+          "sha256": "8fd24f0c8f232fbb8779bb4ba0980f5f6135167c20a8cc45e054cdaa35d15540"
+        }
+      ],
+      "cache_sha256": "f69c58b3e244b4de362457595b0af80c58e98b54ca3ceb1ad2032f4305415c14"
+    },
+    {
+      "category": "metal_nut",
+      "cases": 115,
+      "masked": false,
+      "joint_three_head_median_ms": 40.56708398275077,
+      "references": [
+        {
+          "id": "metal_nut/train/good/000.png",
+          "sha256": "b0309325bc305ae8b19246884f20397b951285786aecca0ebf1d009e9799e350"
+        },
+        {
+          "id": "metal_nut/train/good/001.png",
+          "sha256": "6b7a678d0e13086f46a1c04c915b39b93f5551445613b24e1646d94cc84a8764"
+        },
+        {
+          "id": "metal_nut/train/good/002.png",
+          "sha256": "cdfeb493f7d1b6b3c78b7e2e72a2267056f3b549913d2154ea67a6e9d45bca31"
+        }
+      ],
+      "cache_sha256": "80aa2b257c25edf1663437c41cc87ef77d7665e0abb43f5398d2bb78ec33ffd3"
+    },
+    {
+      "category": "pill",
+      "cases": 167,
+      "masked": true,
+      "joint_three_head_median_ms": 44.375833007507026,
+      "references": [
+        {
+          "id": "pill/train/good/000.png",
+          "sha256": "5f01a9be11029dcdac12a84308f345babe6bca33ccee4c50fb54e656fb42611a"
+        },
+        {
+          "id": "pill/train/good/001.png",
+          "sha256": "8720754687b45728af0da6cc2a11a09818deccc7845ee4403bfcac331126fd54"
+        },
+        {
+          "id": "pill/train/good/002.png",
+          "sha256": "161a78530a11fa6b349676c8ef4050518e7e13368043fe6444fbd26e5793e077"
+        }
+      ],
+      "cache_sha256": "9a4c87a5ea4649d3cee1a9daf99c094a05c063966fc8e41501bda959e290632b"
+    },
+    {
+      "category": "screw",
+      "cases": 160,
+      "masked": true,
+      "joint_three_head_median_ms": 43.8382500433363,
+      "references": [
+        {
+          "id": "screw/train/good/000.png",
+          "sha256": "44b81b1b5779d5bc1695e8fdb1ca361eeda32b771ce91b0cc5468cc1f8aa735b"
+        },
+        {
+          "id": "screw/train/good/001.png",
+          "sha256": "ce993d2c0b761f710ef845a92fcbfb49adb7af9570964cef6b7247b48a72a5ef"
+        },
+        {
+          "id": "screw/train/good/002.png",
+          "sha256": "b51b65c5aa7ff9b21ef8ee7104dc19289525cf9e0b62fec2e591cee1d04619bc"
+        }
+      ],
+      "cache_sha256": "d3f6a9b61c68d895df3dc5fdc3568a74ca4a2db5bee76151ee431bf57990fc8b"
+    },
+    {
+      "category": "tile",
+      "cases": 117,
+      "masked": false,
+      "joint_three_head_median_ms": 40.68729106802493,
+      "references": [
+        {
+          "id": "tile/train/good/000.png",
+          "sha256": "522535bee0cc7e38a853dbdab79302f99f2f0f7fe66533e386f1b0c558ce5d0b"
+        },
+        {
+          "id": "tile/train/good/001.png",
+          "sha256": "52199e4b50f6f4810ec40ade431de5942e5359de9e8eca70e4d817b14786fc0e"
+        },
+        {
+          "id": "tile/train/good/002.png",
+          "sha256": "2500b57fe2e0a7988629a6ee3639a028687af02962cebac5f9e65103243c1b6f"
+        }
+      ],
+      "cache_sha256": "37462049fa52d4948e33c9cc3b8a860ca582e1a61de344186adf8763b4cfbac2"
+    },
+    {
+      "category": "toothbrush",
+      "cases": 42,
+      "masked": true,
+      "joint_three_head_median_ms": 44.392021489329636,
+      "references": [
+        {
+          "id": "toothbrush/train/good/000.png",
+          "sha256": "91c3ac02df7e987a1571aa5a2eb5b7e1f6b291cf61450aa949267465b6a9473e"
+        },
+        {
+          "id": "toothbrush/train/good/001.png",
+          "sha256": "344a89e778e52e0834f5fe9a4ec83021d735bd58f7a23d15be7d4f1f2697d611"
+        },
+        {
+          "id": "toothbrush/train/good/002.png",
+          "sha256": "8fa5dd89a75aabf58e9771f3cd2785628c5b0472cd23c75cab8f94f3214d2907"
+        }
+      ],
+      "cache_sha256": "6c2b84701ec9c7c53c5694347e5a98171f26a51a13587df43fcd564d259dd5d7"
+    },
+    {
+      "category": "transistor",
+      "cases": 100,
+      "masked": false,
+      "joint_three_head_median_ms": 41.077791480347514,
+      "references": [
+        {
+          "id": "transistor/train/good/000.png",
+          "sha256": "d755cd3f9334acc338db228fbccfe531397add1794181c09dafafa35c9014741"
+        },
+        {
+          "id": "transistor/train/good/001.png",
+          "sha256": "479e538decadde0c2d687834e117a6e1a3002ece07d6b02ed145b1f116497e75"
+        },
+        {
+          "id": "transistor/train/good/002.png",
+          "sha256": "7e29cfe96f5183455a3f0298f4b29fd1879908887224cb79a2aab7bb102db828"
+        }
+      ],
+      "cache_sha256": "0368e138ead5355383f66ae16a80c332ed4f7b880184f6dfd4e1f739978c24ee"
+    },
+    {
+      "category": "wood",
+      "cases": 79,
+      "masked": false,
+      "joint_three_head_median_ms": 41.33612499572337,
+      "references": [
+        {
+          "id": "wood/train/good/000.png",
+          "sha256": "d6d87826ab78b00bca17872acf7d06fc9d21b0e81567bed2ccebb7ba57b85e76"
+        },
+        {
+          "id": "wood/train/good/001.png",
+          "sha256": "a7ad5db5ec0ba0aaf15a32b7d685e4e5e1f9d472c86844b6617ad3f09e0bd9f8"
+        },
+        {
+          "id": "wood/train/good/002.png",
+          "sha256": "8b05ad057d645960666b5d6b0cdd08b2fc4f343f0b9f06589fb3e54fad45c0ff"
+        }
+      ],
+      "cache_sha256": "33f9eb47d27100bcd3a861b59f26422593a7861a56f1563e30ebfbe3a419376d"
+    },
+    {
+      "category": "zipper",
+      "cases": 151,
+      "masked": false,
+      "joint_three_head_median_ms": 40.47879099380225,
+      "references": [
+        {
+          "id": "zipper/train/good/000.png",
+          "sha256": "42e15bf4d9672ad7b0fa08e99110aa9b9715b9c1889a820220db101cf76fec29"
+        },
+        {
+          "id": "zipper/train/good/001.png",
+          "sha256": "0a21f15092b012e0c15fe403a32019664a825e6e45577bf4dd20bb5e0d29c814"
+        },
+        {
+          "id": "zipper/train/good/002.png",
+          "sha256": "6bd470984283b152ad0e4bd36c1dfdc386f7cd2e5bbc29b02bfe4c1f197b83fd"
+        }
+      ],
+      "cache_sha256": "c129de37b8f037d43672dcc0ccf7b3993fe0d32b7895c182e8aa6ea779761651"
+    }
+  ]
+}
