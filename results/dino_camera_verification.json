@@ -17,5 +17,17 @@
   "camera_stopped_after_verification": true,
   "camera_images_saved": false,
   "microphone_requested": false,
-  "scope": "functional camera smoke test; no controlled defect or camera accuracy benchmark"
+  "scope": "functional camera smoke test; no controlled defect or camera accuracy benchmark",
+  "post_unlock_recovery": {
+    "observed_error": "Failed to queue inference: NC_ERROR",
+    "action": "Reprendre la r\u00e9f\u00e9rence MVTec; rebuild device encoder/anomaly graphs",
+    "usb_replug_required": false,
+    "physical_camera_reopened": true,
+    "observed_live_inference_ms": [
+      545.2,
+      545.1,
+      544.9
+    ],
+    "camera_stopped_after_check": true
+  }
 }

@@ -184,6 +184,12 @@ ceiling is about 1.8 frames/s; this is not a measured end-to-end browser frame
 rate. See [camera verification](results/dino_camera_verification.json).
 Camera access in the in-app browser was not validated; use Chrome for this demo.
 
+After the Mac was locked and unlocked, an inference returned `Failed to queue inference:
+NC_ERROR`. Selecting **Reprendre la référence MVTec** rebuilt the device graphs
+and restored inference without unplugging the stick. Camera reopening and live
+inference were then verified again at about 545 ms/image. For a camera-specific
+reference, recapture the normal image after this reset.
+
 The camera demo is a functional demonstration, **not a camera accuracy
 benchmark**. Pose, illumination, shadows and background changes can raise the
 score. There is no calibrated normal/defect threshold. Heatmaps use the same
