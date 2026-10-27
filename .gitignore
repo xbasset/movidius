@@ -8,3 +8,12 @@ output/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Local credentials and private measurement metadata.
+.env
+.env.*
+!.env.example
+/results/private/
+/results/raw/
+*.private.json
+*.private.log

@@ -112,6 +112,13 @@ It was inspected to understand the binary format, without installing TensorFlow
 are ignored. Keep the small source files, documentation, dependency locks and
 `results/` when sharing the experiment. Dependencies retain their own licenses.
 
+Keep raw captures or sensitive metadata under `results/private/` or `results/raw/`,
+or in `*.private.json` / `*.private.log` files; these paths are ignored, as are
+local `.env` files. Published result JSON is anonymized. Git ignore rules apply
+to whole files, so remove sensitive fields before adding a result to version
+control. Original local captures from this experiment remain under the ignored
+`.cache/publication/` directory.
+
 ## Next iteration
 
 1. Resolve graph replacement while a device is open. The current single-QKV path
