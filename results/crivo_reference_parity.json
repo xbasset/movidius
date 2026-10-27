@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "id": "BANKING77:test:0",
+      "tokens": 883,
+      "max_logit_error": 1.0609626770019531e-05,
+      "top1_equal": true
+    },
+    {
+      "id": "BANKING77:test:40",
+      "tokens": 887,
+      "max_logit_error": 1.4901161193847656e-05,
+      "top1_equal": true
+    },
+    {
+      "id": "BANKING77:test:1000",
+      "tokens": 889,
+      "max_logit_error": 5.364418029785156e-06,
+      "top1_equal": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,8 @@
+{
+  "cases": 3080,
+  "official_kit_macro_f1": 0.7959080702796673,
+  "project_macro_f1": 0.7959080702796673,
+  "equal": true,
+  "decision_index_revision": "25c6ec7b6b5f44a216c63c3a700de3a9c6d6699d",
+  "official_metrics_sha256": "b4e240511bd4978082233127a98672cd5558783c8e3aed1e9fb5420e9a52dcc1"
+}

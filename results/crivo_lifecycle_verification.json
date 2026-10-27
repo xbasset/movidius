@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "cycle": 1,
+      "prediction": "refund",
+      "probabilities": [
+        0.95068359375,
+        0.01849365234375,
+        0.0309600830078125
+      ],
+      "closed": true
+    },
+    {
+      "cycle": 2,
+      "prediction": "refund",
+      "probabilities": [
+        0.95068359375,
+        0.01849365234375,
+        0.0309600830078125
+      ],
+      "closed": true
+    },
+    {
+      "cycle": 3,
+      "prediction": "refund",
+      "probabilities": [
+        0.95068359375,
+        0.01849365234375,
+        0.0309600830078125
+      ],
+      "closed": true
+    }
+  ],
+  "passed": true
+}

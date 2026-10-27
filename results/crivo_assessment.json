@@ -1,0 +1,121 @@
+{
+  "cases": 3080,
+  "options": 77,
+  "truncation": "none",
+  "backends": {
+    "Mac CPU": {
+      "accuracy": 0.7961038961038961,
+      "macro_f1": 0.7959080702796673,
+      "latency": {
+        "median_ms": 34.1108959983103,
+        "p95_ms": 35.63957560691051,
+        "mean_ms": 34.319246897675015,
+        "boundary": "pretokenized request to host probabilities, includes device synchronization",
+        "excludes": [
+          "loading",
+          "tokenization",
+          "one warmup"
+        ]
+      }
+    },
+    "Myriad 2": {
+      "accuracy": 0.7967532467532468,
+      "macro_f1": 0.7963681633467952,
+      "latency": {
+        "median_ms": 661.3177290419117,
+        "p95_ms": 662.041194102494,
+        "mean_ms": 661.3548400805804,
+        "boundary": "pretokenized request to host probabilities, includes device synchronization",
+        "excludes": [
+          "loading",
+          "tokenization",
+          "one warmup"
+        ]
+      }
+    },
+    "Mac Metal GPU": {
+      "accuracy": 0.7961038961038961,
+      "macro_f1": 0.7959080702796673,
+      "latency": {
+        "median_ms": 9.125416458118707,
+        "p95_ms": 9.731423138873652,
+        "mean_ms": 9.273241798267941,
+        "boundary": "pretokenized request to host probabilities, includes device synchronization",
+        "excludes": [
+          "loading",
+          "tokenization",
+          "one warmup"
+        ]
+      }
+    }
+  },
+  "top1_agreement": 0.9954545454545455,
+  "disagreements": [
+    "BANKING77:test:203",
+    "BANKING77:test:239",
+    "BANKING77:test:251",
+    "BANKING77:test:886",
+    "BANKING77:test:1568",
+    "BANKING77:test:1636",
+    "BANKING77:test:1737",
+    "BANKING77:test:1775",
+    "BANKING77:test:2046",
+    "BANKING77:test:2059",
+    "BANKING77:test:2584",
+    "BANKING77:test:2730",
+    "BANKING77:test:2776",
+    "BANKING77:test:3070"
+  ],
+  "macro_f1_delta_stick_minus_cpu": 0.0004600930671279091,
+  "probability_parity": {
+    "mean_kl_cpu_to_stick": 0.010248130956705176,
+    "mean_max_absolute_error": 0.00397531962993902,
+    "max_absolute_error": 0.0935326248240348,
+    "max_stick_probability_sum_error": 0.0016669631004333496,
+    "kl_note": "Normalize the raw FP16 softmax sums only for this diagnostic; predictions use raw device outputs."
+  },
+  "runtime": {
+    "openvino_revision": "2fe9b1523058e282ad374db7dc1b3538c7d2dd27",
+    "firmware_sha256": "6cf079e614d0fa68381ec29d0b30f44766cf3cf62355620a91912128f0bfdaac",
+    "graph_xml_sha256": "3aed93f10f3c56eb3ad094f8f243846246ec80214f4816866596fa4fe0f46bca",
+    "graph_weights_sha256": "297cf8c7db8a958cc5bb774b528766b93560bd5168d86cbdcd077d700d3db248",
+    "graph": {
+      "tokens": 960,
+      "options": 77,
+      "layers": 7,
+      "stop": "probabilities",
+      "output_shape": [
+        1,
+        77
+      ],
+      "weight_bytes": 35818050,
+      "ir_layers": 482,
+      "precision": "FP16",
+      "question_type": "choice"
+    },
+    "backend": "MYRIAD exclusively; no CPU plugin or HETERO fallback loaded",
+    "executed_profile_stages": 354,
+    "profile_execution_types": [
+      "Copy",
+      "Erf",
+      "GEMM",
+      "Gather",
+      "Permute",
+      "Power",
+      "Prod",
+      "ReduceMean",
+      "SoftMax",
+      "Sum"
+    ],
+    "device_stage_total_us": 657991,
+    "profile_host_cpu_total_us": 0,
+    "profile_note": "Last request only; stage durations can overlap and their sum is not end-to-end latency."
+  },
+  "power": "Not measured; requires external USB power measurement",
+  "artifacts": {
+    "results/crivo_banking77_cpu.json": "5719b9cc59d7f309733f370a5da023c01b42559eea636aeabe0ed260c79b60fe",
+    "results/crivo_banking77_myriad.json": "c9e7acc3182785f77f1c6d36998819aa733a67869850a2f7663edcb8b025e4a1",
+    "results/crivo_banking77_myriad.tsv": "1f62cdd547b5d12c06a0c0f186484558335af91f8031ece709745359e2bbc5f4",
+    "results/crivo_banking77_mps.json": "07de7a01cadc30e2e0c63a41e5d1fac75557c34f0a8861031505aafed7750eef"
+  }
+}

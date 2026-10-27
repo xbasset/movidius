@@ -1,7 +1,19 @@
 # Movidius time machine
 
-Can a $79 USB accelerator launched in July 2017 execute a language model
-published in 2019?
+**Second experiment:** complete Crivo-17M decision inference on the stick,
+including embeddings, all seven encoder layers and softmax. On all 3,080
+BANKING77 cases it scores **79.64% macro-F1 at 661 ms/request**, versus
+**79.59% at 34 ms on the Mac CPU and 9.1 ms on its Metal GPU**.
+See [CRIVO_REPORT.md](CRIVO_REPORT.md) for setup, the working demo, execution
+boundaries and measured results.
+
+```sh
+bash scripts/setup_crivo.sh
+.venv/bin/python -m scripts.run_crivo --banking --no-reference \
+  --text 'Where is my card? It has not arrived yet.'
+```
+
+Can a $79 USB accelerator launched in July 2017 execute modern language models?
 
 **First result:** pretrained GPT-2 small generates text with its first attention
 projection computed on an original Intel Movidius Neural Compute Stick. The Mac

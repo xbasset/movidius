@@ -1,0 +1,50 @@
+{
+  "state": {
+    "ticket": "My card was charged twice for the same order."
+  },
+  "question": "What does the customer need?",
+  "options": {
+    "refund": "Money back for a duplicate charge",
+    "cancel": "Cancel the order",
+    "info": "Ask for information"
+  },
+  "tokens": 46,
+  "stick_probabilities": [
+    [
+      0.95068359375,
+      0.01849365234375,
+      0.0309600830078125
+    ],
+    [
+      0.95068359375,
+      0.01849365234375,
+      0.0309600830078125
+    ],
+    [
+      0.95068359375,
+      0.01849365234375,
+      0.0309600830078125
+    ]
+  ],
+  "stick_latency_ms": [
+    52.3870000615716,
+    52.25754203274846,
+    52.312583080492914
+  ],
+  "graph_load_ms": 1573.4092500060797,
+  "graph": {
+    "tokens": 64,
+    "options": 3,
+    "layers": 7,
+    "stop": "probabilities",
+    "output_shape": [
+      1,
+      3
+    ],
+    "weight_bytes": 33753666,
+    "ir_layers": 482,
+    "precision": "FP16",
+    "question_type": "choice"
+  },
+  "inference_backend": "MYRIAD only; no CPU fallback"
+}

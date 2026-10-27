@@ -1,0 +1,84 @@
+diff --git a/cmake/dependencies.cmake b/cmake/dependencies.cmake
+index 2a5a74d..5229354 100644
+--- a/cmake/dependencies.cmake
++++ b/cmake/dependencies.cmake
+@@ -6,7 +6,7 @@ set_temp_directory(TEMP "${IE_MAIN_SOURCE_DIR}")
+ 
+ include(dependency_solver)
+ 
+-if(CMAKE_CROSSCOMPILING)
++if(CMAKE_CROSSCOMPILING AND NGRAPH_ONNX_IMPORT_ENABLE)
+ 	if(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "amd64.*|x86_64.*|AMD64.*")
+ 	    set(HOST_X86_64 ON)
+ 	endif()
+diff --git a/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDevice.c b/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDevice.c
+index d8cde9e..6f8a690 100644
+--- a/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDevice.c
++++ b/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDevice.c
+@@ -249,6 +249,7 @@ XLinkError_t XLinkResetRemote(linkId_t id)
+         mvLog(MVLOG_ERROR,"can't wait dispatcherClosedSem\n");
+         return X_LINK_ERROR;
+     }
++    sem_destroy(&link->dispatcherClosedSem);
+ 
+     return X_LINK_SUCCESS;
+ }
+diff --git a/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcher.c b/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcher.c
+index fc0a660..ce5f2d1 100644
+--- a/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcher.c
++++ b/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcher.c
+@@ -539,14 +539,21 @@ static sem_t* getAndRefSem(pthread_t threadId, xLinkSchedulerState_t *curr, int
+ 
+ static int unrefSem(sem_t* sem,  xLinkSchedulerState_t* curr) {
+     ASSERT_XLINK(curr != NULL);
++    pthread_mutex_lock(&clean_mutex);
+     localSem_t* temp = curr->eventSemaphores;
+     while (temp < curr->eventSemaphores + MAXIMUM_SEMAPHORES) {
+         if (&temp->sem == sem) {
+             temp->refs--;
++            if (curr->resetXLink && temp->refs == 0) {
++                sem_destroy(&temp->sem);
++                temp->refs = -1;
++            }
++            pthread_mutex_unlock(&clean_mutex);
+             return 1;
+         }
+         temp++;
+     }
++    pthread_mutex_unlock(&clean_mutex);
+     mvLog(MVLOG_WARN,"unrefSem : sem wasn't found\n");
+     return 0;
+ }
+@@ -915,9 +922,14 @@ static int dispatcherClean(xLinkSchedulerState_t* curr)
+     localSem_t* temp = curr->eventSemaphores;
+     while (temp < curr->eventSemaphores + MAXIMUM_SEMAPHORES) {
+         // unblock potentially blocked event semaphores
+-        sem_post(&temp->sem);
+-        sem_destroy(&temp->sem);
+-        temp->refs = -1;
++        if (temp->refs >= 0) {
++            sem_post(&temp->sem);
++            // A waiting API call still owns this semaphore until unrefSem.
++            if (temp->refs == 0) {
++                sem_destroy(&temp->sem);
++                temp->refs = -1;
++            }
++        }
+         temp++;
+     }
+     numSchedulers--;
+diff --git a/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcherImpl.c b/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcherImpl.c
+index 3c2d791..b5615ba 100644
+--- a/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcherImpl.c
++++ b/inference-engine/thirdparty/movidius/XLink/shared/src/XLinkDispatcherImpl.c
+@@ -452,9 +452,7 @@ void dispatcherCloseLink(void* fd, int fullClose)
+         XLinkStreamReset(stream);
+     }
+ 
+-    if(sem_destroy(&link->dispatcherClosedSem)) {
+-        mvLog(MVLOG_DEBUG, "Cannot destroy dispatcherClosedSem\n");
+-    }
++    // The reset caller releases this semaphore after consuming the notification.
+ }
+ 
+ void dispatcherCloseDeviceFd(xLinkDeviceHandle_t* deviceHandle)
