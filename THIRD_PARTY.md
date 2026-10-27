@@ -78,3 +78,12 @@ does not redistribute Jev weights or use its hosted inference API.
 No vendor firmware was rewritten or flashed. The stock image is uploaded to RAM
 through the ordinary USB boot path. Its embedded strings contain a March 2017
 component build date; this is not proof of the complete image's release date.
+
+## Local energy interface
+
+`movidius_lab/energy.py` calls the Mac's system-provided CoreFoundation and
+IOReport libraries. It reads Energy Model counters only and uses their reported
+units. API usage and unit interpretation were informed by the MIT-licensed
+[macmon source](https://github.com/vladkens/macmon/blob/main/src/sources.rs).
+No third-party monitor binary or privileged helper is installed or redistributed.
+These are component-model energy estimates, not electrical USB measurements.

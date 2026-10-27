@@ -190,9 +190,11 @@ softmax. Metal GPU results use FP32, including output softmax. Device results us
 FP16. The Mac Neural Engine is not measured. This is an ordinary laptop benchmark,
 not a claim that this reference is the fastest possible Mac implementation.
 
-**Power and joules per decision are not measured.** A USB power meter is required
-before making an energy-efficiency claim. The Mac's contribution must be measured
-separately from the stick's.
+**The stick's electrical power and joules per decision are not measured.** A USB
+power meter is required for that. The [local interface](LOCAL_UI.md) now samples
+estimated Mac CPU/GPU/ANE energy separately, including the Mac's contribution
+while accompanying stick inference. These counters do not measure total Mac
+electrical draw or the stick's USB consumption.
 
 ## Numerical checks
 

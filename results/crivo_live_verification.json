@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "backends": [
+    "stick",
+    "cpu",
+    "mps"
+  ],
+  "checks": [
+    "host/origin restrictions",
+    "request bounds",
+    "no truncation",
+    "one active job",
+    "physical stick + CPU + Metal decisions",
+    "77 probabilities",
+    "energy unit accounting",
+    "per-backend idle windows",
+    "stick energy explicitly unmeasured"
+  ]
+}

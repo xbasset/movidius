@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crivo-17M sur Movidius : décisions locales, latence et énergie du Mac.">
+  <title>Crivo — laboratoire local</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="Crivo, accueil"><span class="brand-mark">c.</span> CRIVO <span class="brand-sub">LAB</span></a>
+    <span class="local-tag"><span class="dot"></span> 127.0.0.1 · LOCAL</span>
+  </header>
+  <main>
+    <div class="intro">
+      <div><p class="eyebrow">EXPÉRIENCE 02 / MOVIDIUS TIME MACHINE</p>
+        <h1>Une décision.<br><span>Trois moteurs.</span></h1>
+        <p class="lede">Le même Crivo-17M, sur un stick de 2017 et sur le Mac.<br>Saisis un message bancaire en anglais et compare les réponses.</p>
+      </div>
+      <aside class="model-note"><span class="mono">LE MODÈLE</span><strong>17 M</strong><span>paramètres · 77 intentions</span><span>Tout le réseau sur le stick.<br>Tokenisation sur le Mac.</span></aside>
+    </div>
+
+    <section class="input-panel" aria-labelledby="input-title">
+      <div class="section-line"><h2 id="input-title">Le message à classer</h2><span id="token-count" class="mono muted">Contexte max. 960 tokens, intentions incluses</span></div>
+      <label for="message" class="sr-only">Message bancaire en anglais</label>
+      <textarea id="message" rows="3" maxlength="4000" spellcheck="false">I still have not received my new card, I ordered over a week ago.</textarea>
+      <div class="examples" aria-label="Exemples"><span>Essayer :</span>
+        <button class="example" data-example="I still have not received my new card, I ordered over a week ago.">Carte non reçue</button>
+        <button class="example" data-example="I need to know your exchange rates.">Taux de change</button>
+        <button class="example" data-example="How can I change my PIN?">Changer le PIN</button>
+      </div>
+      <div class="actions"><button id="compare" class="primary" disabled>Comparer les décisions <span aria-hidden="true">↗</span></button>
+        <button id="energy" class="secondary" disabled>Mesurer l’énergie <span class="mono">~15 s</span></button>
+        <span class="key-hint">⌘ / Ctrl + Entrée</span>
+      </div>
+      <div id="error" class="error" role="alert" hidden></div>
+    </section>
+
+    <div class="status-line" role="status" aria-live="polite"><span id="status-dot" class="dot"></span><span id="status">Chargement des modèles…</span><button id="reconnect" hidden>Reconnecter le stick</button></div>
+
+    <section class="cards" aria-label="Décisions et latence">
+      <article class="backend-card stick" id="card-stick"><div class="card-top"><span class="mono">01 / USB</span><span class="state" id="state-stick">Chargement</span></div><h2>Movidius<span>Myriad 2 · 2017 · FP16</span></h2><div class="latency"><strong id="latency-stick">—</strong><span>ms / décision</span></div><p class="decision" id="decision-stick">En attente d’un message</p><div class="confidence-track"><div id="bar-stick"></div></div><p class="confidence" id="confidence-stick">—</p></article>
+      <article class="backend-card cpu" id="card-cpu"><div class="card-top"><span class="mono">02 / MAC</span><span class="state" id="state-cpu">Chargement</span></div><h2>CPU<span>Apple Silicon · 4 threads · FP32</span></h2><div class="latency"><strong id="latency-cpu">—</strong><span>ms / décision</span></div><p class="decision" id="decision-cpu">En attente d’un message</p><div class="confidence-track"><div id="bar-cpu"></div></div><p class="confidence" id="confidence-cpu">—</p></article>
+      <article class="backend-card mps" id="card-mps"><div class="card-top"><span class="mono">03 / MAC</span><span class="state" id="state-mps">Chargement</span></div><h2>GPU Metal<span>Apple Silicon · FP32</span></h2><div class="latency"><strong id="latency-mps">—</strong><span>ms / décision</span></div><p class="decision" id="decision-mps">En attente d’un message</p><div class="confidence-track"><div id="bar-mps"></div></div><p class="confidence" id="confidence-mps">—</p></article>
+    </section>
+    <p id="comparison-note" class="measurement-note">Latence médiane de 3 passages après préchauffage. Modèles résidents ; tokenisation et chargement exclus. Le stick calcule sur 960 tokens avec masquage ; le Mac sur la longueur réelle.</p>
+
+    <section class="details-panel" aria-labelledby="prob-title">
+      <div class="section-line"><h2 id="prob-title">Les probabilités, côte à côte</h2><label class="toggle"><input type="checkbox" id="all-labels"> Afficher les 77 intentions</label></div>
+      <div class="table-scroll"><table><thead><tr><th>Intention</th><th class="stick-text">Movidius</th><th class="cpu-text">CPU</th><th class="mps-text">GPU Metal</th></tr></thead><tbody id="probabilities"><tr><td colspan="4" class="empty">Les dix intentions les plus probables apparaîtront ici.</td></tr></tbody></table></div>
+    </section>
+
+    <section class="energy-panel" aria-labelledby="energy-title">
+      <div class="section-line"><div><p class="eyebrow">MESURE PAR LOTS</p><h2 id="energy-title">L’énergie côté Mac</h2></div><span id="energy-source" class="badge">IOReport · vérification…</span></div>
+      <p class="energy-explanation">Estimation des composants CPU + GPU + ANE sur des lots d’au moins 3 secondes. Le repos est mesuré juste avant. Le total électrique du Mac et la consommation USB du stick ne sont pas inclus.</p>
+      <div class="energy-cards" id="energy-cards">
+        <div><span>Mode CPU</span><strong id="energy-cpu">— <small>mJ / décision</small></strong><p id="energy-detail-cpu">Lancer une mesure d’énergie.</p></div>
+        <div><span>Mode GPU Metal</span><strong id="energy-mps">— <small>mJ / décision</small></strong><p id="energy-detail-mps">Lancer une mesure d’énergie.</p></div>
+        <div><span>Mac accompagnant le stick</span><strong id="energy-stick">— <small>mJ / décision</small></strong><p id="energy-detail-stick">Énergie du Mac uniquement.</p></div>
+      </div>
+      <div id="energy-breakdown" hidden class="table-scroll"><table><thead><tr><th>Mode d’inférence</th><th>CPU du Mac</th><th>GPU du Mac</th><th>ANE du Mac</th><th>Lot</th><th>Décisions</th></tr></thead><tbody id="energy-rows"></tbody></table></div>
+      <p id="energy-note" class="measurement-note">Les valeurs incluent l’activité des autres applications. Il s’agit d’estimations de compteurs matériels, pas d’une mesure au wattmètre.</p>
+      <div class="stick-energy"><span class="mono">STICK / ÉLECTRIQUE</span><span>Non mesuré — nécessite un wattmètre USB externe.</span></div>
+    </section>
+    <footer><span>Crivo-17M · BANKING77 · aucun service cloud · messages non enregistrés</span><button id="export" disabled>Exporter les résultats JSON ↓</button></footer>
+  </main>
+</body>
+</html>

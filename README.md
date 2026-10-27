@@ -7,6 +7,11 @@ BANKING77 cases it scores **79.64% macro-F1 at 661 ms/request**, versus
 See [CRIVO_REPORT.md](CRIVO_REPORT.md) for setup, the working demo, execution
 boundaries and measured results.
 
+**Live local interface:** run `.venv/bin/python -m scripts.serve_crivo`, then
+open <http://127.0.0.1:8765> to compare decisions, probabilities and latency on
+all three backends, and sample estimated Mac CPU/GPU/ANE energy. The stick's
+electrical energy requires a USB meter. See [LOCAL_UI.md](LOCAL_UI.md).
+
 ```sh
 bash scripts/setup_crivo.sh
 .venv/bin/python -m scripts.run_crivo --banking --no-reference \
