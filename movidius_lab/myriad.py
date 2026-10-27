@@ -58,6 +58,16 @@ class Myriad:
             self.set_input("padding_mask", mask)
         if "opt_positions" in self.inputs:
             self.set_input("opt_positions", np.asarray(opt_positions, dtype=np.int32))
+        return self.execute()
+
+    def infer_tensors(self, inputs):
+        if set(inputs) != self.inputs:
+            raise ValueError(f"Expected graph inputs {sorted(self.inputs)}")
+        for name, value in inputs.items():
+            self.set_input(name, value)
+        return self.execute()
+
+    def execute(self):
         result = np.empty(self.meta["output_shape"], dtype=np.float32)
         duration = C.c_double()
         self.check(self.lib.crivo_infer(self.handle, result.ctypes.data, result.size,

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "backends": [
+    "stick",
+    "cpu",
+    "mps"
+  ],
+  "checks": [
+    "foreign Host/Origin rejected",
+    "bounded requests",
+    "one active job",
+    "energy excluded",
+    "physical stick inference",
+    "16x16 maps and device top-two score",
+    "broken score exceeds normal",
+    "PNG camera transport using public data",
+    "reference replacement and restoration without device replug"
+  ],
+  "physical_camera_tested_by_this_script": false,
+  "sample_scores": {
+    "stick": {
+      "normal": 0.376953125,
+      "broken": 1.08984375,
+      "self_reference": 0.0107421875
+    },
+    "cpu": {
+      "normal": 0.3697013258934021,
+      "broken": 1.0790307521820068,
+      "self_reference": 1.3113021850585938e-06
+    },
+    "mps": {
+      "normal": 0.36970055103302,
+      "broken": 1.079030156135559,
+      "self_reference": 1.6093254089355469e-06
+    }
+  }
+}

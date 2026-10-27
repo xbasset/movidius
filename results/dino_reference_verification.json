@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "meta_revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+  "anomalydino_revision": "b9d1c2648e3a5247437d4d953d907a8f3d994457",
+  "scope": "same pinned weights, original Meta get_intermediate_layers, brute-force normalized squared L2, author's mean_top1p",
+  "cases": [
+    {
+      "case": "good/000.png",
+      "feature_max_error": 0.0,
+      "distance_max_error": 1.430511474609375e-06,
+      "author_score": 0.36970093846321106,
+      "reference_score": 0.3697013258934021
+    },
+    {
+      "case": "broken_large/000.png",
+      "feature_max_error": 0.0,
+      "distance_max_error": 1.8924474716186523e-06,
+      "author_score": 1.0790307521820068,
+      "reference_score": 1.0790307521820068
+    },
+    {
+      "case": "contamination/000.png",
+      "feature_max_error": 0.0,
+      "distance_max_error": 1.385807991027832e-06,
+      "author_score": 1.118405818939209,
+      "reference_score": 1.118405818939209
+    }
+  ]
+}

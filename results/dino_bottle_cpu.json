@@ -1,0 +1,1581 @@
+{
+  "model": {
+    "repo": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "license": "Apache-2.0",
+    "sha256": {
+      "config.json": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "model.safetensors": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "README.md": "4c20dca454a8e5c670e8de5c7e6040f512aeca5438516f7623eedc4e3b00599c"
+    }
+  },
+  "backend": "cpu",
+  "precision": "FP32",
+  "benchmark": "MVTec AD bottle, complete test split; not the 15-category benchmark",
+  "cases_per_seed": 83,
+  "normal_cases": 20,
+  "anomalous_cases": 63,
+  "resolution": [
+    224,
+    224
+  ],
+  "shots": 1,
+  "reference_selection": "sorted train/good filenames indexed by seed",
+  "masking": false,
+  "rotations": false,
+  "nearest_neighbors": 1,
+  "distance": "squared L2 of L2-normalized features",
+  "image_score": "mean of top two patch distances",
+  "pixel_evaluation": "bilinear resize to original image; Gaussian sigma=4; original ground truth masks",
+  "timing": {
+    "batch_size": 1,
+    "host_threads": 4,
+    "warmups_per_seed": 3,
+    "boundary": "preprocessed tensor to host 16x16 patch distances and image score",
+    "excludes": [
+      "model loading",
+      "reference calibration",
+      "image decoding and normalization",
+      "pixel metric postprocessing"
+    ]
+  },
+  "data_manifest_sha256": "abd0a44b95bb9234f3840787b3499a30f8efddf1451cf1f5d7e6ab65a2dc4982",
+  "runs": [
+    {
+      "seed": 0,
+      "reference": "bottle/train/good/000.png",
+      "reference_sha256": "8a25eb07475a5102f4823fefd82662dd65f8f2a0a333bf958124ceeee38f0e38",
+      "image_auroc": 0.9976190476190476,
+      "pixel_auroc": 0.9866983549853071,
+      "latency": {
+        "median_ms": 35.59170791413635,
+        "p95_ms": 36.90992050105706
+      },
+      "predictions": [
+        {
+          "id": "bottle/test/broken_large/000.png",
+          "gold": 1,
+          "score": 1.0790307521820068,
+          "latency_ms": 36.22254205401987
+        },
+        {
+          "id": "bottle/test/broken_large/001.png",
+          "gold": 1,
+          "score": 1.038692593574524,
+          "latency_ms": 34.89691705908626
+        },
+        {
+          "id": "bottle/test/broken_large/002.png",
+          "gold": 1,
+          "score": 1.1586902141571045,
+          "latency_ms": 36.12704109400511
+        },
+        {
+          "id": "bottle/test/broken_large/003.png",
+          "gold": 1,
+          "score": 0.9947205185890198,
+          "latency_ms": 34.8513750359416
+        },
+        {
+          "id": "bottle/test/broken_large/004.png",
+          "gold": 1,
+          "score": 0.947935938835144,
+          "latency_ms": 35.67579190712422
+        },
+        {
+          "id": "bottle/test/broken_large/005.png",
+          "gold": 1,
+          "score": 0.8446155786514282,
+          "latency_ms": 36.485415999777615
+        },
+        {
+          "id": "bottle/test/broken_large/006.png",
+          "gold": 1,
+          "score": 0.8559157848358154,
+          "latency_ms": 34.623124985955656
+        },
+        {
+          "id": "bottle/test/broken_large/007.png",
+          "gold": 1,
+          "score": 1.1082322597503662,
+          "latency_ms": 35.41141701862216
+        },
+        {
+          "id": "bottle/test/broken_large/008.png",
+          "gold": 1,
+          "score": 1.0358446836471558,
+          "latency_ms": 35.760250058956444
+        },
+        {
+          "id": "bottle/test/broken_large/009.png",
+          "gold": 1,
+          "score": 0.9636829495429993,
+          "latency_ms": 36.9143330026418
+        },
+        {
+          "id": "bottle/test/broken_large/010.png",
+          "gold": 1,
+          "score": 0.9777812361717224,
+          "latency_ms": 35.515249939635396
+        },
+        {
+          "id": "bottle/test/broken_large/011.png",
+          "gold": 1,
+          "score": 1.334631323814392,
+          "latency_ms": 36.44299996085465
+        },
+        {
+          "id": "bottle/test/broken_large/012.png",
+          "gold": 1,
+          "score": 1.0063724517822266,
+          "latency_ms": 35.08249996230006
+        },
+        {
+          "id": "bottle/test/broken_large/013.png",
+          "gold": 1,
+          "score": 0.9819020628929138,
+          "latency_ms": 35.8898330014199
+        },
+        {
+          "id": "bottle/test/broken_large/014.png",
+          "gold": 1,
+          "score": 1.019301414489746,
+          "latency_ms": 36.2897920422256
+        },
+        {
+          "id": "bottle/test/broken_large/015.png",
+          "gold": 1,
+          "score": 0.9517053365707397,
+          "latency_ms": 34.944833954796195
+        },
+        {
+          "id": "bottle/test/broken_large/016.png",
+          "gold": 1,
+          "score": 1.1409918069839478,
+          "latency_ms": 35.59170791413635
+        },
+        {
+          "id": "bottle/test/broken_large/017.png",
+          "gold": 1,
+          "score": 0.8651854991912842,
+          "latency_ms": 36.28537501208484
+        },
+        {
+          "id": "bottle/test/broken_large/018.png",
+          "gold": 1,
+          "score": 1.1013073921203613,
+          "latency_ms": 36.163375014439225
+        },
+        {
+          "id": "bottle/test/broken_large/019.png",
+          "gold": 1,
+          "score": 0.965787410736084,
+          "latency_ms": 34.642834099940956
+        },
+        {
+          "id": "bottle/test/broken_small/000.png",
+          "gold": 1,
+          "score": 0.6653736233711243,
+          "latency_ms": 36.26174991950393
+        },
+        {
+          "id": "bottle/test/broken_small/001.png",
+          "gold": 1,
+          "score": 1.0082786083221436,
+          "latency_ms": 37.224708939902484
+        },
+        {
+          "id": "bottle/test/broken_small/002.png",
+          "gold": 1,
+          "score": 0.9464316964149475,
+          "latency_ms": 35.47658398747444
+        },
+        {
+          "id": "bottle/test/broken_small/003.png",
+          "gold": 1,
+          "score": 1.0803272724151611,
+          "latency_ms": 36.27083299215883
+        },
+        {
+          "id": "bottle/test/broken_small/004.png",
+          "gold": 1,
+          "score": 0.8666178584098816,
+          "latency_ms": 35.09949997533113
+        },
+        {
+          "id": "bottle/test/broken_small/005.png",
+          "gold": 1,
+          "score": 0.7997228503227234,
+          "latency_ms": 36.87020798679441
+        },
+        {
+          "id": "bottle/test/broken_small/006.png",
+          "gold": 1,
+          "score": 0.8410928845405579,
+          "latency_ms": 35.923958057537675
+        },
+        {
+          "id": "bottle/test/broken_small/007.png",
+          "gold": 1,
+          "score": 0.9567579627037048,
+          "latency_ms": 35.8449169434607
+        },
+        {
+          "id": "bottle/test/broken_small/008.png",
+          "gold": 1,
+          "score": 0.8901991248130798,
+          "latency_ms": 34.167041070759296
+        },
+        {
+          "id": "bottle/test/broken_small/009.png",
+          "gold": 1,
+          "score": 0.9809030890464783,
+          "latency_ms": 38.21650007739663
+        },
+        {
+          "id": "bottle/test/broken_small/010.png",
+          "gold": 1,
+          "score": 0.9523015022277832,
+          "latency_ms": 36.10758297145367
+        },
+        {
+          "id": "bottle/test/broken_small/011.png",
+          "gold": 1,
+          "score": 0.961068868637085,
+          "latency_ms": 34.90466601215303
+        },
+        {
+          "id": "bottle/test/broken_small/012.png",
+          "gold": 1,
+          "score": 1.0834890604019165,
+          "latency_ms": 37.458332953974605
+        },
+        {
+          "id": "bottle/test/broken_small/013.png",
+          "gold": 1,
+          "score": 0.859900176525116,
+          "latency_ms": 35.96141608431935
+        },
+        {
+          "id": "bottle/test/broken_small/014.png",
+          "gold": 1,
+          "score": 0.8543460965156555,
+          "latency_ms": 34.98274995945394
+        },
+        {
+          "id": "bottle/test/broken_small/015.png",
+          "gold": 1,
+          "score": 0.7462310194969177,
+          "latency_ms": 35.20737495273352
+        },
+        {
+          "id": "bottle/test/broken_small/016.png",
+          "gold": 1,
+          "score": 1.204843521118164,
+          "latency_ms": 36.42958402633667
+        },
+        {
+          "id": "bottle/test/broken_small/017.png",
+          "gold": 1,
+          "score": 0.7811365723609924,
+          "latency_ms": 36.52908303774893
+        },
+        {
+          "id": "bottle/test/broken_small/018.png",
+          "gold": 1,
+          "score": 1.1485974788665771,
+          "latency_ms": 35.429583047516644
+        },
+        {
+          "id": "bottle/test/broken_small/019.png",
+          "gold": 1,
+          "score": 1.0001804828643799,
+          "latency_ms": 36.026209010742605
+        },
+        {
+          "id": "bottle/test/broken_small/020.png",
+          "gold": 1,
+          "score": 1.055242657661438,
+          "latency_ms": 35.46787507366389
+        },
+        {
+          "id": "bottle/test/broken_small/021.png",
+          "gold": 1,
+          "score": 1.0989973545074463,
+          "latency_ms": 35.3752919472754
+        },
+        {
+          "id": "bottle/test/contamination/000.png",
+          "gold": 1,
+          "score": 1.118405818939209,
+          "latency_ms": 36.02570807561278
+        },
+        {
+          "id": "bottle/test/contamination/001.png",
+          "gold": 1,
+          "score": 0.8388962149620056,
+          "latency_ms": 35.440542036667466
+        },
+        {
+          "id": "bottle/test/contamination/002.png",
+          "gold": 1,
+          "score": 0.641219973564148,
+          "latency_ms": 34.615041920915246
+        },
+        {
+          "id": "bottle/test/contamination/003.png",
+          "gold": 1,
+          "score": 0.813117504119873,
+          "latency_ms": 35.187624976970255
+        },
+        {
+          "id": "bottle/test/contamination/004.png",
+          "gold": 1,
+          "score": 0.7533235549926758,
+          "latency_ms": 34.671041066758335
+        },
+        {
+          "id": "bottle/test/contamination/005.png",
+          "gold": 1,
+          "score": 1.5089621543884277,
+          "latency_ms": 34.909583046101034
+        },
+        {
+          "id": "bottle/test/contamination/006.png",
+          "gold": 1,
+          "score": 1.360222578048706,
+          "latency_ms": 34.645458101294935
+        },
+        {
+          "id": "bottle/test/contamination/007.png",
+          "gold": 1,
+          "score": 1.673071265220642,
+          "latency_ms": 35.55904095992446
+        },
+        {
+          "id": "bottle/test/contamination/008.png",
+          "gold": 1,
+          "score": 1.0673511028289795,
+          "latency_ms": 35.351207945495844
+        },
+        {
+          "id": "bottle/test/contamination/009.png",
+          "gold": 1,
+          "score": 1.1520054340362549,
+          "latency_ms": 35.763332969509065
+        },
+        {
+          "id": "bottle/test/contamination/010.png",
+          "gold": 1,
+          "score": 1.1273400783538818,
+          "latency_ms": 35.562457982450724
+        },
+        {
+          "id": "bottle/test/contamination/011.png",
+          "gold": 1,
+          "score": 0.948150634765625,
+          "latency_ms": 35.59858293738216
+        },
+        {
+          "id": "bottle/test/contamination/012.png",
+          "gold": 1,
+          "score": 1.1345094442367554,
+          "latency_ms": 36.3655419787392
+        },
+        {
+          "id": "bottle/test/contamination/013.png",
+          "gold": 1,
+          "score": 1.3163025379180908,
+          "latency_ms": 35.064624971710145
+        },
+        {
+          "id": "bottle/test/contamination/014.png",
+          "gold": 1,
+          "score": 1.1144663095474243,
+          "latency_ms": 35.844250000081956
+        },
+        {
+          "id": "bottle/test/contamination/015.png",
+          "gold": 1,
+          "score": 1.0483601093292236,
+          "latency_ms": 34.495166037231684
+        },
+        {
+          "id": "bottle/test/contamination/016.png",
+          "gold": 1,
+          "score": 1.0555319786071777,
+          "latency_ms": 36.56783397309482
+        },
+        {
+          "id": "bottle/test/contamination/017.png",
+          "gold": 1,
+          "score": 1.4677696228027344,
+          "latency_ms": 35.31179192941636
+        },
+        {
+          "id": "bottle/test/contamination/018.png",
+          "gold": 1,
+          "score": 1.325366497039795,
+          "latency_ms": 35.773333045654
+        },
+        {
+          "id": "bottle/test/contamination/019.png",
+          "gold": 1,
+          "score": 0.663232684135437,
+          "latency_ms": 35.75691708829254
+        },
+        {
+          "id": "bottle/test/contamination/020.png",
+          "gold": 1,
+          "score": 1.1475234031677246,
+          "latency_ms": 35.91670806054026
+        },
+        {
+          "id": "bottle/test/good/000.png",
+          "gold": 0,
+          "score": 0.3697013258934021,
+          "latency_ms": 35.61224997974932
+        },
+        {
+          "id": "bottle/test/good/001.png",
+          "gold": 0,
+          "score": 0.6993277072906494,
+          "latency_ms": 37.64912497717887
+        },
+        {
+          "id": "bottle/test/good/002.png",
+          "gold": 0,
+          "score": 0.4435574412345886,
+          "latency_ms": 35.40425002574921
+        },
+        {
+          "id": "bottle/test/good/003.png",
+          "gold": 0,
+          "score": 0.5449924468994141,
+          "latency_ms": 35.49466596450657
+        },
+        {
+          "id": "bottle/test/good/004.png",
+          "gold": 0,
+          "score": 0.4901350736618042,
+          "latency_ms": 35.16474994830787
+        },
+        {
+          "id": "bottle/test/good/005.png",
+          "gold": 0,
+          "score": 0.37278062105178833,
+          "latency_ms": 34.47220800444484
+        },
+        {
+          "id": "bottle/test/good/006.png",
+          "gold": 0,
+          "score": 0.5614281892776489,
+          "latency_ms": 36.778958048671484
+        },
+        {
+          "id": "bottle/test/good/007.png",
+          "gold": 0,
+          "score": 0.36400097608566284,
+          "latency_ms": 36.468041012994945
+        },
+        {
+          "id": "bottle/test/good/008.png",
+          "gold": 0,
+          "score": 0.3966551423072815,
+          "latency_ms": 35.55762500036508
+        },
+        {
+          "id": "bottle/test/good/009.png",
+          "gold": 0,
+          "score": 0.3203245997428894,
+          "latency_ms": 36.18804190773517
+        },
+        {
+          "id": "bottle/test/good/010.png",
+          "gold": 0,
+          "score": 0.5395025014877319,
+          "latency_ms": 34.545958042144775
+        },
+        {
+          "id": "bottle/test/good/011.png",
+          "gold": 0,
+          "score": 0.3081400990486145,
+          "latency_ms": 35.935916006565094
+        },
+        {
+          "id": "bottle/test/good/012.png",
+          "gold": 0,
+          "score": 0.3703222870826721,
+          "latency_ms": 35.34195793326944
+        },
+        {
+          "id": "bottle/test/good/013.png",
+          "gold": 0,
+          "score": 0.39797860383987427,
+          "latency_ms": 34.9161250051111
+        },
+        {
+          "id": "bottle/test/good/014.png",
+          "gold": 0,
+          "score": 0.41405463218688965,
+          "latency_ms": 34.38308299519122
+        },
+        {
+          "id": "bottle/test/good/015.png",
+          "gold": 0,
+          "score": 0.39063888788223267,
+          "latency_ms": 36.44362499471754
+        },
+        {
+          "id": "bottle/test/good/016.png",
+          "gold": 0,
+          "score": 0.47875523567199707,
+          "latency_ms": 36.58587497193366
+        },
+        {
+          "id": "bottle/test/good/017.png",
+          "gold": 0,
+          "score": 0.45363765954971313,
+          "latency_ms": 35.01870797481388
+        },
+        {
+          "id": "bottle/test/good/018.png",
+          "gold": 0,
+          "score": 0.49293506145477295,
+          "latency_ms": 35.57095804717392
+        },
+        {
+          "id": "bottle/test/good/019.png",
+          "gold": 0,
+          "score": 0.5125270485877991,
+          "latency_ms": 35.10245797224343
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "reference": "bottle/train/good/001.png",
+      "reference_sha256": "ba13b82fc8c732a02277816521fe93a0fee00c524f2742bbb3feed0a31cda8df",
+      "image_auroc": 0.9992063492063492,
+      "pixel_auroc": 0.9864978719880089,
+      "latency": {
+        "median_ms": 35.3692079661414,
+        "p95_ms": 38.414929457940154
+      },
+      "predictions": [
+        {
+          "id": "bottle/test/broken_large/000.png",
+          "gold": 1,
+          "score": 0.9884012937545776,
+          "latency_ms": 36.87724994961172
+        },
+        {
+          "id": "bottle/test/broken_large/001.png",
+          "gold": 1,
+          "score": 0.9427850842475891,
+          "latency_ms": 36.315750097855926
+        },
+        {
+          "id": "bottle/test/broken_large/002.png",
+          "gold": 1,
+          "score": 1.0875591039657593,
+          "latency_ms": 36.37016692664474
+        },
+        {
+          "id": "bottle/test/broken_large/003.png",
+          "gold": 1,
+          "score": 0.8987287282943726,
+          "latency_ms": 35.69566702935845
+        },
+        {
+          "id": "bottle/test/broken_large/004.png",
+          "gold": 1,
+          "score": 0.9459109306335449,
+          "latency_ms": 34.9009579513222
+        },
+        {
+          "id": "bottle/test/broken_large/005.png",
+          "gold": 1,
+          "score": 0.8246493935585022,
+          "latency_ms": 34.673625021241605
+        },
+        {
+          "id": "bottle/test/broken_large/006.png",
+          "gold": 1,
+          "score": 0.9148226380348206,
+          "latency_ms": 35.272416891530156
+        },
+        {
+          "id": "bottle/test/broken_large/007.png",
+          "gold": 1,
+          "score": 0.962854266166687,
+          "latency_ms": 34.48150004260242
+        },
+        {
+          "id": "bottle/test/broken_large/008.png",
+          "gold": 1,
+          "score": 0.9775952100753784,
+          "latency_ms": 35.27545800898224
+        },
+        {
+          "id": "bottle/test/broken_large/009.png",
+          "gold": 1,
+          "score": 1.0118666887283325,
+          "latency_ms": 35.027666948735714
+        },
+        {
+          "id": "bottle/test/broken_large/010.png",
+          "gold": 1,
+          "score": 0.9036875367164612,
+          "latency_ms": 34.91462499368936
+        },
+        {
+          "id": "bottle/test/broken_large/011.png",
+          "gold": 1,
+          "score": 1.163620948791504,
+          "latency_ms": 34.36441707890481
+        },
+        {
+          "id": "bottle/test/broken_large/012.png",
+          "gold": 1,
+          "score": 0.9246684312820435,
+          "latency_ms": 35.696416976861656
+        },
+        {
+          "id": "bottle/test/broken_large/013.png",
+          "gold": 1,
+          "score": 1.0306291580200195,
+          "latency_ms": 34.78095796890557
+        },
+        {
+          "id": "bottle/test/broken_large/014.png",
+          "gold": 1,
+          "score": 1.0636337995529175,
+          "latency_ms": 36.91029199399054
+        },
+        {
+          "id": "bottle/test/broken_large/015.png",
+          "gold": 1,
+          "score": 0.8403046727180481,
+          "latency_ms": 35.35708400886506
+        },
+        {
+          "id": "bottle/test/broken_large/016.png",
+          "gold": 1,
+          "score": 1.0787489414215088,
+          "latency_ms": 34.240584005601704
+        },
+        {
+          "id": "bottle/test/broken_large/017.png",
+          "gold": 1,
+          "score": 0.7910832762718201,
+          "latency_ms": 76.50054199621081
+        },
+        {
+          "id": "bottle/test/broken_large/018.png",
+          "gold": 1,
+          "score": 1.0030741691589355,
+          "latency_ms": 35.555750015191734
+        },
+        {
+          "id": "bottle/test/broken_large/019.png",
+          "gold": 1,
+          "score": 0.897814929485321,
+          "latency_ms": 35.8217500615865
+        },
+        {
+          "id": "bottle/test/broken_small/000.png",
+          "gold": 1,
+          "score": 0.7706530690193176,
+          "latency_ms": 35.99337500054389
+        },
+        {
+          "id": "bottle/test/broken_small/001.png",
+          "gold": 1,
+          "score": 0.9479592442512512,
+          "latency_ms": 34.83833302743733
+        },
+        {
+          "id": "bottle/test/broken_small/002.png",
+          "gold": 1,
+          "score": 0.8539790511131287,
+          "latency_ms": 35.37062497343868
+        },
+        {
+          "id": "bottle/test/broken_small/003.png",
+          "gold": 1,
+          "score": 0.94950270652771,
+          "latency_ms": 34.636041964404285
+        },
+        {
+          "id": "bottle/test/broken_small/004.png",
+          "gold": 1,
+          "score": 0.9183188080787659,
+          "latency_ms": 35.29587504453957
+        },
+        {
+          "id": "bottle/test/broken_small/005.png",
+          "gold": 1,
+          "score": 0.8494423031806946,
+          "latency_ms": 35.49050004221499
+        },
+        {
+          "id": "bottle/test/broken_small/006.png",
+          "gold": 1,
+          "score": 0.7910586595535278,
+          "latency_ms": 34.759624977596104
+        },
+        {
+          "id": "bottle/test/broken_small/007.png",
+          "gold": 1,
+          "score": 0.7842572927474976,
+          "latency_ms": 36.42004099674523
+        },
+        {
+          "id": "bottle/test/broken_small/008.png",
+          "gold": 1,
+          "score": 0.8662843108177185,
+          "latency_ms": 34.88216700498015
+        },
+        {
+          "id": "bottle/test/broken_small/009.png",
+          "gold": 1,
+          "score": 0.8561325669288635,
+          "latency_ms": 34.124416997656226
+        },
+        {
+          "id": "bottle/test/broken_small/010.png",
+          "gold": 1,
+          "score": 0.9139531850814819,
+          "latency_ms": 34.9708340363577
+        },
+        {
+          "id": "bottle/test/broken_small/011.png",
+          "gold": 1,
+          "score": 0.8880013823509216,
+          "latency_ms": 35.3692079661414
+        },
+        {
+          "id": "bottle/test/broken_small/012.png",
+          "gold": 1,
+          "score": 0.9828479290008545,
+          "latency_ms": 35.184415988624096
+        },
+        {
+          "id": "bottle/test/broken_small/013.png",
+          "gold": 1,
+          "score": 0.748725950717926,
+          "latency_ms": 34.72745907492936
+        },
+        {
+          "id": "bottle/test/broken_small/014.png",
+          "gold": 1,
+          "score": 0.6229647397994995,
+          "latency_ms": 34.69804092310369
+        },
+        {
+          "id": "bottle/test/broken_small/015.png",
+          "gold": 1,
+          "score": 0.7542468309402466,
+          "latency_ms": 35.73674999643117
+        },
+        {
+          "id": "bottle/test/broken_small/016.png",
+          "gold": 1,
+          "score": 1.1081854104995728,
+          "latency_ms": 35.35408398602158
+        },
+        {
+          "id": "bottle/test/broken_small/017.png",
+          "gold": 1,
+          "score": 0.7160179018974304,
+          "latency_ms": 35.22774996235967
+        },
+        {
+          "id": "bottle/test/broken_small/018.png",
+          "gold": 1,
+          "score": 1.0480985641479492,
+          "latency_ms": 35.689541953615844
+        },
+        {
+          "id": "bottle/test/broken_small/019.png",
+          "gold": 1,
+          "score": 1.0147242546081543,
+          "latency_ms": 35.49058397766203
+        },
+        {
+          "id": "bottle/test/broken_small/020.png",
+          "gold": 1,
+          "score": 0.9592214822769165,
+          "latency_ms": 34.23012490384281
+        },
+        {
+          "id": "bottle/test/broken_small/021.png",
+          "gold": 1,
+          "score": 1.0012847185134888,
+          "latency_ms": 35.203541978262365
+        },
+        {
+          "id": "bottle/test/contamination/000.png",
+          "gold": 1,
+          "score": 1.0833802223205566,
+          "latency_ms": 35.789875080809
+        },
+        {
+          "id": "bottle/test/contamination/001.png",
+          "gold": 1,
+          "score": 0.8157196044921875,
+          "latency_ms": 34.67012499459088
+        },
+        {
+          "id": "bottle/test/contamination/002.png",
+          "gold": 1,
+          "score": 0.647930920124054,
+          "latency_ms": 34.18437496293336
+        },
+        {
+          "id": "bottle/test/contamination/003.png",
+          "gold": 1,
+          "score": 0.8345449566841125,
+          "latency_ms": 34.36041600070894
+        },
+        {
+          "id": "bottle/test/contamination/004.png",
+          "gold": 1,
+          "score": 0.758618175983429,
+          "latency_ms": 34.78187508881092
+        },
+        {
+          "id": "bottle/test/contamination/005.png",
+          "gold": 1,
+          "score": 1.4363163709640503,
+          "latency_ms": 34.04745808802545
+        },
+        {
+          "id": "bottle/test/contamination/006.png",
+          "gold": 1,
+          "score": 1.3048831224441528,
+          "latency_ms": 35.21587501745671
+        },
+        {
+          "id": "bottle/test/contamination/007.png",
+          "gold": 1,
+          "score": 1.6741516590118408,
+          "latency_ms": 34.525042050518095
+        },
+        {
+          "id": "bottle/test/contamination/008.png",
+          "gold": 1,
+          "score": 1.0919289588928223,
+          "latency_ms": 34.09045794978738
+        },
+        {
+          "id": "bottle/test/contamination/009.png",
+          "gold": 1,
+          "score": 1.154388189315796,
+          "latency_ms": 34.850207972340286
+        },
+        {
+          "id": "bottle/test/contamination/010.png",
+          "gold": 1,
+          "score": 1.1482758522033691,
+          "latency_ms": 36.617749952711165
+        },
+        {
+          "id": "bottle/test/contamination/011.png",
+          "gold": 1,
+          "score": 0.983187198638916,
+          "latency_ms": 37.47795894742012
+        },
+        {
+          "id": "bottle/test/contamination/012.png",
+          "gold": 1,
+          "score": 1.0364739894866943,
+          "latency_ms": 34.579332917928696
+        },
+        {
+          "id": "bottle/test/contamination/013.png",
+          "gold": 1,
+          "score": 1.3133385181427002,
+          "latency_ms": 37.94929105788469
+        },
+        {
+          "id": "bottle/test/contamination/014.png",
+          "gold": 1,
+          "score": 1.214683175086975,
+          "latency_ms": 38.466667057946324
+        },
+        {
+          "id": "bottle/test/contamination/015.png",
+          "gold": 1,
+          "score": 1.045762300491333,
+          "latency_ms": 37.69683407153934
+        },
+        {
+          "id": "bottle/test/contamination/016.png",
+          "gold": 1,
+          "score": 1.0555429458618164,
+          "latency_ms": 37.20745793543756
+        },
+        {
+          "id": "bottle/test/contamination/017.png",
+          "gold": 1,
+          "score": 1.5061290264129639,
+          "latency_ms": 36.28937492612749
+        },
+        {
+          "id": "bottle/test/contamination/018.png",
+          "gold": 1,
+          "score": 1.2469420433044434,
+          "latency_ms": 47.16916708275676
+        },
+        {
+          "id": "bottle/test/contamination/019.png",
+          "gold": 1,
+          "score": 0.6417043805122375,
+          "latency_ms": 37.39300009328872
+        },
+        {
+          "id": "bottle/test/contamination/020.png",
+          "gold": 1,
+          "score": 1.140910029411316,
+          "latency_ms": 36.43374994862825
+        },
+        {
+          "id": "bottle/test/good/000.png",
+          "gold": 0,
+          "score": 0.36765408515930176,
+          "latency_ms": 36.21004102751613
+        },
+        {
+          "id": "bottle/test/good/001.png",
+          "gold": 0,
+          "score": 0.635922372341156,
+          "latency_ms": 36.27395804505795
+        },
+        {
+          "id": "bottle/test/good/002.png",
+          "gold": 0,
+          "score": 0.43232613801956177,
+          "latency_ms": 36.864666966721416
+        },
+        {
+          "id": "bottle/test/good/003.png",
+          "gold": 0,
+          "score": 0.5132020115852356,
+          "latency_ms": 49.274958088062704
+        },
+        {
+          "id": "bottle/test/good/004.png",
+          "gold": 0,
+          "score": 0.3870965838432312,
+          "latency_ms": 40.363874984905124
+        },
+        {
+          "id": "bottle/test/good/005.png",
+          "gold": 0,
+          "score": 0.3069939613342285,
+          "latency_ms": 35.1605829782784
+        },
+        {
+          "id": "bottle/test/good/006.png",
+          "gold": 0,
+          "score": 0.5322616100311279,
+          "latency_ms": 36.31041699554771
+        },
+        {
+          "id": "bottle/test/good/007.png",
+          "gold": 0,
+          "score": 0.3458904027938843,
+          "latency_ms": 34.92716699838638
+        },
+        {
+          "id": "bottle/test/good/008.png",
+          "gold": 0,
+          "score": 0.3390507102012634,
+          "latency_ms": 36.64208308327943
+        },
+        {
+          "id": "bottle/test/good/009.png",
+          "gold": 0,
+          "score": 0.3298020362854004,
+          "latency_ms": 34.830041928216815
+        },
+        {
+          "id": "bottle/test/good/010.png",
+          "gold": 0,
+          "score": 0.4836295247077942,
+          "latency_ms": 36.009791074320674
+        },
+        {
+          "id": "bottle/test/good/011.png",
+          "gold": 0,
+          "score": 0.28323894739151,
+          "latency_ms": 36.398917087353766
+        },
+        {
+          "id": "bottle/test/good/012.png",
+          "gold": 0,
+          "score": 0.28917157649993896,
+          "latency_ms": 37.216458003968
+        },
+        {
+          "id": "bottle/test/good/013.png",
+          "gold": 0,
+          "score": 0.45124322175979614,
+          "latency_ms": 34.99254200141877
+        },
+        {
+          "id": "bottle/test/good/014.png",
+          "gold": 0,
+          "score": 0.49580031633377075,
+          "latency_ms": 36.43104201182723
+        },
+        {
+          "id": "bottle/test/good/015.png",
+          "gold": 0,
+          "score": 0.35580211877822876,
+          "latency_ms": 35.964832990430295
+        },
+        {
+          "id": "bottle/test/good/016.png",
+          "gold": 0,
+          "score": 0.5752031803131104,
+          "latency_ms": 34.94954097550362
+        },
+        {
+          "id": "bottle/test/good/017.png",
+          "gold": 0,
+          "score": 0.36941301822662354,
+          "latency_ms": 35.670415963977575
+        },
+        {
+          "id": "bottle/test/good/018.png",
+          "gold": 0,
+          "score": 0.45335519313812256,
+          "latency_ms": 36.40104201622307
+        },
+        {
+          "id": "bottle/test/good/019.png",
+          "gold": 0,
+          "score": 0.336124062538147,
+          "latency_ms": 35.32987495418638
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "reference": "bottle/train/good/002.png",
+      "reference_sha256": "7de0414f1744aaf5cec488928ee3b761509e4bad4f607dc4f6d41ad7862dab69",
+      "image_auroc": 0.9801587301587302,
+      "pixel_auroc": 0.9859402869481264,
+      "latency": {
+        "median_ms": 38.49408298265189,
+        "p95_ms": 41.1586961010471
+      },
+      "predictions": [
+        {
+          "id": "bottle/test/broken_large/000.png",
+          "gold": 1,
+          "score": 1.0313255786895752,
+          "latency_ms": 39.8749589221552
+        },
+        {
+          "id": "bottle/test/broken_large/001.png",
+          "gold": 1,
+          "score": 0.9341827034950256,
+          "latency_ms": 39.240999962203205
+        },
+        {
+          "id": "bottle/test/broken_large/002.png",
+          "gold": 1,
+          "score": 1.0529472827911377,
+          "latency_ms": 42.03362495172769
+        },
+        {
+          "id": "bottle/test/broken_large/003.png",
+          "gold": 1,
+          "score": 0.9589674472808838,
+          "latency_ms": 40.741459000855684
+        },
+        {
+          "id": "bottle/test/broken_large/004.png",
+          "gold": 1,
+          "score": 0.9161249995231628,
+          "latency_ms": 38.41949999332428
+        },
+        {
+          "id": "bottle/test/broken_large/005.png",
+          "gold": 1,
+          "score": 0.812341570854187,
+          "latency_ms": 38.09966705739498
+        },
+        {
+          "id": "bottle/test/broken_large/006.png",
+          "gold": 1,
+          "score": 0.9454105496406555,
+          "latency_ms": 38.11020799912512
+        },
+        {
+          "id": "bottle/test/broken_large/007.png",
+          "gold": 1,
+          "score": 0.8965385556221008,
+          "latency_ms": 40.48062500078231
+        },
+        {
+          "id": "bottle/test/broken_large/008.png",
+          "gold": 1,
+          "score": 0.9543318748474121,
+          "latency_ms": 35.557915922254324
+        },
+        {
+          "id": "bottle/test/broken_large/009.png",
+          "gold": 1,
+          "score": 0.9255475997924805,
+          "latency_ms": 38.70854200795293
+        },
+        {
+          "id": "bottle/test/broken_large/010.png",
+          "gold": 1,
+          "score": 0.8182563781738281,
+          "latency_ms": 37.2133330674842
+        },
+        {
+          "id": "bottle/test/broken_large/011.png",
+          "gold": 1,
+          "score": 1.0244213342666626,
+          "latency_ms": 39.17570796329528
+        },
+        {
+          "id": "bottle/test/broken_large/012.png",
+          "gold": 1,
+          "score": 0.8336919546127319,
+          "latency_ms": 39.09224993549287
+        },
+        {
+          "id": "bottle/test/broken_large/013.png",
+          "gold": 1,
+          "score": 0.9108790159225464,
+          "latency_ms": 38.31004200037569
+        },
+        {
+          "id": "bottle/test/broken_large/014.png",
+          "gold": 1,
+          "score": 1.12044358253479,
+          "latency_ms": 38.1809170357883
+        },
+        {
+          "id": "bottle/test/broken_large/015.png",
+          "gold": 1,
+          "score": 0.7972086071968079,
+          "latency_ms": 37.86924993619323
+        },
+        {
+          "id": "bottle/test/broken_large/016.png",
+          "gold": 1,
+          "score": 0.9626432061195374,
+          "latency_ms": 37.60462498757988
+        },
+        {
+          "id": "bottle/test/broken_large/017.png",
+          "gold": 1,
+          "score": 0.8521348834037781,
+          "latency_ms": 46.855792053975165
+        },
+        {
+          "id": "bottle/test/broken_large/018.png",
+          "gold": 1,
+          "score": 0.9622758030891418,
+          "latency_ms": 38.55341696180403
+        },
+        {
+          "id": "bottle/test/broken_large/019.png",
+          "gold": 1,
+          "score": 0.9808720946311951,
+          "latency_ms": 37.57883294019848
+        },
+        {
+          "id": "bottle/test/broken_small/000.png",
+          "gold": 1,
+          "score": 0.5312386751174927,
+          "latency_ms": 38.28279208391905
+        },
+        {
+          "id": "bottle/test/broken_small/001.png",
+          "gold": 1,
+          "score": 0.8965107798576355,
+          "latency_ms": 38.54891692753881
+        },
+        {
+          "id": "bottle/test/broken_small/002.png",
+          "gold": 1,
+          "score": 0.838214099407196,
+          "latency_ms": 38.8509159674868
+        },
+        {
+          "id": "bottle/test/broken_small/003.png",
+          "gold": 1,
+          "score": 1.0354706048965454,
+          "latency_ms": 38.495374959893525
+        },
+        {
+          "id": "bottle/test/broken_small/004.png",
+          "gold": 1,
+          "score": 0.9452698826789856,
+          "latency_ms": 37.77566703502089
+        },
+        {
+          "id": "bottle/test/broken_small/005.png",
+          "gold": 1,
+          "score": 0.7785211205482483,
+          "latency_ms": 38.95141708198935
+        },
+        {
+          "id": "bottle/test/broken_small/006.png",
+          "gold": 1,
+          "score": 0.7851076126098633,
+          "latency_ms": 38.49408298265189
+        },
+        {
+          "id": "bottle/test/broken_small/007.png",
+          "gold": 1,
+          "score": 0.6883112192153931,
+          "latency_ms": 40.056708035990596
+        },
+        {
+          "id": "bottle/test/broken_small/008.png",
+          "gold": 1,
+          "score": 0.9422049522399902,
+          "latency_ms": 40.38166592363268
+        },
+        {
+          "id": "bottle/test/broken_small/009.png",
+          "gold": 1,
+          "score": 0.707101047039032,
+          "latency_ms": 39.6073330193758
+        },
+        {
+          "id": "bottle/test/broken_small/010.png",
+          "gold": 1,
+          "score": 0.9047468304634094,
+          "latency_ms": 41.17629199754447
+        },
+        {
+          "id": "bottle/test/broken_small/011.png",
+          "gold": 1,
+          "score": 0.7561447620391846,
+          "latency_ms": 40.72483396157622
+        },
+        {
+          "id": "bottle/test/broken_small/012.png",
+          "gold": 1,
+          "score": 0.8739053010940552,
+          "latency_ms": 41.00033303257078
+        },
+        {
+          "id": "bottle/test/broken_small/013.png",
+          "gold": 1,
+          "score": 0.8030875325202942,
+          "latency_ms": 40.04441597498953
+        },
+        {
+          "id": "bottle/test/broken_small/014.png",
+          "gold": 1,
+          "score": 0.527287483215332,
+          "latency_ms": 43.93779207020998
+        },
+        {
+          "id": "bottle/test/broken_small/015.png",
+          "gold": 1,
+          "score": 0.7899675369262695,
+          "latency_ms": 41.681583039462566
+        },
+        {
+          "id": "bottle/test/broken_small/016.png",
+          "gold": 1,
+          "score": 1.1258050203323364,
+          "latency_ms": 40.366334025748074
+        },
+        {
+          "id": "bottle/test/broken_small/017.png",
+          "gold": 1,
+          "score": 0.7445517182350159,
+          "latency_ms": 39.22791697550565
+        },
+        {
+          "id": "bottle/test/broken_small/018.png",
+          "gold": 1,
+          "score": 1.126265287399292,
+          "latency_ms": 38.540166919119656
+        },
+        {
+          "id": "bottle/test/broken_small/019.png",
+          "gold": 1,
+          "score": 0.9298122525215149,
+          "latency_ms": 37.87624998949468
+        },
+        {
+          "id": "bottle/test/broken_small/020.png",
+          "gold": 1,
+          "score": 1.0219051837921143,
+          "latency_ms": 38.60974998679012
+        },
+        {
+          "id": "bottle/test/broken_small/021.png",
+          "gold": 1,
+          "score": 0.9844139814376831,
+          "latency_ms": 37.78929205145687
+        },
+        {
+          "id": "bottle/test/contamination/000.png",
+          "gold": 1,
+          "score": 1.0265244245529175,
+          "latency_ms": 37.69133298192173
+        },
+        {
+          "id": "bottle/test/contamination/001.png",
+          "gold": 1,
+          "score": 0.8206238746643066,
+          "latency_ms": 38.5596250416711
+        },
+        {
+          "id": "bottle/test/contamination/002.png",
+          "gold": 1,
+          "score": 0.5966634154319763,
+          "latency_ms": 38.547332980670035
+        },
+        {
+          "id": "bottle/test/contamination/003.png",
+          "gold": 1,
+          "score": 0.6955864429473877,
+          "latency_ms": 38.24658296070993
+        },
+        {
+          "id": "bottle/test/contamination/004.png",
+          "gold": 1,
+          "score": 0.6956943869590759,
+          "latency_ms": 38.65929099265486
+        },
+        {
+          "id": "bottle/test/contamination/005.png",
+          "gold": 1,
+          "score": 1.3810157775878906,
+          "latency_ms": 37.85399999469519
+        },
+        {
+          "id": "bottle/test/contamination/006.png",
+          "gold": 1,
+          "score": 1.2775038480758667,
+          "latency_ms": 39.22941698692739
+        },
+        {
+          "id": "bottle/test/contamination/007.png",
+          "gold": 1,
+          "score": 1.6897144317626953,
+          "latency_ms": 38.87466702144593
+        },
+        {
+          "id": "bottle/test/contamination/008.png",
+          "gold": 1,
+          "score": 0.9302460551261902,
+          "latency_ms": 36.701958044432104
+        },
+        {
+          "id": "bottle/test/contamination/009.png",
+          "gold": 1,
+          "score": 1.0094618797302246,
+          "latency_ms": 38.31145795993507
+        },
+        {
+          "id": "bottle/test/contamination/010.png",
+          "gold": 1,
+          "score": 1.0105626583099365,
+          "latency_ms": 38.21291704662144
+        },
+        {
+          "id": "bottle/test/contamination/011.png",
+          "gold": 1,
+          "score": 0.9398819208145142,
+          "latency_ms": 37.4337499961257
+        },
+        {
+          "id": "bottle/test/contamination/012.png",
+          "gold": 1,
+          "score": 0.9217540621757507,
+          "latency_ms": 39.01720908470452
+        },
+        {
+          "id": "bottle/test/contamination/013.png",
+          "gold": 1,
+          "score": 1.2850613594055176,
+          "latency_ms": 37.910375045612454
+        },
+        {
+          "id": "bottle/test/contamination/014.png",
+          "gold": 1,
+          "score": 1.3919017314910889,
+          "latency_ms": 38.077416946180165
+        },
+        {
+          "id": "bottle/test/contamination/015.png",
+          "gold": 1,
+          "score": 1.0347952842712402,
+          "latency_ms": 37.96404192689806
+        },
+        {
+          "id": "bottle/test/contamination/016.png",
+          "gold": 1,
+          "score": 0.8839423060417175,
+          "latency_ms": 38.0299580283463
+        },
+        {
+          "id": "bottle/test/contamination/017.png",
+          "gold": 1,
+          "score": 1.5661211013793945,
+          "latency_ms": 39.48975005187094
+        },
+        {
+          "id": "bottle/test/contamination/018.png",
+          "gold": 1,
+          "score": 1.393207311630249,
+          "latency_ms": 39.05862499959767
+        },
+        {
+          "id": "bottle/test/contamination/019.png",
+          "gold": 1,
+          "score": 0.6666632294654846,
+          "latency_ms": 38.115874980576336
+        },
+        {
+          "id": "bottle/test/contamination/020.png",
+          "gold": 1,
+          "score": 0.9810187816619873,
+          "latency_ms": 38.21145894471556
+        },
+        {
+          "id": "bottle/test/good/000.png",
+          "gold": 0,
+          "score": 0.3893876075744629,
+          "latency_ms": 40.06604210007936
+        },
+        {
+          "id": "bottle/test/good/001.png",
+          "gold": 0,
+          "score": 0.8791701197624207,
+          "latency_ms": 38.03812502883375
+        },
+        {
+          "id": "bottle/test/good/002.png",
+          "gold": 0,
+          "score": 0.30072838068008423,
+          "latency_ms": 37.045791978016496
+        },
+        {
+          "id": "bottle/test/good/003.png",
+          "gold": 0,
+          "score": 0.47033196687698364,
+          "latency_ms": 39.82687497045845
+        },
+        {
+          "id": "bottle/test/good/004.png",
+          "gold": 0,
+          "score": 0.3922741413116455,
+          "latency_ms": 38.29008399043232
+        },
+        {
+          "id": "bottle/test/good/005.png",
+          "gold": 0,
+          "score": 0.36662518978118896,
+          "latency_ms": 37.754958029836416
+        },
+        {
+          "id": "bottle/test/good/006.png",
+          "gold": 0,
+          "score": 0.4549180865287781,
+          "latency_ms": 37.19083301257342
+        },
+        {
+          "id": "bottle/test/good/007.png",
+          "gold": 0,
+          "score": 0.37443989515304565,
+          "latency_ms": 37.04358299728483
+        },
+        {
+          "id": "bottle/test/good/008.png",
+          "gold": 0,
+          "score": 0.36676138639450073,
+          "latency_ms": 38.584457943215966
+        },
+        {
+          "id": "bottle/test/good/009.png",
+          "gold": 0,
+          "score": 0.3609675168991089,
+          "latency_ms": 38.30237500369549
+        },
+        {
+          "id": "bottle/test/good/010.png",
+          "gold": 0,
+          "score": 0.44475001096725464,
+          "latency_ms": 37.69799997098744
+        },
+        {
+          "id": "bottle/test/good/011.png",
+          "gold": 0,
+          "score": 0.2792344093322754,
+          "latency_ms": 38.169416948221624
+        },
+        {
+          "id": "bottle/test/good/012.png",
+          "gold": 0,
+          "score": 0.33299458026885986,
+          "latency_ms": 39.834875031374395
+        },
+        {
+          "id": "bottle/test/good/013.png",
+          "gold": 0,
+          "score": 0.34139853715896606,
+          "latency_ms": 37.64416591729969
+        },
+        {
+          "id": "bottle/test/good/014.png",
+          "gold": 0,
+          "score": 0.4593367576599121,
+          "latency_ms": 37.411083932965994
+        },
+        {
+          "id": "bottle/test/good/015.png",
+          "gold": 0,
+          "score": 0.41763198375701904,
+          "latency_ms": 37.695375038310885
+        },
+        {
+          "id": "bottle/test/good/016.png",
+          "gold": 0,
+          "score": 0.6130297780036926,
+          "latency_ms": 37.45337494183332
+        },
+        {
+          "id": "bottle/test/good/017.png",
+          "gold": 0,
+          "score": 0.5236631631851196,
+          "latency_ms": 39.02841696981341
+        },
+        {
+          "id": "bottle/test/good/018.png",
+          "gold": 0,
+          "score": 0.312222421169281,
+          "latency_ms": 38.375374977476895
+        },
+        {
+          "id": "bottle/test/good/019.png",
+          "gold": 0,
+          "score": 0.49236905574798584,
+          "latency_ms": 38.7603749986738
+        }
+      ]
+    }
+  ],
+  "mean_image_auroc": 0.9923280423280424,
+  "mean_pixel_auroc": 0.9863788379738141
+}

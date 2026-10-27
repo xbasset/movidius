@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Détection d’anomalies DINOv2 sur Movidius Myriad 2, CPU et GPU du Mac.">
+  <title>DINO — laboratoire local</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header><a href="/" class="brand">d. <span>DINO / LAB</span></a><span class="local">● 127.0.0.1 · LOCAL</span></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">EXPÉRIENCE 03 / MOVIDIUS TIME MACHINE</p><h1>Apprendre le normal.<br><span>Repérer l’écart.</span></h1><p>DINOv2 Small + AnomalyDINO sur un stick de 2017.<br>Une image normale suffit à constituer la référence.</p></div><aside><strong>224 × 224</strong><span>22 M paramètres · 256 zones</span><span>Encodeur, distances et score<br>sur le moteur sélectionné.</span></aside></div>
+    <section class="input-panel" aria-label="Images et référence">
+      <div class="source-panel"><div class="section-line"><h2>L’image à inspecter</h2><span id="source-label" class="mono">MVTec AD / bottle</span></div>
+        <div class="source-image"><img id="preview" src="/example/normal" alt="Image à inspecter"><video id="camera" autoplay playsinline muted hidden aria-label="Flux caméra local"></video><span class="crop-guide" aria-hidden="true"></span></div>
+        <div class="examples"><span>Essayer :</span><button data-example="normal">Intacte</button><button data-example="broken">Cassée</button><button data-example="contamination">Contaminée</button></div>
+      </div>
+      <div class="controls"><div class="section-line"><h2>La référence normale</h2><span class="mono">1 IMAGE / SANS RÉENTRAÎNEMENT</span></div>
+        <div class="reference"><img id="reference-image" src="/api/reference" alt="Référence normale actuelle"><p id="reference-label">Chargement de la référence…</p></div>
+        <div class="button-row"><button id="camera-toggle" class="secondary">Activer la caméra</button><label class="file-button">Choisir une image<input type="file" id="file" accept="image/png,image/jpeg"></label></div>
+        <button id="reference" class="secondary" disabled>Utiliser l’image actuelle comme référence normale</button>
+        <button id="reset-reference" class="quiet" disabled>Reprendre la référence MVTec</button>
+        <div class="divider"></div>
+        <button id="compare" class="primary" disabled>Comparer les trois moteurs ↗</button>
+        <button id="live" class="secondary" disabled>Live sur le stick</button>
+        <p class="hint">Le live traite une image à la fois, à la cadence du stick. Place un objet fixe sur un fond stable, capture sa référence, puis modifie son apparence.</p>
+      </div>
+    </section>
+    <div class="status" role="status" aria-live="polite"><span class="dot" id="status-dot"></span><span id="status">Chargement des modèles…</span></div>
+    <div id="error" class="error" role="alert" hidden></div>
+    <section class="cards" aria-label="Cartes d’anomalie et latence">
+      <article class="card stick"><div class="card-top"><span>01 / USB</span><span id="state-stick">Chargement</span></div><h2>Movidius <small>Myriad 2 · 2017 · FP16</small></h2><canvas id="map-stick" width="224" height="224" aria-label="Carte des anomalies sur le stick"></canvas><div class="metrics"><div><span>Score d’anomalie</span><strong id="score-stick">—</strong></div><div><span>ms / image</span><strong id="latency-stick">—</strong></div></div></article>
+      <article class="card cpu"><div class="card-top"><span>02 / MAC</span><span id="state-cpu">Chargement</span></div><h2>CPU <small>Apple Silicon · 4 threads · FP32</small></h2><canvas id="map-cpu" width="224" height="224" aria-label="Carte des anomalies sur le CPU"></canvas><div class="metrics"><div><span>Score d’anomalie</span><strong id="score-cpu">—</strong></div><div><span>ms / image</span><strong id="latency-cpu">—</strong></div></div></article>
+      <article class="card mps"><div class="card-top"><span>03 / MAC</span><span id="state-mps">Chargement</span></div><h2>GPU Metal <small>Apple Silicon · FP32</small></h2><canvas id="map-mps" width="224" height="224" aria-label="Carte des anomalies sur le GPU"></canvas><div class="metrics"><div><span>Score d’anomalie</span><strong id="score-mps">—</strong></div><div><span>ms / image</span><strong id="latency-mps">—</strong></div></div></article>
+    </section>
+    <div class="legend"><span>Écart faible</span><span class="gradient"></span><span>Écart élevé</span><span class="mono">ÉCHELLE FIXE 0 → 1,2</span></div>
+    <p id="measurement-note" class="note">Le score est une distance, pas une probabilité. Comparaison : médiane de trois passages ; live : un passage. Chargement, calibration et préparation des images exclus. Les cartes 16 × 16 sont agrandies pour l’affichage.</p>
+    <footer><span>Aucun service cloud · aucune image enregistrée · caméra activée uniquement à ta demande</span><button id="export" disabled>Exporter les scores et latences ↓</button></footer>
+  </main>
+</body>
+</html>

@@ -78,3 +78,25 @@ does not redistribute Jev weights or use its hosted inference API.
 No vendor firmware was rewritten or flashed. The stock image is uploaded to RAM
 through the ordinary USB boot path. Its embedded strings contain a March 2017
 component build date; this is not proof of the complete image's release date.
+
+## DINOv2 / AnomalyDINO experiment
+
+| Dependency | Pinned identity | Usage |
+|---|---|---|
+| [DINOv2 Small](https://huggingface.co/facebook/dinov2-small) | `ed25f3a31f01632728cabb09d1542f84ab7b0056`; weights SHA256 `ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1` | Apache 2.0 checkpoint, converted to FP16; all 12 student layers |
+| [Meta DINOv2 code](https://github.com/facebookresearch/dinov2) | `7764ea0f912e53c92e82eb78a2a1631e92725fc8` | Apache 2.0; independent original-model verification and position interpolation behavior |
+| [AnomalyDINO](https://github.com/dammsi/AnomalyDINO) | `b9d1c2648e3a5247437d4d953d907a8f3d994457` | Apache 2.0; method, reference selection, aggregation and evaluation conventions |
+| [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad) | Original-format bottle PNGs from [foersben/mvtec-ad](https://huggingface.co/datasets/foersben/mvtec-ad), `c75b39616f84db43677bcc8228caaafaf5096d7f` | CC BY-NC-SA 4.0; normal train references, all 83 bottle test images and masks |
+
+The model and sources remain in ignored `assets/` and `third_party/`; dataset
+images, camera captures, generated IRs and firmware are not redistributed in
+this repository. Downloaded dataset license/readme files are preserved locally.
+Used dataset image hashes and weight hashes are recorded in the public
+assessment. Source/model license terms do not replace the dataset's separate
+non-commercial terms. See [DINO_REPORT.md](DINO_REPORT.md) for the tested subset,
+reference verification, pixel postprocessing and exact runtime boundaries.
+
+Scientific references: Oquab et al., *DINOv2: Learning Robust Visual Features
+without Supervision* (2023); Damm et al., *AnomalyDINO: Boosting Patch-Based
+Few-Shot Anomaly Detection with DINOv2* (WACV 2025); Bergmann et al., *MVTec AD —
+A Comprehensive Real-World Dataset for Unsupervised Anomaly Detection* (CVPR 2019).

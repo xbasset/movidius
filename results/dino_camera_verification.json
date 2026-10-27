@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "browser": "Google Chrome",
+  "capture_source": "physical Mac FaceTime camera",
+  "input_resolution": [
+    224,
+    224
+  ],
+  "reference_calibration": "all three backends, including the stick encoder",
+  "live_backend": "MYRIAD only",
+  "observed_live_inference_ms": [
+    545.7,
+    545.3,
+    544.8
+  ],
+  "observed_multiple_completed_frames": true,
+  "camera_stopped_after_verification": true,
+  "camera_images_saved": false,
+  "microphone_requested": false,
+  "scope": "functional camera smoke test; no controlled defect or camera accuracy benchmark"
+}

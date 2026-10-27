@@ -1,5 +1,17 @@
 # Movidius time machine
 
+**Third experiment:** complete DINOv2 Small + AnomalyDINO visual anomaly inference
+on Myriad 2. At **224 × 224**, the complete MVTec AD **bottle** test split, with
+three one-shot references, gives **99.15% mean image AUROC at 546 ms/image** on
+the stick, versus **99.23% at 36 ms on CPU and 15 ms on Metal**. This is one
+category, not the full fifteen-category benchmark. See
+[DINO_REPORT.md](DINO_REPORT.md) for code, measurements and limitations.
+
+**Camera demo:** run `.venv/bin/python -m scripts.serve_dino`, then open
+<http://127.0.0.1:8766/> in Chrome. Compare public images, capture a normal
+reference, and run stick-only live anomaly maps. The physical Mac camera was
+tested; no camera images are saved. Stop the demo before other stick programs.
+
 **Second experiment:** complete Crivo-17M decision inference on the stick,
 including embeddings, all seven encoder layers and softmax. On all 3,080
 BANKING77 cases it scores **79.64% macro-F1 at 661 ms/request**, versus

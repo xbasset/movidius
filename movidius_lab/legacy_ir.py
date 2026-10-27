@@ -1,4 +1,4 @@
-"""Small OpenVINO IR v7 writer for the Crivo port; no model optimizer required."""
+"""Small OpenVINO IR v7 writer; no model optimizer required."""
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -96,6 +96,22 @@ class IR:
         if bias is not None:
             y = self.eltwise(name + "/bias", y, self.const(name + "/bias_value", bias[None, None]), "sum")
         return y
+
+    def convolution(self, name, x, weight, bias, stride):
+        blobs = {}
+        for key, value in [("weights", weight), ("biases", bias)]:
+            array = np.asarray(value, dtype="<f2", order="C")
+            self.weights.extend(bytes((-len(self.weights)) % 64))
+            offset = len(self.weights)
+            self.weights.extend(array.tobytes())
+            blobs[key] = (offset, array.nbytes)
+        channels, _, kh, kw = weight.shape
+        shape = (1, channels, (x.shape[2] - kh) // stride + 1,
+                 (x.shape[3] - kw) // stride + 1)
+        return self.node(name, "Convolution", [x], shape,
+                         {"kernel": f"{kh},{kw}", "strides": f"{stride},{stride}",
+                          "pads_begin": "0,0", "pads_end": "0,0", "dilations": "1,1",
+                          "output": channels, "group": 1}, blobs=blobs)
 
     def norm(self, name, x, weight, bias=None, eps=1e-5):
         axis = self.const(name + "/axes", [len(x.shape) - 1], "I32")
