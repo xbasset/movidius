@@ -1,0 +1,51 @@
+{
+  "device_inference": true,
+  "firmware_sha256": "bd0ef7bed794379d4c77f4d2434dfa0da905acdd2abbf8df64a23d69cc5a49c0",
+  "open_seconds": 0.6811295000370592,
+  "boot_succeeded": true,
+  "graph_sha256": "1aa9faa7ba6a02cee5e1a32b5faf06f5ce51b881a6f5c8a227bde1d4babf45a3",
+  "model": "inception_v1",
+  "runs": 5,
+  "end_to_end_seconds": [
+    0.09623487503267825,
+    0.09632416698150337,
+    0.0963419999461621,
+    0.09660304198041558,
+    0.09664350003004074
+  ],
+  "device_milliseconds": [
+    90.76744309067726,
+    90.7254293859005,
+    90.95414350926876,
+    91.23087175190449,
+    90.95318481326103
+  ],
+  "top5": [
+    {
+      "index": 547,
+      "label": "electric guitar",
+      "probability": 0.970703125
+    },
+    {
+      "index": 403,
+      "label": "acoustic guitar",
+      "probability": 0.012603759765625
+    },
+    {
+      "index": 883,
+      "label": "vacuum, vacuum cleaner",
+      "probability": 0.005214691162109375
+    },
+    {
+      "index": 421,
+      "label": "banjo",
+      "probability": 0.004108428955078125
+    },
+    {
+      "index": 732,
+      "label": "plunger, plumber's helper",
+      "probability": 0.000988006591796875
+    }
+  ],
+  "date": "2026-10-26"
+}

@@ -1,0 +1,41 @@
+{
+  "reference": "transformers.GPT2LMHeadModel",
+  "torch": "2.14.1",
+  "cases": [
+    {
+      "tokens": [
+        15496,
+        995
+      ],
+      "full_max_logit_error": 0.0001220703125,
+      "cached_max_logit_error": 0.00020599365234375
+    },
+    {
+      "tokens": [
+        464,
+        3139,
+        286,
+        4881,
+        318
+      ],
+      "full_max_logit_error": 0.0001373291015625,
+      "cached_max_logit_error": 0.000213623046875
+    },
+    {
+      "tokens": [
+        40,
+        1101,
+        257,
+        2746,
+        326,
+        460,
+        467,
+        284,
+        511,
+        2456
+      ],
+      "full_max_logit_error": 0.000152587890625,
+      "cached_max_logit_error": 0.000396728515625
+    }
+  ]
+}

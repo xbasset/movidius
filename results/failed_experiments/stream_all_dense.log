@@ -1,0 +1,29 @@
+Booted <device> -> VSC
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "<workspace>/scripts/run_gpt2.py", line 120, in <module>
+    main()
+  File "<workspace>/scripts/run_gpt2.py", line 95, in main
+    result = run(model, ids, args.tokens, args.temperature, args.seed)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>/scripts/run_gpt2.py", line 29, in run
+    logits = model.forward(ids, last_only=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>/movidius_lab/gpt2.py", line 57, in forward
+    hidden = self.linear(self.norm(x, prefix + ".ln_2"), prefix + ".mlp.c_fc")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>/movidius_lab/gpt2.py", line 27, in linear
+    return self.linear_hook(x, prefix, self.w[prefix + ".weight"], self.w[prefix + ".bias"])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>/movidius_lab/gpt2.py", line 126, in __call__
+    graph = self.device.allocate(blob)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<workspace>/movidius_lab/device.py", line 54, in allocate
+    self.check(self.lib.mvncAllocateGraph(self.handle, C.byref(graph), raw, len(data)), "allocate graph")
+  File "<workspace>/movidius_lab/device.py", line 37, in check
+    raise RuntimeError(f"{operation}: NCSDK status {status}")
+RuntimeError: allocate graph: NCSDK status -2

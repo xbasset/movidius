@@ -1,0 +1,7 @@
+numpy==2.5.4
+torch==2.14.1
+safetensors==0.8.0
+tiktoken==0.14.0
+requests==2.34.2
+pillow==13.0.0
+transformers==5.21.0

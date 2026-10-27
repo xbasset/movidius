@@ -1,0 +1,10 @@
+.venv/
+.cache/
+.local/
+build/
+assets/
+third_party/
+output/
+__pycache__/
+*.pyc
+.DS_Store
