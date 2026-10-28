@@ -1,1 +1,1 @@
-"""Small experiments for the original Movidius Neural Compute Stick."""
+"""Shared runtimes and utilities for the original Movidius Neural Compute Stick."""

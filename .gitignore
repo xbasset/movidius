@@ -15,5 +15,7 @@ __pycache__/
 !.env.example
 /results/private/
 /results/raw/
+**/results/private/
+**/results/raw/
 *.private.json
 *.private.log

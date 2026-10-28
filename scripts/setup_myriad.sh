@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-bash scripts/setup.sh --runtime-only
+bash scripts/setup.sh
 
 ov_src="$PWD/third_party/openvino-2020.3"
 ov_revision=2fe9b1523058e282ad374db7dc1b3538c7d2dd27
@@ -34,7 +34,7 @@ cmake --build build/openvino-arm64 --target myriadPlugin -j8
 bash scripts/build_myriad_bridge.sh
 
 .venv/bin/python - <<'PY'
-from movidius_lab.crivo import ROOT, sha256
+from movidius_lab.paths import ROOT, sha256
 firmware = ROOT / 'third_party/openvino-2020.3/bin/aarch64/Release/lib/usb-ma2450.mvcmd'
 assert sha256(firmware) == '6cf079e614d0fa68381ec29d0b30f44766cf3cf62355620a91912128f0bfdaac'
 print('Myriad 2 firmware SHA256 verified.')

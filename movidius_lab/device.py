@@ -3,11 +3,10 @@
 import ctypes as C
 import plistlib
 import subprocess
-from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[1]
+from movidius_lab.paths import ROOT
 
 
 def usb_snapshot():

@@ -1,0 +1,342 @@
+{
+  "baseline_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51",
+  "description": "Published measurement files preserved byte-for-byte during repository reorganization.",
+  "artifacts": [
+    {
+      "original_path": "results/crivo_assessment.json",
+      "path": "experiments/exp02_crivo/results/crivo_assessment.json",
+      "bytes": 3937,
+      "sha256": "f8807c9c9e786095d81b4ae98fbcfc8c8239893839374a38be35419ae60999df",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_banking77_cpu.json",
+      "path": "experiments/exp02_crivo/results/crivo_banking77_cpu.json",
+      "bytes": 5656095,
+      "sha256": "5719b9cc59d7f309733f370a5da023c01b42559eea636aeabe0ed260c79b60fe",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_banking77_demo.json",
+      "path": "experiments/exp02_crivo/results/crivo_banking77_demo.json",
+      "bytes": 6479,
+      "sha256": "c309586e574367ca6996c8aa55aac4a4c73a1e891fed08b5ba90240132e65c29",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_banking77_demo.tsv",
+      "path": "experiments/exp02_crivo/results/crivo_banking77_demo.tsv",
+      "bytes": 14035,
+      "sha256": "5fc0811c649a0ce42dc1027b5d90115857680e8ac0b0a69eac87228465d07514",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_banking77_mps.json",
+      "path": "experiments/exp02_crivo/results/crivo_banking77_mps.json",
+      "bytes": 5654898,
+      "sha256": "07de7a01cadc30e2e0c63a41e5d1fac75557c34f0a8861031505aafed7750eef",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_banking77_myriad.json",
+      "path": "experiments/exp02_crivo/results/crivo_banking77_myriad.json",
+      "bytes": 2120881,
+      "sha256": "c9e7acc3182785f77f1c6d36998819aa733a67869850a2f7663edcb8b025e4a1",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_banking77_myriad.tsv",
+      "path": "experiments/exp02_crivo/results/crivo_banking77_myriad.tsv",
+      "bytes": 14035,
+      "sha256": "1f62cdd547b5d12c06a0c0f186484558335af91f8031ece709745359e2bbc5f4",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_demo.json",
+      "path": "experiments/exp02_crivo/results/crivo_demo.json",
+      "bytes": 1008,
+      "sha256": "675aad94407b92d3f5941fa265b367dcb099ceb34e3f860ff3f6d0a5a31b2de1",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_demo.tsv",
+      "path": "experiments/exp02_crivo/results/crivo_demo.tsv",
+      "bytes": 13686,
+      "sha256": "cc88e7d877ec6798d69566d700c9bef1d481078bfbfe4ac213a22580e9f9e01c",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_lifecycle_verification.json",
+      "path": "experiments/exp02_crivo/results/crivo_lifecycle_verification.json",
+      "bytes": 615,
+      "sha256": "e62ff67a036e7f4ed6fec81c479787a43ec1863c9885340e6cb21d2ba58e1028",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_live_verification.json",
+      "path": "experiments/exp02_crivo/results/crivo_live_verification.json",
+      "bytes": 295,
+      "sha256": "2d763a845516b284cce58525aa321547600400ab15b30777d1a49159e11f6a65",
+      "recorded_at_commit": "f2088e8ff9e67b0028608a77f6cd912a0f8f07de"
+    },
+    {
+      "original_path": "results/crivo_metric_verification.json",
+      "path": "experiments/exp02_crivo/results/crivo_metric_verification.json",
+      "bytes": 296,
+      "sha256": "b1c393cb9b14975cbe915615e1ca3c21e2d7a83b039dfb3cd5a9755f46cde808",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/crivo_reference_parity.json",
+      "path": "experiments/exp02_crivo/results/crivo_reference_parity.json",
+      "bytes": 462,
+      "sha256": "3f8ecca4271d9ca5e6e88ac85c636960ef0d28a5a371210cc5cd9b56b075289c",
+      "recorded_at_commit": "f686c61cd0857dcd78cfd3751461bc19b8b0af36"
+    },
+    {
+      "original_path": "results/dense_768_3072.json",
+      "path": "experiments/exp01_gpt2/results/dense_768_3072.json",
+      "bytes": 1569,
+      "sha256": "7b508f2a65b2e03fb2295ac580757e29a78d7d915642b821f2d4fc7bd31a8c04",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/dense_device.json",
+      "path": "experiments/exp01_gpt2/results/dense_device.json",
+      "bytes": 2489,
+      "sha256": "5339f9e3e52eb22c15c0b2bdc571b7efe96e31e3c4028af2fe8284d5872a80e5",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/device_probe.json",
+      "path": "experiments/exp01_gpt2/results/device_probe.json",
+      "bytes": 1189,
+      "sha256": "1361f41a05129c7487d1df91a2fa7c6db1022049eace773b1afa3a7253db7baf",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/dino448_assessment.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_assessment.json",
+      "bytes": 15837,
+      "sha256": "67f1d524bc497acdbe8b15e10a54fba5685c7e4b648b608122f2bf2bfb325410",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_broadcast_verification.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_broadcast_verification.json",
+      "bytes": 946,
+      "sha256": "68383581076025ecda18a54549ef079150903e8abd5b9df64bf74afc619b8ff4",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_cpu_inference.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_cpu_inference.json",
+      "bytes": 11996,
+      "sha256": "1df3cc4529219b8336d7ceadbaffa393b4ae1ba0897c313f785a933f12059fa1",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_cpu_latency.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_cpu_latency.json",
+      "bytes": 18859,
+      "sha256": "3be8c78573a67cddab5838b94b8c0b5f727490dc84fe98ff660fec30f0d943d5",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_cpu_metrics.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_cpu_metrics.json",
+      "bytes": 16248,
+      "sha256": "d19f850d0250a3fb897012cf4a5fe98eb1a06849c7d7114eb46c8b1e5953ccd0",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_dataset.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_dataset.json",
+      "bytes": 331319,
+      "sha256": "5e451b143e03ce296d7c7e36780ac7a87c537e98f5eb90e8f0e1524327361c6f",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_mps_inference.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_mps_inference.json",
+      "bytes": 11989,
+      "sha256": "1400ea4c4f6b630a00a68c17df7f37e757456d5b7f7e1bc54e740f55d1329d7d",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_mps_latency.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_mps_latency.json",
+      "bytes": 18753,
+      "sha256": "4d2f30d90808c1385660d5add4d82c88aa49aad2b8ad7b34ed043f081acc0d3b",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_mps_metrics.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_mps_metrics.json",
+      "bytes": 16235,
+      "sha256": "83951974392ab04d878bfc4d7e4b4b4c957fafde2d5fc6761c5506c33630203e",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_myriad.tsv",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_myriad.tsv",
+      "bytes": 31620,
+      "sha256": "4efc681782e85f37f9637f1cc4ce0068dae7d6e4d4736ae593fd9e4ff608ec5f",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_myriad_inference.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_myriad_inference.json",
+      "bytes": 16798,
+      "sha256": "bb2593af41c6c32c9f2028f9f1d8398f784b511161d688041f70f89be4aa6acf",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_myriad_latency.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_myriad_latency.json",
+      "bytes": 18012,
+      "sha256": "5502e5f6c703048b9e1b234d9634459f25497c3b60a8411babb24082d24425f2",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_myriad_metrics.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_myriad_metrics.json",
+      "bytes": 16198,
+      "sha256": "e14f5f9e031abe6353696db3184cff3a46e6730b682e4b8e731c0c03a87a05ea",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_predictions.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_predictions.json",
+      "bytes": 1240443,
+      "sha256": "0afdb57ab4d91cb05e75b2d6f4121411e5fbcd8134390bca4bc0f410eeb46037",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_reference_verification.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_reference_verification.json",
+      "bytes": 1191,
+      "sha256": "7ee951af3c35e29f296de72fe5134ad80da6d2e48ce2f864fc648db61137dda6",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino448_verification.json",
+      "path": "experiments/exp03_anomalydino/results/448/dino448_verification.json",
+      "bytes": 2181,
+      "sha256": "f88748c803006c12cac7c7103b1b61f6f21bc4369d6b9512b7ba3df7e6c61dfc",
+      "recorded_at_commit": "76d8fbbd71187de18e8c99b7ecfb350711b0ea51"
+    },
+    {
+      "original_path": "results/dino_assessment.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_assessment.json",
+      "bytes": 20436,
+      "sha256": "691661064a393339b0ab61c20d827112317b57fd4095046b54e73064ec246590",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/dino_bottle_cpu.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_bottle_cpu.json",
+      "bytes": 46025,
+      "sha256": "802f66526048d44308422cd63be27ba5bd4c3778f3e02611d2da2e7348c2efc6",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/dino_bottle_mps.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_bottle_mps.json",
+      "bytes": 46146,
+      "sha256": "cc15fe8c12fc48692843808a269297a4ee7a0f38709f76162a526cf6a37563a5",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/dino_bottle_myriad.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_bottle_myriad.json",
+      "bytes": 44964,
+      "sha256": "a26017a96e4dec3dd254c5246ab1c7b7df874c4707449b031a06a6c3dc616e53",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/dino_bottle_myriad.tsv",
+      "path": "experiments/exp03_anomalydino/results/224/dino_bottle_myriad.tsv",
+      "bytes": 20701,
+      "sha256": "217f352a7730008e32363d0318dde26c475b25e855bd9c86bc551ad885b60f8d",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/dino_camera_verification.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_camera_verification.json",
+      "bytes": 962,
+      "sha256": "510b2a7c1e3c039ad06f10393252c53ef6bb3c185526a58230f34a58a030130e",
+      "recorded_at_commit": "f3b780bf749be8d41fa1469bc92711eaef9ba9a2"
+    },
+    {
+      "original_path": "results/dino_live_verification.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_live_verification.json",
+      "bytes": 888,
+      "sha256": "3f077907371ceb44991401461d9470010aaef4907928292b11fb6f0d1942800f",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/dino_reference_verification.json",
+      "path": "experiments/exp03_anomalydino/results/224/dino_reference_verification.json",
+      "bytes": 953,
+      "sha256": "2e5684d3ab175ccf08a3faf9d7301dd7526d593622877f89d35e636e506c4182",
+      "recorded_at_commit": "583b8f0e597409193074f71e733a1b53c86c6330"
+    },
+    {
+      "original_path": "results/failed_experiments/stream_all_dense.log",
+      "path": "experiments/exp01_gpt2/results/failed_experiments/stream_all_dense.log",
+      "bytes": 1728,
+      "sha256": "fc0f85788a11ccca9f4e7d3684657fa638c100490a852c3aff5249e06f2a2dc5",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/gpt2_host.json",
+      "path": "experiments/exp01_gpt2/results/gpt2_host.json",
+      "bytes": 4992,
+      "sha256": "2c0c0ff35157961e3bdd3633a2bac09567705fda1e8ee98c2f67de078f6c5c04",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/gpt2_hybrid.json",
+      "path": "experiments/exp01_gpt2/results/gpt2_hybrid.json",
+      "bytes": 5175,
+      "sha256": "28565df04053665bc4a3d8b278ac519ba9db679d2059e87bbf6922eedaa9f464",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/gpt2_lm_head_device.json",
+      "path": "experiments/exp01_gpt2/results/gpt2_lm_head_device.json",
+      "bytes": 1555,
+      "sha256": "284262462a9f6c34ea178181ac54f3feab835bd709e1818efb13fc05d87a8ef1",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/gpt2_qkv_device.json",
+      "path": "experiments/exp01_gpt2/results/gpt2_qkv_device.json",
+      "bytes": 4351,
+      "sha256": "c10a04c39277c1ac2ebda803e066ce8ba5aad0a5c4a40d4fc849638ca45bd60a",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/gpt2_sample.json",
+      "path": "experiments/exp01_gpt2/results/gpt2_sample.json",
+      "bytes": 3167,
+      "sha256": "99ff3b26e895276b67684d61fd57e2d0a6f4d53ce2ecdda4797ca74295e470ee",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/hybrid_parity.json",
+      "path": "experiments/exp01_gpt2/results/hybrid_parity.json",
+      "bytes": 3309,
+      "sha256": "703e57d6736bc32d087afd626d596f538d54b5237eaaba658d0477e006449065",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    },
+    {
+      "original_path": "results/reference_verification.json",
+      "path": "experiments/exp01_gpt2/results/reference_verification.json",
+      "bytes": 730,
+      "sha256": "bf7f3ba44323ae58d9e45015a709c9ed679d2e4cbaeb44007a29d4b8e76b2131",
+      "recorded_at_commit": "8ed64d4f2080521755b56abdaedcfb901597cc70"
+    }
+  ]
+}

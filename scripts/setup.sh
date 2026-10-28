@@ -26,9 +26,3 @@ if [ ! -f .local/lib/libusb-1.0.a ]; then
   )
 fi
 bash scripts/build_runtime.sh
-if [ "${1:-}" = "--runtime-only" ]; then exit 0; fi
-.venv/bin/python -m scripts.fetch_gpt2
-if [ ! -f assets/wikitext2-test.txt ]; then
-  curl -fL https://raw.githubusercontent.com/pytorch/examples/main/word_language_model/data/wikitext-2/test.txt \
-    -o assets/wikitext2-test.txt
-fi

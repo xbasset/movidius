@@ -10,13 +10,13 @@ SDK, vendor firmware, pretrained weights or other dependencies.
 | [libusb](https://github.com/libusb/libusb/releases/tag/v1.0.29) | `15a7ebb4d426c5ce196684347d2b7cafad862626` | Native USB transport, statically linked into local host library |
 | [GPT-2 small](https://huggingface.co/openai-community/gpt2) | `607a30d783dfa663caf39e06633721c8d4cfcd7e` | Public pretrained FP32 weights, converted to FP16 for device graphs |
 | [PyTorch examples WikiText-2 test](https://github.com/pytorch/examples/blob/main/word_language_model/data/wikitext-2/test.txt) | SHA256 `d790b833ef8cf03a90db7bf1271b7520b83c45ce07ba3c1a9699df81e239eca0` | Small numerical parity fixture; original corpus is tokenized WikiText-2 |
-| [Crivo-17M](https://huggingface.co/tardellirs/crivo-17m) | `8e42a0dbc309ca3360bfa94ebfd30061d6994ba7` | Complete decision model; declared CC BY-NC 4.0; weights/source/tokenizer hashes checked by `scripts/fetch_crivo.py` |
+| [Crivo-17M](https://huggingface.co/tardellirs/crivo-17m) | `8e42a0dbc309ca3360bfa94ebfd30061d6994ba7` | Complete decision model; declared CC BY-NC 4.0; weights/source/tokenizer hashes checked by `experiments/exp02_crivo/scripts/fetch_crivo.py` |
 | [OpenVINO 2020.3.0](https://github.com/openvinotoolkit/openvino/tree/2020.3.0) | `2fe9b1523058e282ad374db7dc1b3538c7d2dd27` | Native ARM64 Myriad 2 runtime and compiler; source modifications recorded in `scripts/patches/openvino-macos-arm64.patch` |
 | OpenVINO's pinned nGraph / ADE submodules | `1797d7fb712d2ffa6048ce5f5b3b560b84ab5ae4` / `cbe2db61a659c2cc304c3837406f95c39dfa938e` | Runtime build dependencies, fetched by Git submodule |
 | [BANKING77](https://github.com/PolyAI-LDN/task-specific-datasets/tree/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data) | Revision `57ec275d8078af65b7731c2a98be812d844a6d6b`; test SHA256 `d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d`; labels SHA256 `53261da888122daf2d120d925458631d9619e15d82e56052e7a42e535ce32b63` | All 3,080 public test cases, 77 labels; hashes match the Decision Index's pinned sources |
 | [Decision Index](https://github.com/apolinario/decision-index) | Inspected kit revision `25c6ec7b6b5f44a216c63c3a700de3a9c6d6699d` | Direct BANKING77 input layout and independent metric verification; MIT license; not a runtime dependency |
 
-The exact model SHA256 is checked in `scripts/fetch_gpt2.py` and saved in
+The exact model SHA256 is checked in `experiments/exp01_gpt2/scripts/fetch_gpt2.py` and saved in
 `assets/gpt2/manifest.json`, copied into generation result JSON. Python package
 versions are captured in `requirements-lock.txt`; direct dependencies are listed
 in `requirements.txt`.
@@ -93,13 +93,13 @@ images, camera captures, generated IRs and firmware are not redistributed in
 this repository. Downloaded dataset license/readme files are preserved locally.
 Used dataset image hashes and weight hashes are recorded in the public
 assessment. Source/model license terms do not replace the dataset's separate
-non-commercial terms. See [DINO_REPORT.md](DINO_REPORT.md) for the tested subset,
+non-commercial terms. See the [224 pilot report](experiments/exp03_anomalydino/REPORT_224.md) for the tested subset,
 reference verification, pixel postprocessing and exact runtime boundaries.
-The [448 protocol](DINO448_PROTOCOL.md) follows the same pinned AnomalyDINO
+The [448 protocol](experiments/exp03_anomalydino/PROTOCOL_448.md) follows the same pinned AnomalyDINO
 source for rotations, query masks and all six evaluation metrics. Its device
 PCA uses a documented power-iteration approximation. OpenCV is pinned in the
 Python dependency files. The full selected-file hashes are published in
-`results/dino448_dataset.json`; generated maps and reference banks remain local.
+`experiments/exp03_anomalydino/results/448/dino448_dataset.json`; generated maps and reference banks remain local.
 
 Scientific references: Oquab et al., *DINOv2: Learning Robust Visual Features
 without Supervision* (2023); Damm et al., *AnomalyDINO: Boosting Patch-Based

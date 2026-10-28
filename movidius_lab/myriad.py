@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[1]
+from movidius_lab.paths import ROOT
 LIBDIR = ROOT / "third_party/openvino-2020.3/bin/aarch64/Release/lib"
 
 

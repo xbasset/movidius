@@ -1,188 +1,78 @@
 # Movidius time machine
 
-**Third experiment:** complete DINOv2 Small + AnomalyDINO visual anomaly inference
-on Myriad 2. The **448 × 448 extension covers all 15 MVTec AD categories**, all
-1,725 test images and three independent one-shot references, including query
-PCA masking on the stick. See [DINO448_REPORT.md](DINO448_REPORT.md) for the six
-paper metrics and stick / CPU / GPU latency, and
-[DINO448_PROTOCOL.md](DINO448_PROTOCOL.md) for reproduction commands.
-The stick reaches **96.54% image AUROC**, versus **96.52% on the Mac** and
-**96.5% in the paper**. Median single-reference inference is **2,743 ms** on
-the stick, **112 ms** on CPU and **33 ms** on Metal.
+Three experiments, in the order they were built, on an original **Intel Neural
+Compute Stick / Myriad 2 (2017)** and an **Apple M2 Pro Mac**. This repository
+contains the implementations, reproduction commands and measured evidence.
 
-The initial **224 × 224** pilot on the complete MVTec AD **bottle** test split, with
-three one-shot references, gives **99.15% mean image AUROC at 546 ms/image** on
-the stick, versus **99.23% at 36 ms on CPU and 15 ms on Metal**. This is one
-category. See
-[DINO_REPORT.md](DINO_REPORT.md) for code, measurements and limitations.
+| Step | Experiment | Demonstrated result | Start here |
+|---|---|---|---|
+| 01 | GPT-2: partial language-model offload | Real GPT-2 QKV computation on the stick during text generation; the Mac runs the rest. A separate test executes the full vocabulary projection. | [Experiment 01](experiments/exp01_gpt2/) |
+| 02 | Crivo-17M: complete text decisions | All neural inference on the stick; **79.64% macro-F1** on all 3,080 BANKING77 cases, versus 79.59% on the Mac. Local text interface. | [Experiment 02](experiments/exp02_crivo/) |
+| 03 | DINOv2-S + AnomalyDINO: visual anomalies | Complete device inference, first a **224 × 224 bottle pilot and camera demo**, then **448 × 448 / all 15 MVTec AD categories**: **96.54% image AUROC**, versus 96.52% on the Mac and 96.5% in the paper. | [Experiment 03](experiments/exp03_anomalydino/) |
 
-**Camera demo:** run `.venv/bin/python -m scripts.serve_dino`, then open
-<http://127.0.0.1:8766/> in Chrome. Compare public images, capture a normal
-reference, and run stick-only live anomaly maps. The physical Mac camera was
-tested; no camera images are saved. Stop the demo before other stick programs.
+The Mac is faster in these implementations. The experiments establish execution
+and prediction quality on older hardware. They do not establish an energy
+advantage, or that the later models' weights, data and training recipes were
+available in 2017. No replacement firmware was written or flashed.
 
-**Second experiment:** complete Crivo-17M decision inference on the stick,
-including embeddings, all seven encoder layers and softmax. On all 3,080
-BANKING77 cases it scores **79.64% macro-F1 at 661 ms/request**, versus
-**79.59% at 34 ms on the Mac CPU and 9.1 ms on its Metal GPU**.
-See [CRIVO_REPORT.md](CRIVO_REPORT.md) for setup, the working demo, execution
-boundaries and measured results.
+## Read and verify the evidence
 
-**Live local interface:** run `.venv/bin/python -m scripts.serve_crivo`, then
-open <http://127.0.0.1:8765> to compare decisions, probabilities and latency on
-all three backends. Energy measurement is outside the experiment scope.
-See [LOCAL_UI.md](LOCAL_UI.md).
+Follow **01 → 02 → 03**, then **224 → 448** inside the third experiment. Each
+folder contains its code, commands, reports and original numerical results.
+
+- [Evidence index](docs/EVIDENCE.md): claims, limitations, source commits and direct measurement links.
+- [Artifact manifest](docs/evidence.json): original/new paths, SHA256 hashes and source commits for all 48 published measurement files. Their contents are unchanged by the reorganization.
+- [Setup and shared runtime](docs/SETUP.md): clean checkout, prerequisites and hardware boundaries.
+- [Sources and licenses](THIRD_PARTY.md): model, dataset, runtime and firmware provenance.
+
+Check the published evidence and repository links without downloading models or
+connecting a stick:
 
 ```sh
-bash scripts/setup_crivo.sh
-.venv/bin/python -m scripts.run_crivo --banking --no-reference \
-  --text 'Where is my card? It has not arrived yet.'
+python3 -m scripts.check_repository
 ```
 
-Can a $79 USB accelerator launched in July 2017 execute modern language models?
+## Run a demo
 
-**First result:** pretrained GPT-2 small generates text with its first attention
-projection computed on an original Intel Movidius Neural Compute Stick. The Mac
-runs the remaining transformer operations. The stick also independently executes
-GPT-2's full 768×50,257 vocabulary projection, using about 74 MiB of FP16 weights.
-
-Read [REPORT.md](REPORT.md) for measured timings, numerical checks, the failed
-broader offload experiment, and the boundaries of the historical claim. Raw
-measurements are under [results/](results/).
-
-## Run the working demo
-
-On a fresh clone, first prepare the dependencies, weights and native runtime
-using the [setup instructions](#set-up-from-a-clean-checkout) below. Plug in the
-original Myriad 2 stick, then run from the repository directory:
+Run commands **from the repository root**. First follow the setup in the relevant
+experiment. Only one process can own the USB stick; stop a demo before starting
+another demo or benchmark.
 
 ```sh
-.venv/bin/python -m scripts.run_gpt2 --hybrid --tokens 96 --runs 1 \
-  --temperature 0.8 --prompt 'In 2017, a scientist built a tiny computer that' \
-  --output results/gpt2_sample.json
+# 01 — text generation, with the first QKV projection on the stick.
+.venv/bin/python -m experiments.exp01_gpt2.scripts.run_gpt2 --hybrid \
+  --tokens 32 --prompt 'In 2017, a scientist built a tiny computer that' \
+  --output output/gpt2_demo.json
+
+# 02 — decisions and probabilities, compared with CPU and Metal.
+.venv/bin/python -m experiments.exp02_crivo.scripts.serve_crivo
+# Open http://127.0.0.1:8765/ ; stop with Ctrl+C before step 03.
+
+# 03 — image/camera anomaly maps at 224 × 224.
+.venv/bin/python -m experiments.exp03_anomalydino.scripts.serve_dino
+# Open http://127.0.0.1:8766/ in Chrome.
 ```
 
-The command boots stock RAM firmware, loads the real GPT-2 QKV weights, generates
-text, records token IDs/timings, and resets the stick on close. It needs direct USB
-access. In a Codex sandbox, execute the device command with the host's normal USB
-permissions; a sandboxed process may not see the device. No `sudo` is needed on
-the tested laptop. Run only one device experiment at a time.
+The camera demo remains at 224 × 224. The 448 × 448 experiment is the separately
+documented full benchmark, including device PCA masking and all six paper metrics.
 
-For CPU-only inference, omit `--hybrid`. Generation uses four CPU threads. It is
-greedy by default; positive temperature enables seeded top-40 sampling. GPT-2's
-1,024-token context is enforced rather than silently sliding cached positions.
-Generated text can repeat and invent facts; it is a base language model.
+## Repository map
 
-## Reproduce the assessment
-
-Run sequentially so model jobs do not compete for CPU resources:
-
-```sh
-# Independent reference: full and cached logits against Transformers.
-.venv/bin/python -m scripts.verify_reference
-
-# Stock Inception-v1 smoke test on the physical stick.
-.venv/bin/python -m scripts.probe_device --inception
-
-# Actual GPT-2 weights on device, compared with FP32 accumulation of FP16 values.
-.venv/bin/python -m scripts.test_dense_device --gpt2 --runs 10 \
-  --output results/gpt2_qkv_device.json
-.venv/bin/python -m scripts.test_dense_device --gpt2 --matrix lm-head --runs 3 \
-  --output results/gpt2_lm_head_device.json
-
-# Same prompt, greedy decoding, 64 generated tokens, three separate timed runs.
-.venv/bin/python -m scripts.run_gpt2 --tokens 64 --runs 3 \
-  --prompt 'The scientist opened the box and found' --output results/gpt2_host.json
-.venv/bin/python -m scripts.run_gpt2 --hybrid --tokens 64 --runs 3 \
-  --prompt 'The scientist opened the box and found' --output results/gpt2_hybrid.json
-
-# Fixed-token likelihood/logit parity, using a 256-token WikiText-2 slice.
-.venv/bin/python -m scripts.assess_parity --tokens 256
-
-# Run the sampled demo above, then rebuild the report from the JSON evidence.
-.venv/bin/python -m scripts.summarize
+```text
+experiments/
+  exp01_gpt2/          model, scripts, setup, report, results
+  exp02_crivo/         model, scripts, setup, reports, web demo, results
+  exp03_anomalydino/   model, scripts, 224/448 setup and reports, web demo
+    results/224/      initial bottle benchmark and camera verification
+    results/448/      15-category benchmark and paper comparison
+movidius_lab/         shared USB bindings, graph writers and local HTTP worker
+scripts/              shared runtime builds and evidence verification
+docs/                 setup and evidence index
 ```
 
-Device matrix timings exclude graph upload and boot. The hybrid generation
-benchmark includes CPU work, USB transfer and sampling; its decode rate excludes
-initialization and prefill. The report distinguishes these timing boundaries.
-The parity slice is a smoke test, not a full WikiText benchmark or leaderboard
-submission. Absolute logit error, distribution KL, top-1 agreement and likelihood
-change are all retained. Energy has not been measured.
-
-## Set up from a clean checkout
-
-Tested: Apple M2 Pro, macOS 26.6.2, Python 3.12, Xcode command-line tools.
-The bootstrap also expects `uv`, Git, curl, autoconf, automake, GNU libtool and make.
-These tools were already present on this laptop. All project dependencies and
-build outputs stay in this directory; no global Python/SDK install is performed.
-
-```sh
-git clone https://github.com/xbasset/movidius.git
-cd movidius
-bash scripts/setup.sh
-```
-
-This installs the recorded Python dependency versions, checks out pinned NCSDK and
-libusb sources, builds a native ARM64 library, and downloads pinned public GPT-2
-weights plus evaluation text. Allow roughly 2 GiB of disk space. The model's
-SHA256 is checked, and the WikiText file's SHA256 is recorded with the parity
-results. The stock firmware and sample graph come from the pinned macOS fork.
-
-The old graph compiler package is not needed to run the custom graph writer.
-Its archive location and hash are documented in [THIRD_PARTY.md](THIRD_PARTY.md).
-It was inspected to understand the binary format, without installing TensorFlow
-1.x, Caffe or a Linux VM.
-
-## Code map
-
-| File | Responsibility |
-|---|---|
-| [movidius_lab/device.py](movidius_lab/device.py) | Typed bindings, device lifetime, graph execution |
-| [movidius_lab/graph.py](movidius_lab/graph.py) | Small dense-matrix graph serializer |
-| [movidius_lab/gpt2.py](movidius_lab/gpt2.py) | Minimal GPT-2 decoder, KV cache and device hooks |
-| [scripts/run_gpt2.py](scripts/run_gpt2.py) | Generation and timing |
-| [scripts/verify_reference.py](scripts/verify_reference.py) | Independent implementation check |
-| [scripts/assess_parity.py](scripts/assess_parity.py) | Fixed-token host/device comparison |
-| [scripts/summarize.py](scripts/summarize.py) | Report generation from measured artifacts |
-
-`third_party/`, `.venv/`, `.cache/`, `.local/`, `build/` and downloaded `assets/`
-are ignored. Keep the small source files, documentation, dependency locks and
-`results/` when sharing the experiment. Dependencies retain their own licenses.
-
-Keep raw captures or sensitive metadata under `results/private/` or `results/raw/`,
-or in `*.private.json` / `*.private.log` files; these paths are ignored, as are
-local `.env` files. Published result JSON is anonymized. Git ignore rules apply
-to whole files, so remove sensitive fields before adding a result to version
-control. Original local captures from this experiment remain under the ignored
-`.cache/publication/` directory.
-
-## Next iteration
-
-1. Resolve graph replacement while a device is open. The current single-QKV path
-   keeps one graph resident and works reliably in these tests.
-2. Offload a complete decoder block, then the full model, with device-resident
-   weights and KV state. Preserve reference probabilities at each step.
-3. Measure longer contexts and full held-out benchmarks.
-
-An experimental `--offload all-dense` path is retained to reproduce the failure:
-
-```sh
-.venv/bin/python -m scripts.run_gpt2 --offload all-dense --tokens 8 --runs 1 \
-  --prompt 'Once upon a time' --output results/experimental_all_dense.json
-```
-
-It currently fails on the third projection upload. Pre-reserving larger buffers
-did not fix it. [Saved transcript](results/failed_experiments/stream_all_dense.log).
-This path is not a completed whole-model demonstration.
-
-## Historical reference points
-
-- [Intel's July 20, 2017 launch entry](https://newsroom.intel.com/new-technologies/intel-newsroom-archive-2017)
-- [Original stick architecture and RAM boot behavior](https://movidius.github.io/ncsdk/ncs.html)
-- [GPT-2's February 2019 announcement](https://openai.com/index/better-language-models/)
-- [nanoGPT architecture/training reference](https://github.com/karpathy/nanoGPT)
-- [llama2.c tiny-model comparison project](https://github.com/karpathy/llama2.c)
-
-The defensible historical claim currently concerns hardware execution capability.
-It does not establish the cost of discovering or training the model in 2017.
+Weights, datasets, firmware, build outputs and caches remain in the shared,
+ignored `assets/`, `third_party/`, `build/`, `.local/` and `.cache/` directories.
+Private captures belong in ignored `results/private/` or `results/raw/`;
+throwaway reruns can use ignored `output/`. Published results are snapshots:
+benchmark defaults regenerate them, so use a separate checkout or an explicit
+`--output` where available when preserving the recorded runs.
